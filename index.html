@@ -110,6 +110,7 @@
     </script>
     <!-- Event snippet for Visualização de página conversion page - MOVIDO PARA DEPOIS DO gtag.js -->
     <script>
+      // Este script foi movido para garantir que gtag esteja definido antes de ser chamado.
       gtag('event', 'conversion', {
           'send_to': 'AW-17294217421/wsZ2CIaO2ucaEM2hw7ZA',
           'value': 1.0,
@@ -127,7 +128,8 @@
             <div class="text-3xl md:text-4xl font-extrabold tracking-wide mb-4 md:mb-0">
                 Voz para Anúncio
             </div>
-            <ul class="flex flex-col md:flex-row items-center space-y-4 md:space-y-0 md:space-x-8">
+            <!-- Menu de Navegação: Oculto em telas pequenas, visível a partir de telas médias -->
+            <ul class="hidden md:flex flex-col md:flex-row items-center space-y-4 md:space-y-0 md:space-x-8">
                 <li><a href="https://www.vozparaanuncio.com.br" class="hover:text-yellow-accent transition duration-300">Início</a></li>
                 <!-- Alterado link e removido target="_blank" -->
                 <li><a href="https://www.vozparaanuncio.com.br/vozes" class="hover:text-yellow-accent transition duration-300">Vozes</a></li>
