@@ -63,9 +63,23 @@
             padding: 1rem;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra para destaque */
             transition: transform 0.3s ease; /* Transição suave ao passar o mouse */
+            animation: pulse 2s infinite; /* Adiciona a animação de pulso */
         }
         .whatsapp-button:hover {
             transform: scale(1.05); /* Efeito de escala ao passar o mouse */
+        }
+
+        /* Keyframes para a animação de pulso */
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7);
+            }
+            70% {
+                box-shadow: 0 0 0 15px rgba(37, 211, 102, 0);
+            }
+            100% {
+                box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
+            }
         }
     </style>
 
@@ -201,7 +215,7 @@
     <section class="py-16 bg-white">
         <!-- Adicionado lg:px-16 e xl:px-24 para ajustar as margens em diferentes tamanhos de tela -->
         <div class="container mx-auto px-4 lg:px-16 xl:px-24">
-            <h2 class="text-4xl font-bold text-center text-primary mb-4">� Nossos Preços e Pacotes</h2>
+            <h2 class="text-4xl font-bold text-center text-primary mb-4">💰 Nossos Preços e Pacotes</h2>
             <p class="text-lg text-center text-neutral-gray mb-12 max-w-3xl mx-auto">Conheça nossos planos flexíveis e encontre a solução perfeita para o seu orçamento e suas necessidades de áudio.</p>
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
                 <!-- Bloco 1: Locução Off -->
@@ -281,7 +295,7 @@
         <!-- Adicionado lg:px-16 e xl:px-24 para ajustar as margens em diferentes tamanhos de tela -->
         <div class="container mx-auto px-4 lg:px-16 xl:px-24 text-center">
             <h2 class="text-4xl font-bold mb-8">Entre em Contato Conosco!</h2>
-            <div class="flex flex-col md:flex-row justify-center items-center gap-8">
+            <div class="flex flex-col md:flex-row justify-center items-center gap-8 mb-4">
                 <div class="flex items-center text-xl md:text-2xl font-semibold">
                     <span class="mr-3 text-yellow-accent">📞</span> WhatsApp: <a href="https://wa.me/+5527997078794" target="_blank" class="ml-2 hover:underline">27 99707-8794</a>
                 </div>
@@ -289,6 +303,9 @@
                     <span class="mr-3 text-yellow-accent">📧</span> E-mail: <a href="mailto:vozparaanuncio@gmail.com" class="ml-2 hover:underline">vozparaanuncio@gmail.com</a>
                 </div>
             </div>
+            <p class="text-lg text-light-gray mt-4">
+                Horário de Atendimento: Segunda a Sexta, das 08h às 18h. Fora deste horário, o atendimento é realizado por inteligência artificial.
+            </p>
         </div>
     </section>
 
@@ -354,4 +371,3 @@
     </script>
 </body>
 </html>
-�
