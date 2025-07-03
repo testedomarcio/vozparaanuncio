@@ -24,6 +24,9 @@
                         'light-gray': '#e2e8f0', /* Cinza claro para seções de fundo */
                         'white': '#ffffff', /* Branco */
                         'dark-header': '#111827', /* Cor para o cabeçalho */
+                        'status-red': '#EF4444', /* Cor para status Vermelho (Tailwind red-500) */
+                        'status-yellow': '#F59E0B', /* Cor para status Amarelo (Tailwind yellow-500) */
+                        'status-green': '#22C55E', /* Cor para status Verde (Tailwind green-500) */
                     },
                     fontFamily: {
                         inter: ['Inter', 'sans-serif'], /* Fonte Inter para todo o site */
@@ -106,9 +109,10 @@
             <div class="text-3xl md:text-4xl font-extrabold tracking-wide mb-4 md:mb-0">
                 Voz para Anúncio
             </div>
-            <ul class="flex flex-col md:flex-row items-center space-y-4 md:space-y-0 md:space-x-8">
+            <!-- Menu de Navegação: Oculto em telas pequenas, visível a partir de telas médias -->
+            <ul class="hidden md:flex flex-col md:flex-row items-center space-y-4 md:space-y-0 md:space-x-8">
                 <li><a href="https://www.vozparaanuncio.com.br" class="hover:text-yellow-accent transition duration-300">Início</a></li>
-                <li><a href="https://www.vozparaanuncio.com.br/vozes" target="_blank" class="hover:text-yellow-accent transition duration-300">Vozes</a></li>
+                <li><a href="https://locutores.vozparaanuncio.com.br/" target="_blank" class="hover:text-yellow-accent transition duration-300">Vozes</a></li>
                 <li><a href="https://www.vozparaanuncio.com.br/servicos" class="hover:text-yellow-accent transition duration-300">Serviços</a></li>
                 <li><a href="https://www.vozparaanuncio.com.br/precos" class="hover:text-yellow-accent transition duration-300">Preços</a></li>
                 <li><a href="https://youtube.com/playlist?list=PLetvR2Bv-YMk4nrY9EIargOHupwKv1fah&si=hX03yCCO7qY5_irD" class="hover:text-yellow-accent transition duration-300">Tutoriais</a></li>
@@ -119,25 +123,38 @@
         </nav>
     </header>
 
-    <!-- Banner de Apresentação do Banco de Vozes -->
-    <section class="bg-primary text-white py-24 pt-32 text-center">
-        <div class="container mx-auto px-4 lg:px-16 xl:px-24">
-            <h1 class="text-5xl md:text-6xl font-extrabold leading-tight mb-4">
-                Conheça Nosso Banco de Vozes
-            </h1>
-            <h2 class="text-xl md:text-2xl mb-6 max-w-3xl mx-auto">
-                Encontre a voz perfeita para o seu projeto!
-            </h2>
-            <p class="text-lg mb-10 max-w-4xl mx-auto">
-                Explore nossa vasta seleção de locutores profissionais, com vozes masculinas e femininas em diversos estilos e tons. Agilidade e qualidade garantidas para spots, vinhetas, jingles e muito mais.
+    <!-- Nova Seção: Como Identificar a Estimativa de Entrega -->
+    <section class="py-16 bg-light-gray pt-32"> <!-- Adicionado pt-32 para compensar a remoção do banner e evitar sobreposição com o header fixo -->
+        <div class="container mx-auto px-4 lg:px-16 xl:px-24 text-center">
+            <h2 class="text-4xl font-bold text-primary mb-4">Como Identificar a Estimativa de Entrega</h2>
+            <p class="text-lg text-neutral-gray mb-12 max-w-3xl mx-auto">
+                No nosso banco de vozes, você pode verificar rapidamente o status de entrega de cada locutor através do ícone de play e sua cor.
             </p>
-            <div class="flex flex-col sm:flex-row justify-center gap-4">
-                <a href="https://wa.me/+5527997078794" target="_blank" class="bg-button-secondary text-white px-8 py-3 rounded-full font-bold text-lg hover:bg-green-700 transition duration-300 shadow-xl w-full sm:w-auto">
-                    Fale Conosco
-                </a>
-                <a href="https://paineldegravacao.com.br/vozparaanuncio/cadastro" target="_blank" class="bg-button-main text-white px-8 py-3 rounded-full font-bold text-lg hover:bg-red-700 transition duration-300 shadow-xl w-full sm:w-auto">
-                    Cadastre-se Grátis
-                </a>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Status Vermelho -->
+                <div class="bg-white p-6 rounded-xl shadow-lg flex flex-col items-center text-center">
+                    <svg class="w-16 h-16 text-status-red mb-4" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M8 5v14l11-7z"/>
+                    </svg>
+                    <h3 class="text-2xl font-semibold text-primary mb-2">10min.</h3>
+                    <p class="text-neutral-gray text-lg">Gravando em até 10 minutos</p>
+                </div>
+                <!-- Status Amarelo -->
+                <div class="bg-white p-6 rounded-xl shadow-lg flex flex-col items-center text-center">
+                    <svg class="w-16 h-16 text-status-yellow mb-4" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M8 5v14l11-7z"/>
+                    </svg>
+                    <h3 class="text-2xl font-semibold text-primary mb-2">30min.</h3>
+                    <p class="text-neutral-gray text-lg">Gravando em até 30 minutos</p>
+                </div>
+                <!-- Status Verde -->
+                <div class="bg-white p-6 rounded-xl shadow-lg flex flex-col items-center text-center">
+                    <svg class="w-16 h-16 text-status-green mb-4" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M8 5v14l11-7z"/>
+                    </svg>
+                    <h3 class="text-2xl font-semibold text-primary mb-2">Online</h3>
+                    <p class="text-neutral-gray text-lg">Gravando em até 5 horas</p>
+                </div>
             </div>
         </div>
     </section>
@@ -160,7 +177,7 @@
                 <div>
                     <h4 class="text-xl font-bold mb-4 text-yellow-accent">Links Rápidos</h4>
                     <ul class="space-y-2">
-                        <li><a href="https://www.vozparaanuncio.com.br/vozes" target="_blank" class="text-neutral-gray hover:text-white transition duration-300">Nossas Vozes</a></li>
+                        <li><a href="https://locutores.vozparaanuncio.com.br/" target="_blank" class="text-neutral-gray hover:text-white transition duration-300">Nossas Vozes</a></li>
                         <li><a href="https:www.vozparaanuncio.com.br/servicos" class="text-neutral-gray hover:text-white transition duration-300">Serviços</a></li>
                         <li><a href="https://www.vozparaanuncio.com.br/termos" class="text-neutral-gray hover:text-white transition duration-300">Termos de Uso</a></li>
                         <li><a href="https://www.vozparaanuncio.com.br/precos" class="text-neutral-gray hover:text-white transition duration-300">Preços</a></li>
