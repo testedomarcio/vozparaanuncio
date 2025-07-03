@@ -2,20 +2,11 @@
 <html lang="pt-BR">
 <head>
 
-    <!-- Event snippet for Visualização de página conversion page -->
-<script>
-  gtag('event', 'conversion', {
-      'send_to': 'AW-17294217421/wsZ2CIaO2ucaEM2hw7ZA',
-      'value': 1.0,
-      'currency': 'BRL'
-  });
-</script>
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Preços - Voz para Anúncio | Pacotes de Locução e Produção de Áudio</title>
-    <meta name="description" content="Conheça os preços e pacotes flexíveis da Voz para Anúncio para locução em Off, produção comercial, vinhetas e jingles. Qualidade profissional com valores que cabem no seu bolso.">
-    <meta name="keywords" content="preços locução, pacotes de áudio, valor locução off, preço produção comercial, quanto custa jingle, tabela de preços locutores, estúdio de áudio preços">
+    <title>Voz para Anúncio - Preços e Pacotes</title>
+    <meta name="description" content="Conheça os planos e preços de locução profissional e produção de áudio da Voz para Anúncio. Opções flexíveis para todas as suas necessidades.">
+    <meta name="keywords" content="preços, pacotes, locução, produção de áudio, voz para anúncio, locução off, produção completa">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
     <!-- Inclui o CDN do Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -32,6 +23,7 @@
                         'yellow-accent': '#fbc500', /* Cor de destaque (amarelo) */
                         'light-gray': '#e2e8f0', /* Cinza claro para seções de fundo */
                         'white': '#ffffff', /* Branco */
+                        'dark-header': '#111827', /* Cor para o cabeçalho */
                     },
                     fontFamily: {
                         inter: ['Inter', 'sans-serif'], /* Fonte Inter para todo o site */
@@ -46,6 +38,19 @@
             font-family: 'Inter', sans-serif;
             background-color: #ffffff; /* Fundo branco para todo o site */
         }
+        /* Estilo para a seção hero (capa fullscreen) */
+        .hero-section {
+            /* Imagem de placeholder sem texto, apenas cor sólida */
+            background-image: url('https://placehold.co/1920x1080/1c3faa/1c3faa');
+            background-size: cover; /* A imagem cobre todo o elemento */
+            background-position: center; /* Centraliza a imagem */
+            position: relative; /* Necessário para posicionar o overlay */
+            z-index: 0; /* Garante que o overlay fique acima da imagem de fundo */
+        }
+        /* Overlay na seção hero para dar uma camada envolvente */
+        .hero-overlay {
+            background-color: rgba(28, 63, 170, 0.7); /* primary color com 70% de transparência */
+        }
         /* Botão flutuante do WhatsApp */
         .whatsapp-button {
             position: fixed; /* Posição fixa na tela */
@@ -58,88 +63,124 @@
             padding: 1rem;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra para destaque */
             transition: transform 0.3s ease; /* Transição suave ao passar o mouse */
+            animation: pulse 2s infinite; /* Adiciona a animação de pulso */
         }
         .whatsapp-button:hover {
             transform: scale(1.05); /* Efeito de escala ao passar o mouse */
         }
+
+        /* Keyframes para a animação de pulso */
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7);
+            }
+            70% {
+                box-shadow: 0 0 0 15px rgba(37, 211, 102, 0);
+            }
+            100% {
+                box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
+            }
+        }
     </style>
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17294217421"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'AW-17294217421');
+    </script>
+    <!-- Event snippet for Visualização de página conversion page -->
+    <script>
+      gtag('event', 'conversion', {
+          'send_to': 'AW-17294217421/wsZ2CIaO2ucaEM2hw7ZA',
+          'value': 1.0,
+          'currency': 'BRL'
+      });
+    </script>
 </head>
 <body class="font-inter text-gray-800">
 
-    <!-- Cabeçalho / Barra de Navegação -->
-    <header class="bg-primary text-white p-4 shadow-lg fixed w-full z-50">
-        <nav class="container mx-auto flex flex-col md:flex-row items-center justify-between">
-            <!-- Nome do Site com destaque -->
+    <!-- Cabeçalho / Barra de Navegação - Mantido igual às outras páginas -->
+    <header class="bg-dark-header text-white p-4 shadow-lg fixed w-full z-50">
+        <nav class="container mx-auto px-4 lg:px-16 xl:px-24 flex flex-col md:flex-row items-center justify-between">
             <div class="text-3xl md:text-4xl font-extrabold tracking-wide mb-4 md:mb-0">
                 Voz para Anúncio
             </div>
-            <ul class="flex flex-col md:flex-row items-center space-y-4 md:space-y-0 md:space-x-8">
-                <li><a href="https://paineldegravacao.com.br/vozparaanuncio/lista-locutores" target="_blank" class="hover:text-yellow-accent transition duration-300">Nossas Vozes</a></li>
-                <li><a href="https://vozparaanuncio.com.br/servicos" class="hover:text-yellow-accent transition duration-300">Serviços</a></li>
-                <li><a href="https://vozparaanuncio.com.br/termos" class="hover:text-yellow-accent transition duration-300">Termos de Uso</a></li>
-                <li><a href="https://vozparaanuncio.com.br/precos" class="hover:text-yellow-accent transition duration-300">Preços</a></li>
-                <li><a href="https://vozparaanuncio.com.brr/faq" class="hover:text-yellow-accent transition duration-300">Dúvidas Frequentes</a></li>
+            <!-- Menu de Navegação: Oculto em telas pequenas, visível a partir de telas médias -->
+            <ul class="hidden md:flex flex-col md:flex-row items-center space-y-4 md:space-y-0 md:space-x-8">
+                <li><a href="https://www.vozparaanuncio.com.br" class="hover:text-yellow-accent transition duration-300">Início</a></li>
+                <li><a href="https://www.vozparaanuncio.com.br/vozes" class="hover:text-yellow-accent transition duration-300">Vozes</a></li>
+                <li><a href="https://www.vozparaanuncio.com.br/servicos" class="hover:text-yellow-accent transition duration-300">Serviços</a></li>
+                <li><a href="https://www.vozparaanuncio.com.br/precos" class="hover:text-yellow-accent transition duration-300">Preços</a></li>
+                <li><a href="https://youtube.com/playlist?list=PLetvR2Bv-YMk4nrY9EIargOHupwKv1fah&si=hX03yCCO7qY5_irD" class="hover:text-yellow-accent transition duration-300">Tutoriais</a></li>
                 <li>
                     <a href="https://paineldegravacao.com.br/vozparaanuncio" target="_blank" class="hover:text-yellow-accent transition duration-300">Login</a>
-                </li>
-                <li>
-                    <a href="https://paineldegravacao.com.br/vozparaanuncio/cadastro" target="_blank" class="bg-button-main text-white px-6 py-2 rounded-full font-semibold hover:bg-red-700 transition duration-300 shadow-lg">
-                        Cadastre-se Grátis
-                    </a>
                 </li>
             </ul>
         </nav>
     </header>
 
-    <main class="pt-20 pb-10"> <!-- Padding superior para não ficar por baixo do header fixo -->
-        <section class="container mx-auto px-4 py-8">
-            <h1 class="text-4xl font-bold text-center text-primary mb-4">💲 Nossos Preços e Pacotes</h1>
-            <p class="text-lg text-center text-neutral-gray mb-12 max-w-3xl mx-auto">
-                Na Voz para Anúncio, a qualidade tem um valor justo. Conheça nossos planos flexíveis e encontre o pacote ideal de locução e produção de áudio para impulsionar a sua marca.
+    <!-- Capa com Título, Subtítulo e Botões -->
+    <section class="hero-section h-screen flex items-center justify-center text-center text-white relative">
+        <div class="hero-overlay absolute inset-0"></div>
+        <div class="container mx-auto px-4 lg:px-16 xl:px-24 py-24 relative z-10">
+            <h1 class="text-5xl md:text-7xl font-extrabold leading-tight mb-6">
+                Nossos Preços e Pacotes
+            </h1>
+            <p class="text-xl md:text-2xl mb-10 max-w-3xl mx-auto">
+                Conheça nossos planos flexíveis e encontre a solução perfeita para o seu orçamento e suas necessidades de áudio. Qualidade e agilidade que cabem no seu bolso!
             </p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <a href="https://www.vozparaanuncio.com.br/vozes" class="bg-button-secondary text-white px-8 py-3 rounded-full font-bold text-lg hover:bg-green-700 transition duration-300 shadow-xl w-full sm:w-auto">
+                    Demonstrações de Voz
+                </a>
+                <a href="https://paineldegravacao.com.br/vozparaanuncio/cadastro" target="_blank" class="bg-button-main text-white px-8 py-3 rounded-full font-bold text-lg hover:bg-red-700 transition duration-300 shadow-xl w-full sm:w-auto">
+                    Cadastre-se Grátis
+                </a>
+            </div>
+        </div>
+    </section>
 
+    <!-- Seção: Nossos Preços e Pacotes (Blocos de Preço) -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4 lg:px-16 xl:px-24">
+            <h2 class="text-4xl font-bold text-center text-primary mb-4">Escolha o Plano Ideal para Você!</h2>
+            <p class="text-lg text-center text-neutral-gray mb-12 max-w-3xl mx-auto">Oferecemos opções para atender desde projetos simples até produções completas.</p>
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-                <!-- Pacote: Locução Off -->
+                <!-- Bloco 1: Locução Off -->
                 <div class="bg-light-gray p-8 rounded-xl shadow-lg flex flex-col items-center text-center transform hover:scale-105 transition duration-300">
                     <h3 class="text-3xl font-bold text-primary mb-6">Locução Off</h3>
-                    <p class="text-neutral-gray text-lg mb-8">Somente a voz do locutor, sem edição profissional ou trilha musical. Perfeito para quem já tem sua própria equipe de edição e busca agilidade.</p>
-                    <ul class="text-2xl font-semibold text-gray-700 space-y-4 mb-8 w-full">
-                        <li class="flex justify-between items-center bg-white p-4 rounded-lg shadow-sm"><span>1 OFF:</span> <span class="text-primary font-bold">R$ 15,00</span></li>
-                        <li class="flex justify-between items-center bg-white p-4 rounded-lg shadow-sm"><span>10 OFFS:</span> <span class="text-primary font-bold">R$ 120,00</span></li>
-                        <li class="flex justify-between items-center bg-white p-4 rounded-lg shadow-sm"><span>20 OFFS:</span> <span class="text-primary font-bold">R$ 160,00</span></li>
-                        <li class="flex justify-between items-center bg-white p-4 rounded-lg shadow-sm"><span>30 OFFS:</span> <span class="text-primary font-bold">R$ 200,00</span></li>
-                        <li class="flex justify-between items-center bg-white p-4 rounded-lg shadow-sm"><span>50 OFFS:</span> <span class="text-primary font-bold">R$ 250,00</span></li>
-                    </ul>
+                    <p class="text-neutral-gray text-lg mb-8">Somente a voz do locutor, sem edição profissional ou trilha musical. Perfeito para quem já tem sua própria equipe de edição.</p>
+                    <p class="text-5xl font-extrabold text-primary mb-8">R$ 11,90</p>
                     <a href="https://paineldegravacao.com.br/vozparaanuncio/cadastro" target="_blank" class="bg-button-main text-white px-8 py-3 rounded-full font-bold text-lg hover:bg-red-700 transition duration-300 shadow-xl w-full">
                         Cadastre-se para Comprar OFF
                     </a>
                 </div>
 
-                <!-- Pacote: Produção (Áudio Completo) -->
-                <div class="bg-light-gray p-8 rounded-xl shadow-lg flex flex-col items-center text-center transform hover:scale-105 transition duration-300">
-                    <h3 class="text-3xl font-bold text-primary mb-6">Produção Completa</h3>
-                    <p class="text-neutral-gray text-lg mb-8">Áudio gravado e editado profissionalmente, com voz, trilha, efeitos e finalização pronta para uso imediato. Ideal para quem busca uma solução completa e sem preocupações.</p>
-                    <ul class="text-2xl font-semibold text-gray-700 space-y-4 mb-8 w-full">
-                        <li class="flex justify-between items-center bg-white p-4 rounded-lg shadow-sm"><span>1 Spot:</span> <span class="text-primary font-bold">R$ 30,00</span></li>
-                        <li class="flex justify-between items-center bg-white p-4 rounded-lg shadow-sm"><span>10 Spots:</span> <span class="text-primary font-bold">R$ 230,00</span></li>
-                        <li class="flex justify-between items-center bg-white p-4 rounded-lg shadow-sm"><span>20 Spots:</span> <span class="text-primary font-bold">R$ 300,00</span></li>
-                        <li class="flex justify-between items-center bg-white p-4 rounded-lg shadow-sm"><span>30 Spots:</span> <span class="text-primary font-bold">R$ 400,00</span></li>
-                        <li class="flex justify-between items-center bg-white p-4 rounded-lg shadow-sm"><span>40 Spots:</span> <span class="text-primary font-bold">R$ 500,00</span></li>
-                    </ul>
-                    <a href="https://paineldegravacao.com.br/vozparaanuncio/cadastro" target="_blank" class="bg-button-main text-white px-8 py-3 rounded-full font-bold text-lg hover:bg-red-700 transition duration-300 shadow-xl w-full">
+                <!-- Bloco 2: Produção Completa - COM DESTAQUE -->
+                <div class="bg-primary p-8 rounded-xl shadow-lg flex flex-col items-center text-center transform hover:scale-105 transition duration-300 relative overflow-hidden">
+                    <div class="absolute top-0 left-0 w-full bg-yellow-accent text-primary text-sm font-bold py-1 px-4 rounded-t-xl z-10 -translate-y-full group-hover:translate-y-0 transition-transform duration-300">
+                        <span class="block text-center">✨ Mais Popular! ✨</span>
+                    </div>
+                    <h3 class="text-3xl font-bold text-white mb-6">Produção Completa</h3>
+                    <p class="text-light-gray text-lg mb-8">Áudio gravado e editado profissionalmente, com voz, trilha, efeitos e finalização pronta para uso imediato. Ideal para quem busca uma solução completa.</p>
+                    <p class="text-5xl font-extrabold text-yellow-accent mb-8">R$ 25,90</p>
+                    <a href="https://paineldegravacao.com.br/vozparaanuncio/cadastro" target="_blank" class="bg-button-secondary text-white px-8 py-3 rounded-full font-bold text-lg hover:bg-green-700 transition duration-300 shadow-xl w-full">
                         Cadastre-se para Comprar Produção
                     </a>
                 </div>
             </div>
             <p class="text-center text-neutral-gray text-lg mt-12 italic">
-                *Observação: Cada crédito corresponde a uma fração de 40 segundos de locução. Os pacotes de crédito com desconto têm prazo de validade, conforme destacado na área de compras do Painel de Gravação.
+                *Observação: Cada crédito corresponde a uma fração de 40 segundos de locução.
             </p>
-        </section>
-    </main>
+        </div>
+    </section>
 
-    <!-- Rodapé -->
+    <!-- Rodapé - Mantido igual às outras páginas -->
     <footer class="bg-gray-900 text-white py-10">
-        <div class="container mx-auto px-4 text-center">
+        <div class="container mx-auto px-4 lg:px-16 xl:px-24 text-center">
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
                 <div>
                     <h4 class="text-xl font-bold mb-4 text-yellow-accent">Voz para Anúncio</h4>
@@ -148,17 +189,17 @@
                 <div>
                     <h4 class="text-xl font-bold mb-4 text-yellow-accent">Links Rápidos</h4>
                     <ul class="space-y-2">
-                        <li><a href="https://paineldegravacao.com.br/vozparaanuncio/lista-locutores" target="_blank" class="text-neutral-gray hover:text-white transition duration-300">Nossas Vozes</a></li>
-                        <li><a href="https://vozparaanuncio.com.br/servicos" class="text-neutral-gray hover:text-white transition duration-300">Serviços</a></li>
-                        <li><a href="https://vozparaanuncio.com.br/termos" class="text-neutral-gray hover:text-white transition duration-300">Termos de Uso</a></li>
-                        <li><a href="https://vozparaanuncio.com.br/precos" class="text-neutral-gray hover:text-white transition duration-300">Preços</a></li>
+                        <li><a href="https://www.vozparaanuncio.com.br/vozes" class="text-neutral-gray hover:text-white transition duration-300">Nossas Vozes</a></li>
+                        <li><a href="https:www.vozparaanuncio.com.br/servicos" class="text-neutral-gray hover:text-white transition duration-300">Serviços</a></li>
+                        <li><a href="https://www.vozparaanuncio.com.br/termos" class="text-neutral-gray hover:text-white transition duration-300">Termos de Uso</a></li>
+                        <li><a href="https://www.vozparaanuncio.com.br/precos" class="text-neutral-gray hover:text-white transition duration-300">Preços</a></li>
                     </ul>
                 </div>
                 <div>
                     <h4 class="text-xl font-bold mb-4 text-yellow-accent">Informações Legais</h4>
                     <ul class="space-y-2">
-                        <li><a href="https://vozparaanuncio.com.br/faq" class="text-neutral-gray hover:text-white transition duration-300">Política de Privacidade</a></li>
-                        <li><a href="https://vozparaanuncio.com.br/faq" class="text-neutral-gray hover:text-white transition duration-300">Dúvidas Frequentes</a></li>
+                        <li><a href="https://www.vozparaanuncio.com.br/privacidade" class="text-neutral-gray hover:text-white transition duration-300">Política de Privacidade</a></li>
+                        <li><a href="https://www.vozparaanuncio.com.br/faq" class="text-neutral-gray hover:text-white transition duration-300">Dúvidas Frequentes</a></li>
                     </ul>
                 </div>
                 <div>
@@ -185,12 +226,16 @@
     </footer>
 
     <!-- Botão Flutuante do WhatsApp -->
-    <a href="https://wa.me/+5599707-8794" target="_blank" class="whatsapp-button flex items-center justify-center p-4">
+    <a href="https://wa.me/+5527997078794" target="_blank" class="whatsapp-button flex items-center justify-center p-4">
         <!-- Ícone do WhatsApp em SVG para garantir compatibilidade e estilo -->
         <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="currentColor" class="text-white">
             <path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.5 3.42 1.46 4.87l-1.52 5.57 5.75-1.51c1.33.73 2.85 1.12 4.22 1.12 5.46 0 9.91-4.45 9.91-9.91s-4.45-9.91-9.91-9.91zm0 1.6c4.58 0 8.31 3.73 8.31 8.31 0 4.58-3.73 8.31-8.31 8.31-.96 0-1.89-.2-2.76-.56l-3.07.8 1.05-3.86c-.75-1.09-1.16-2.39-1.16-3.79 0-4.58 3.73-8.31 8.31-8.31zm-1.88 2.87c-.15 0-.3.02-.45.04-.37.07-.63.2-.8.36-.16.16-.27.35-.35.56-.08.21-.13.44-.13.67 0 .23.04.46.13.68.08.21.2.4.35.56.16.16.33.27.53.35.2.08.4.13.6.13.2 0 .4-.03.6-.08.2-.05.4-.1.57-.17.17-.07.33-.17.48-.27.15-.1.28-.22.4-.35.12-.13.23-.28.31-.44.09-.16.16-.33.2-.5.04-.17.06-.34.06-.52 0-.25-.05-.48-.15-.7-.1-.21-.24-.38-.42-.51-.18-.13-.38-.2-.6-.2-.22 0-.42.06-.59.18-.17.12-.32.28-.43.47l-.14.23c-.1-.13-.23-.27-.37-.4-.14-.14-.3-.27-.48-.38-.18-.12-.39-.18-.6-.18zM12.04 14.6c-.15 0-.3 0-.45.03-.37.07-.63.2-.8.36-.16.16-.27.35-.35.56-.08.21-.13.44-.13.67 0 .23.04.46.13.68.08.21.2.4.35.56.16.16.33.27.53.35.2.08.4.13.6.13.2 0 .4-.03.6-.08.2-.05.4-.1.57-.17.17-.07.33-.17.48-.27.15-.1.28-.22.4-.35.12-.13.23-.28.31-.44.09-.16.16-.33.2-.5.04-.17.06-.34.06-.52 0-.25-.05-.48-.15-.7-.1-.21-.24-.38-.42-.51-.18-.13-.38-.2-.6-.2-.22 0-.42.06-.59.18-.17.12-.32.28-.43.47l-.14.23c-.1-.13-.23-.27-.37-.4-.14-.14-.3-.27-.48-.38-.18-.12-.39-.18-.6-.18z"/>
         </svg>
     </a>
 
+    <script>
+        // Atualiza o ano no rodapé automaticamente
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+    </script>
 </body>
 </html>
