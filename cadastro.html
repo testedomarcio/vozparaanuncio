@@ -37,20 +37,21 @@
         body {
             font-family: 'Inter', sans-serif;
             background-color: #ffffff; /* Fundo branco para todo o site */
+            margin: 0; /* Garante que não há margem padrão no corpo */
+            overflow: hidden; /* Evita barras de rolagem indesejadas se o iframe for 100vh */
         }
         /* Estilo para o iframe para garantir que ele ocupe o máximo de espaço */
         .iframe-container {
             width: 100%;
-            /* Ajusta a margem superior para compensar o cabeçalho fixo */
-            padding-top: 80px; /* Altura aproximada do cabeçalho */
+            height: 100vh; /* Ocupa 100% da altura da viewport */
+            padding-top: 0; /* Não há cabeçalho para compensar */
             background-color: #1d41ab; /* Cor de fundo adicionada para preencher o espaço */
         }
         .iframe-container iframe {
             width: 100%;
-            height: calc(100vh - 80px - 100px); /* Altura da viewport menos header e footer */
-            min-height: 1200px; /* Altura mínima para o conteúdo do iframe */
+            height: 100%; /* Ocupa 100% da altura do seu contêiner (100vh) */
             display: block;
-            margin: 0 auto;
+            margin: 0; /* Remove qualquer margem */
             border: none; /* Remove a borda padrão do iframe */
         }
     </style>
@@ -72,83 +73,20 @@
       });
     </script>
 </head>
-<body class="font-inter text-gray-800">
+<body>
 
-    <!-- Cabeçalho / Barra de Navegação - Mantido igual às outras páginas -->
-    <header class="bg-dark-header text-white p-4 shadow-lg fixed w-full z-50">
-        <nav class="container mx-auto px-4 lg:px-16 xl:px-24 flex flex-col md:flex-row items-center justify-between">
-            <div class="text-3xl md:text-4xl font-extrabold tracking-wide mb-4 md:mb-0">
-                Voz para Anúncio
-            </div>
-            <!-- Menu de Navegação: Oculto em telas pequenas, visível a partir de telas médias -->
-            <ul class="hidden md:flex flex-col md:flex-row items-center space-y-4 md:space-y-0 md:space-x-8">
-                <li><a href="https://www.vozparaanuncio.com.br" class="hover:text-yellow-accent transition duration-300">Início</a></li>
-                <li><a href="https://www.vozparaanuncio.com.br/vozes" class="hover:text-yellow-accent transition duration-300">Vozes</a></li>
-                <li><a href="https://www.vozparaanuncio.com.br/servicos" class="hover:text-yellow-accent transition duration-300">Serviços</a></li>
-                <li><a href="https://www.vozparaanuncio.com.br/precos" class="hover:text-yellow-accent transition duration-300">Preços</a></li>
-                <li><a href="https://youtube.com/playlist?list=PLetvR2Bv-YMk4nrY9EIargOHupwKv1fah&si=hX03yCCO7qY5_irD" class="hover:text-yellow-accent transition duration-300">Tutoriais</a></li>
-                <li>
-                    <a href="https://paineldegravacao.com.br/vozparaanuncio" target="_blank" class="hover:text-yellow-accent transition duration-300">Login</a>
-                </li>
-            </ul>
-        </nav>
-    </header>
+    <!-- Cabeçalho / Barra de Navegação - REMOVIDO -->
 
     <!-- Seção do Iframe com o site de cadastro -->
     <section class="iframe-container">
         <iframe src="https://paineldegravacao.com.br/vozparaanuncio/cadastro" name="painelCadastro" scrolling="auto" title="Página de Cadastro Voz para Anúncio"></iframe>
     </section>
 
-    <!-- Rodapé - Mantido igual às outras páginas -->
-    <footer class="bg-gray-900 text-white py-10">
-        <div class="container mx-auto px-4 lg:px-16 xl:px-24 text-center">
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
-                <div>
-                    <h4 class="text-xl font-bold mb-4 text-yellow-accent">Voz para Anúncio</h4>
-                    <p class="text-neutral-gray text-sm">Sua parceira em locução profissional e produção de áudio de alta qualidade, disponível 24h por dia.</p>
-                </div>
-                <div>
-                    <h4 class="text-xl font-bold mb-4 text-yellow-accent">Links Rápidos</h4>
-                    <ul class="space-y-2">
-                        <li><a href="https://www.vozparaanuncio.com.br/vozes" class="text-neutral-gray hover:text-white transition duration-300">Nossas Vozes</a></li>
-                        <li><a href="https:www.vozparaanuncio.com.br/servicos" class="text-neutral-gray hover:text-white transition duration-300">Serviços</a></li>
-                        <li><a href="https://www.vozparaanuncio.com.br/termos" class="text-neutral-gray hover:text-white transition duration-300">Termos de Uso</a></li>
-                        <li><a href="https://www.vozparaanuncio.com.br/precos" class="text-neutral-gray hover:text-white transition duration-300">Preços</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h4 class="text-xl font-bold mb-4 text-yellow-accent">Informações Legais</h4>
-                    <ul class="space-y-2">
-                        <li><a href="https://www.vozparaanuncio.com.br/privacidade" class="text-neutral-gray hover:text-white transition duration-300">Política de Privacidade</a></li>
-                        <li><a href="https://www.vozparaanuncio.com.br/faq" class="text-neutral-gray hover:text-white transition duration-300">Dúvidas Frequentes</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h4 class="text-xl font-bold mb-4 text-yellow-accent">Conecte-se</h4>
-                    <p class="text-neutral-gray">Siga-nos nas redes sociais e fique por dentro das novidades!</p>
-                    <div class="flex justify-center gap-4 mt-4 text-2xl">
-                        <!-- Ícones de Redes Sociais - Placeholder (pode ser substituído por SVGs de Font Awesome ou similares) -->
-                        <a href="#" class="text-neutral-gray hover:text-white transition duration-300" aria-label="Facebook">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 5.084 3.708 9.276 8.583 9.92V14h-2.5v-3h2.5V8.5c0-2.5 1.5-3.875 3.75-3.875 1.083 0 2.017.083 2.292.125V7h-1.5c-1.167 0-1.417.583-1.417 1.167V11h3.5l-.5 3h-3V21.92C18.292 21.276 22 17.084 22 12c0-5.523-4.477-10-10-10z"/></svg>
-                        </a>
-                        <a href="#" class="text-neutral-gray hover:text-white transition duration-300" aria-label="Instagram">
-                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M7.8 2h8.4C19.4 2 22 4.6 22 7.8v8.4c0 3.2-2.6 5.8-5.8 5.8H7.8C4.6 22 2 19.4 2 16.2V7.8C2 4.6 4.6 2 7.8 2zm-.2 2A2.88 2.88 0 0 0 4.2 7.8v8.4c0 1.3 1.1 2.4 2.4 2.4h8.4c1.3 0 2.4-1.1 2.4-2.4V7.8c0-1.3-1.1-2.4-2.4-2.4H7.6zm9.6 9a.9.9 0 1 0 0 1.8.9.9 0 0 0 0-1.8zm-6 2.6A3.6 3.6 0 1 0 12 10.4a3.6 3.6 0 0 0-3.6 3.6zm3.6 1.8a1.8 1.8 0 1 1 0-3.6 1.8 1.8 0 0 1 0 3.6z"/></svg>
-                        </a>
-                        <a href="#" class="text-neutral-gray hover:text-white transition duration-300" aria-label="YouTube">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm6.236 7.469c-.198-.737-.768-1.307-1.505-1.505C15.82 7 12 7 12 7s-3.82 0-4.731.037c-.737.198-1.307.768-1.505 1.505C5 10.18 5 12 5 12s0 1.82.037 2.731c.198.737.768 1.307 1.505 1.505C8.18 17 12 17 12 17s3.82 0 4.731-.037c.737-.198 1.307-.768 1.505-1.505C19 13.82 19 12 19 12s0-1.82-.037-2.731zM10 14.5v-5l5 2.5-5 2.5z"/></svg>
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <div class="border-t border-gray-700 pt-8 mt-8">
-                <p class="text-neutral-gray text-sm">&copy; <span id="current-year"></span> Voz para Anúncio. Todos os direitos reservados.</p>
-            </div>
-        </div>
-    </footer>
+    <!-- Rodapé - REMOVIDO -->
 
     <script>
-        // Atualiza o ano no rodapé automaticamente
-        document.getElementById('current-year').textContent = new Date().getFullYear();
+        // Atualiza o ano no rodapé automaticamente - Este script não é mais necessário sem o rodapé, mas mantido para evitar erros se outras partes do site o esperarem.
+        // document.getElementById('current-year').textContent = new Date().getFullYear();
     </script>
 </body>
 </html>
