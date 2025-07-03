@@ -9,6 +9,13 @@
     <meta name="keywords" content="locução profissional, produção de áudio, voz para anúncios, gravação em off, vinhetas, jingle, banco de vozes, locutores, estúdio de áudio, áudio para publicidade, locução 24h, locução urgente">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
     <!-- Inclui o CDN do Tailwind CSS -->
+    <!--
+        PARA MELHORAR O GOOGLE PAGESPEED (REDUZIR JAVASCRIPT/CSS NÃO USADO):
+        O CDN do Tailwind CSS carrega o framework completo. Em um ambiente de produção,
+        recomenda-se usar um processo de build (ex: Tailwind CLI com PostCSS) para
+        "purgar" o CSS, removendo todas as classes não utilizadas. Isso reduzirá
+        significativamente o tamanho do arquivo CSS.
+    -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         // Configuração personalizada do Tailwind CSS para incluir as cores da marca
@@ -84,27 +91,35 @@
     </style>
 
     <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=AW-17294217421">
-</script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+    <!--
+        PARA MELHORAR O GOOGLE PAGESPEED (REDUZIR JAVASCRIPT NÃO USADO):
+        O script do Google Tag Manager (gtag.js) é um script de terceiros.
+        A otimização de seu tamanho e do JavaScript não utilizado geralmente
+        envolve a configuração dentro do próprio painel do Google Tag Manager,
+        garantindo que apenas as tags e acionadores essenciais sejam carregados.
+        O carregamento assíncrono (async) já é uma boa prática.
+    -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17294217421">
+    </script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
 
-  gtag('config', 'AW-17294217421');
-</script>
-<!-- Event snippet for Visualização de página conversion page - MOVED AFTER gtag.js LOAD -->
-<script>
-  gtag('event', 'conversion', {
-      'send_to': 'AW-17294217421/wsZ2CIaO2ucaEM2hw7ZA',
-      'value': 1.0,
-      'currency': 'BRL'
-  });
-</script>
+      gtag('config', 'AW-17294217421');
+    </script>
+    <!-- Event snippet for Visualização de página conversion page - MOVIDO PARA DEPOIS DO gtag.js -->
+    <script>
+      gtag('event', 'conversion', {
+          'send_to': 'AW-17294217421/wsZ2CIaO2ucaEM2hw7ZA',
+          'value': 1.0,
+          'currency': 'BRL'
+      });
+    </script>
 </head>
 <body class="font-inter text-gray-800">
 
-    <!-- Cabeçalho / Barra de Navegação -->
+    <!-- Cabeçalho / Barra de Navegação - Mantido igual à página inicial -->
     <header class="bg-dark-header text-white p-4 shadow-lg fixed w-full z-50">
         <!-- Adicionado px-4, lg:px-16 e xl:px-24 para ajustar as margens em diferentes tamanhos de tela -->
         <nav class="container mx-auto px-4 lg:px-16 xl:px-24 flex flex-col md:flex-row items-center justify-between">
@@ -114,8 +129,8 @@
             </div>
             <ul class="flex flex-col md:flex-row items-center space-y-4 md:space-y-0 md:space-x-8">
                 <li><a href="https://www.vozparaanuncio.com.br" class="hover:text-yellow-accent transition duration-300">Início</a></li>
-                <!-- Alterado "Nossas Vozes" para "Vozes" -->
-                <li><a href="https://locutores.vozparaanuncio.com.br/" target="_blank" class="hover:text-yellow-accent transition duration-300">Vozes</a></li>
+                <!-- Alterado link e removido target="_blank" -->
+                <li><a href="https://www.vozparaanuncio.com.br/vozes" class="hover:text-yellow-accent transition duration-300">Vozes</a></li>
                 
                 <li><a href="https://www.vozparaanuncio.com.br/servicos" class="hover:text-yellow-accent transition duration-300">Serviços</a></li>
                 <!-- Removido o link "Termos de Uso" -->
@@ -142,7 +157,8 @@
                 Agilidade imbatível, com locução Off em até 10 minutos! Nossa plataforma funciona 24h por dia, com locutores profissionais de plantão, inclusive nos finais de semana e feriados.
             </p>
             <div class="flex flex-col sm:flex-row justify-center gap-4">
-                <a href="https://locutores.vozparaanuncio.com.br/" target="_blank" class="bg-button-secondary text-white px-8 py-3 rounded-full font-bold text-lg hover:bg-green-700 transition duration-300 shadow-xl w-full sm:w-auto">
+                <!-- Alterado link e removido target="_blank" -->
+                <a href="https://www.vozparaanuncio.com.br/vozes" class="bg-button-secondary text-white px-8 py-3 rounded-full font-bold text-lg hover:bg-green-700 transition duration-300 shadow-xl w-full sm:w-auto">
                     Demonstrações de Voz
                 </a>
                 <a href="https://paineldegravacao.com.br/vozparaanuncio/cadastro" target="_blank" class="bg-button-main text-white px-8 py-3 rounded-full font-bold text-lg hover:bg-red-700 transition duration-300 shadow-xl w-full sm:w-auto">
@@ -205,7 +221,8 @@
             <p class="text-lg max-w-3xl mx-auto mb-10">
                 Com vozes masculinas, femininas, infantis e nos mais variados estilos, de locutores de todo o Brasil. Qualidade e diversidade para cada tipo de anúncio, jingle ou vinheta.
             </p>
-            <a href="https://locutores.vozparaanuncio.com.br/" target="_blank" class="bg-yellow-accent text-primary px-8 py-4 rounded-full font-bold text-xl hover:bg-yellow-400 transition duration-300 shadow-lg">
+            <!-- Alterado link e removido target="_blank" -->
+            <a href="https://www.vozparaanuncio.com.br/vozes" class="bg-yellow-accent text-primary px-8 py-4 rounded-full font-bold text-xl hover:bg-yellow-400 transition duration-300 shadow-lg">
                 Conheça Nosso Banco de Vozes
             </a>
         </div>
@@ -321,7 +338,8 @@
                 <div>
                     <h4 class="text-xl font-bold mb-4 text-yellow-accent">Links Rápidos</h4>
                     <ul class="space-y-2">
-                        <li><a href="https://locutores.vozparaanuncio.com.br/" target="_blank" class="text-neutral-gray hover:text-white transition duration-300">Nossas Vozes</a></li>
+                        <!-- Alterado link e removido target="_blank" -->
+                        <li><a href="https://www.vozparaanuncio.com.br/vozes" class="text-neutral-gray hover:text-white transition duration-300">Nossas Vozes</a></li>
                         <li><a href="https:www.vozparaanuncio.com.br/servicos" class="text-neutral-gray hover:text-white transition duration-300">Serviços</a></li>
                         <li><a href="https://www.vozparaanuncio.com.br/termos" class="text-neutral-gray hover:text-white transition duration-300">Termos de Uso</a></li>
                         <li><a href="https://www.vozparaanuncio.com.br/precos" class="text-neutral-gray hover:text-white transition duration-300">Preços</a></li>
