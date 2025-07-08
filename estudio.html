@@ -10,18 +10,19 @@
     <!-- Inclui o CDN do Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
-        // Configuração personalizada do Tailwind CSS para incluir as cores da marca
+        // Configuração personalizada do Tailwind CSS para incluir as novas cores da marca
         tailwind.config = {
             theme: {
                 extend: {
                     colors: {
-                        'primary': '#1c3faa', /* Cor principal da marca (azul escuro) */
-                        'button-main': '#d32929', /* Cor para botões principais (vermelho) */
-                        'button-secondary': '#91c714', /* Cor para botões secundários (verde) */
-                        'neutral-gray': '#718096', /* Tom de cinza neutro */
-                        'yellow-accent': '#fbc500', /* Cor de destaque (amarelo) */
-                        'light-gray': '#e2e8f0', /* Cinza claro para seções de fundo */
-                        'white': '#ffffff', /* Branco */
+                        'primary': '#2A5BDD', /* Azul Profundo - Cabeçalho, botões CTA */
+                        'button-main': '#FF6B00', /* Laranja - Botões de ação, destaques */
+                        'white': '#FFFFFF', /* Branco - Fundo, espaços limpos */
+                        'text-dark': '#333333', /* Cinza Escuro - Textos principais */
+                        'highlight-green': '#00C897', /* Verde Suave - Confirmação, depoimentos */
+                        'light-background': '#F5F5F5', /* Um cinza muito claro para fundos de seção */
+                        'button-secondary': '#4169E1', /* Azul Royal */
+                        'highlight-gold': '#FFD700', /* Dourado para destaques */
                     },
                     fontFamily: {
                         inter: ['Inter', 'sans-serif'], /* Fonte Inter para todo o site */
@@ -35,11 +36,12 @@
         body {
             font-family: 'Inter', sans-serif;
             background-color: #ffffff; /* Fundo branco para todo o site */
+            color: #333333; /* Cor de texto principal padrão */
         }
         /* Estilo para a seção hero (capa fullscreen) */
         .hero-section {
-            /* Imagem de placeholder sem texto, apenas cor sólida */
-            background-image: url('https://placehold.co/1920x1080/1c3faa/1c3faa');
+            /* Gradiente de azul para azul mais escuro */
+            background-image: linear-gradient(to bottom, #2A5BDD, #1A3E9C); /* Azul Profundo para um azul mais escuro */
             background-size: cover; /* A imagem cobre todo o elemento */
             background-position: center; /* Centraliza a imagem */
             position: relative; /* Necessário para posicionar o overlay */
@@ -47,139 +49,153 @@
         }
         /* Overlay na seção hero para dar uma camada envolvente */
         .hero-overlay {
-            background-color: rgba(28, 63, 170, 0.7); /* primary color com 70% de transparência */
+            background-color: rgba(42, 91, 221, 0.8); /* primary color com 80% de transparência */
         }
-        /* Botão flutuante do WhatsApp */
-        /* REMOVIDO: .whatsapp-button { ... } */
-        /* REMOVIDO: .whatsapp-button:hover { ... } */
         /* Ajuste para as margens laterais em telas maiores */
         .container {
             max-width: 1200px; /* Define uma largura máxima para o container */
         }
+        /* Gradiente para botões principais - VISÍVEL SEMPRE */
+        .btn-gradient-main {
+            background-image: linear-gradient(to right, #FF6B00, #D32929); /* Laranja para Vermelho */
+        }
+        .btn-gradient-main:hover {
+            background-image: linear-gradient(to right, #E65A00, #B32222); /* Laranja mais escuro para Vermelho mais escuro */
+        }
     </style>
-</head>
-<body class="font-inter text-gray-800">
 
-    <!-- Seção Hero (Capa Fullscreen) -->
+    <!-- Schema Markup para SEO LocalBusiness -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      "name": "Voz para Anúncio",
+      "image": "https://placehold.co/600x400/2A5BDD/FFFFFF?text=Voz+para+Anuncio",
+      "url": "https://www.vozparaanuncio.com.br",
+      "telephone": "+5527997078794",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Online Service",
+        "addressLocality": "Brazil",
+        "addressRegion": "BR",
+        "postalCode": "",
+        "addressCountry": "BR"
+      },
+      "priceRange": "R$11.90 - R$25.90",
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": [
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+            "Friday",
+            "Saturday",
+            "Sunday"
+          ],
+          "opens": "00:00",
+          "closes": "23:59"
+        }
+      ],
+      "description": "Locução profissional e produção de áudio com agilidade imbatível, 24h por dia, inclusive finais de semana e feriados.",
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Serviços de Locução e Produção de Áudio",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Locução Off"
+            },
+            "priceSpecification": {
+              "@type": "UnitPriceSpecification",
+              "price": "11.90",
+              "priceCurrency": "BRL",
+              "unitText": "UNIT"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Produção Completa"
+            },
+            "priceSpecification": {
+              "@type": "UnitPriceSpecification",
+              "price": "25.90",
+              "priceCurrency": "BRL",
+              "unitText": "UNIT"
+            }
+          }
+        ]
+      }
+    }
+    </script>
+</head>
+<body class="font-inter text-text-dark">
+
+    <!-- Seção Hero (Dobra 1) -->
     <section class="hero-section h-screen flex items-center justify-center text-center text-white relative">
         <div class="hero-overlay absolute inset-0"></div>
         <div class="container mx-auto px-6 py-24 relative z-10 sm:px-10 lg:px-16">
             <h1 class="text-5xl md:text-7xl font-extrabold leading-tight mb-6 animate-fade-in-down">
-                Sua Voz Profissional em Minutos!
+                Grave Seu Comercial com Vozes de Estúdio Profissional em Apenas 10 Minutos!
             </h1>
             <p class="text-xl md:text-2xl mb-10 max-w-3xl mx-auto animate-fade-in-up">
                 Locução Off e Produção de Áudio com Agilidade Imbatível, 24h por Dia, Inclusive Finais de Semana e Feriados.
             </p>
+            <!-- Contagem Regressiva para Escassez -->
+            <div id="countdown-timer" class="text-3xl md:text-4xl font-bold text-highlight-gold mb-8">
+                Oferta acaba em: <span id="countdown-display"></span>
+            </div>
             <div class="flex flex-col sm:flex-row justify-center gap-4">
-                <a href="https://www.vozparaanuncio.com.br/cadastro" target="_blank" class="bg-button-main text-white px-10 py-4 rounded-full font-bold text-xl hover:bg-red-700 transition duration-300 shadow-xl inline-block animate-bounce-in">
-                    Cadastre-se Grátis e Comece Agora!
-                </a>
-                <a href="https://www.vozparaanuncio.com.br/vozes" target="_blank" class="bg-button-secondary text-white px-10 py-4 rounded-full font-bold text-xl hover:bg-green-700 transition duration-300 shadow-xl inline-block animate-bounce-in">
-                    Ouça Nossas Vozes!
+                <a href="https://www.vozparaanuncio.com.br/cadastro" target="_blank" class="btn-gradient-main text-white px-10 py-4 rounded-full font-bold text-xl transition duration-300 shadow-xl inline-block animate-bounce-in min-w-[200px] min-h-[48px] flex items-center justify-center">
+                    Sim! Quero uma voz profissional agora!
                 </a>
             </div>
+            <a href="https://www.vozparaanuncio.com.br/vozes" target="_blank" class="text-white text-lg mt-6 inline-block hover:underline transition duration-300">
+                Ouça Nosso Catálogo de Vozes Premiadas!
+            </a>
         </div>
     </section>
 
-    <!-- Seção: Nossas Vantagens / Benefícios -->
-    <section class="py-16 bg-light-gray">
-        <div class="container mx-auto px-6 sm:px-10 lg:px-16">
-            <h2 class="text-4xl font-bold text-center text-primary mb-4">✨ Por Que Escolher a Voz para Anúncio?</h2>
-            <p class="text-lg text-center text-neutral-gray mb-12 max-w-3xl mx-auto">Descubra os diferenciais que impulsionarão seus projetos de áudio.</p>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <!-- Vantagem 1: Agilidade Imbatível -->
-                <div class="bg-white p-8 rounded-xl shadow-lg flex flex-col items-center text-center transform hover:scale-105 transition duration-300">
-                    <div class="text-5xl text-yellow-accent mb-6">
-                        ⚡
-                    </div>
-                    <h3 class="text-2xl font-semibold text-primary mb-4">Agilidade Imbatível</h3>
-                    <p class="text-neutral-gray text-lg">
-                        Tenha sua locução Off pronta em até 10 minutos. Ideal para quem precisa de rapidez sem abrir mão da qualidade.
-                    </p>
-                </div>
-                <!-- Vantagem 2: Locutores Profissionais 24h -->
-                <div class="bg-white p-8 rounded-xl shadow-lg flex flex-col items-center text-center transform hover:scale-105 transition duration-300">
-                    <div class="text-5xl text-yellow-accent mb-6">
-                        🎤
-                    </div>
-                    <h3 class="text-2xl font-semibold text-primary mb-4">Locutores Profissionais 24h</h3>
-                    <p class="text-neutral-gray text-lg">
-                        Mais de 300 vozes de plantão, disponíveis a qualquer hora, inclusive nos finais de semana e feriados.
-                    </p>
-                </div>
-                <!-- Vantagem 3: Plataforma Intuitiva -->
-                <div class="bg-white p-8 rounded-xl shadow-lg flex flex-col items-center text-center transform hover:scale-105 transition duration-300">
-                    <div class="text-5xl text-yellow-accent mb-6">
-                        💻
-                    </div>
-                    <h3 class="text-2xl font-semibold text-primary mb-4">Plataforma Intuitiva</h3>
-                    <p class="text-neutral-gray text-lg">
-                        Faça seus pedidos e acompanhe o status de suas gravações de forma simples e eficiente, a qualquer momento.
-                    </p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Seção: Nossos Preços e Pacotes -->
-    <section class="py-16 bg-white">
-        <div class="container mx-auto px-6 sm:px-10 lg:px-16">
-            <h2 class="text-4xl font-bold text-center text-primary mb-4">💰 Nossos Preços</h2>
-            <p class="text-lg text-center text-neutral-gray mb-12 max-w-3xl mx-auto">Confira nossos preços competitivos para locução e produção de áudio.</p>
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-                <!-- Pacote: Locução Off -->
-                <div class="bg-light-gray p-8 rounded-xl shadow-lg flex flex-col items-center text-center transform hover:scale-105 transition duration-300">
-                    <h3 class="text-3xl font-bold text-primary mb-6">Locução Off</h3>
-                    <p class="text-neutral-gray text-lg mb-8">Somente a voz do locutor, sem edição profissional ou trilha musical. Perfeito para quem já tem sua própria equipe de edição.</p>
-                    <ul class="text-2xl font-semibold text-gray-700 space-y-4 mb-8 w-full">
-                        <li class="flex justify-between items-center bg-white p-4 rounded-lg shadow-sm"><span>1 OFF:</span> <span class="text-primary font-bold">R$ 11,90</span></li>
-                    </ul>
-                    <a href="https://www.vozparaanuncio.com.br/cadastro" target="_blank" class="bg-button-main text-white px-8 py-3 rounded-full font-bold text-lg hover:bg-red-700 transition duration-300 shadow-xl w-full">
-                        Cadastre-se para Comprar OFF
-                    </a>
-                </div>
-
-                <!-- Pacote: Produção (Áudio Completo) -->
-                <div class="bg-light-gray p-8 rounded-xl shadow-lg flex flex-col items-center text-center transform hover:scale-105 transition duration-300">
-                    <h3 class="text-3xl font-bold text-primary mb-6">Produção Completa</h3>
-                    <p class="text-neutral-gray text-lg mb-8">Áudio gravado e editado profissionalmente, com voz, trilha, efeitos e finalização pronta para uso imediato. Ideal para quem busca uma solução completa.</p>
-                    <ul class="text-2xl font-semibold text-gray-700 space-y-4 mb-8 w-full">
-                        <li class="flex justify-between items-center bg-white p-4 rounded-lg shadow-sm"><span>1 Spot:</span> <span class="text-primary font-bold">R$ 25,90</span></li>
-                    </ul>
-                    <a href="https://www.vozparaanuncio.com.br/cadastro" target="_blank" class="bg-button-main text-white px-8 py-3 rounded-full font-bold text-lg hover:bg-red-700 transition duration-300 shadow-xl w-full">
-                        Cadastre-se para Comprar Produção
-                    </a>
-                </div>
-            </div>
-            <p class="text-center text-neutral-gray text-lg mt-12 italic">
-                *Observação: Cada crédito corresponde a uma fração de 40 segundos de locução.
-            </p>
-        </div>
-    </section>
-
-    <!-- Seção: Prova Social (Depoimentos) -->
-    <section class="py-16 bg-light-gray">
+    <!-- Seção: Prova Social (Dobra 2) -->
+    <section class="py-20 bg-light-background">
         <div class="container mx-auto px-6 sm:px-10 lg:px-16">
             <h2 class="text-4xl font-bold text-center text-primary mb-4">⭐ Quem Confia na Voz para Anúncio</h2>
-            <p class="text-lg text-center text-neutral-gray mb-12 max-w-3xl mx-auto">Veja o que nossos clientes satisfeitos têm a dizer sobre nossos serviços.</p>
+            <p class="text-lg text-center text-text-dark mb-12 max-w-3xl mx-auto">Veja o que nossos clientes satisfeitos têm a dizer sobre nossos serviços.</p>
+
+            <!-- Selo de Garantia -->
+            <div class="flex justify-center mb-12">
+                <div class="bg-white p-3 rounded-lg shadow-md inline-flex items-center border border-highlight-green">
+                    <svg class="w-6 h-6 text-highlight-green mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                    <span class="text-sm md:text-base font-semibold text-text-dark">+1.000 projetos entregues com 98% de satisfação!</span>
+                </div>
+            </div>
+
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <!-- Depoimento 1 -->
-                <div class="bg-white p-8 rounded-xl shadow-lg flex flex-col items-center text-center">
-                    <p class="text-xl italic text-neutral-gray mb-6">
+                <div class="bg-white p-8 rounded-xl shadow-lg flex flex-col items-center text-center border border-highlight-green">
+                    <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi2BeoI9Rfjjf7bdS9WREIpAmmX9nuL-UglSIXT9FBfv-HRbyT9Adlh2csBHRbe68A4c2_Wvp3En0IjhjE_KBy0avwuy6EksDkalULgjGIzC4MG7oJT9or9KRQLpE-kt_itVuTtGAn2UppSkhgxlUKVZhzc7dsqprh-IOLDEiUwXN97-j5rGMqCxNFjytc/s320/ana%20paula.png" alt="Foto de Ana Paula" class="w-24 h-24 rounded-full mx-auto mb-4 object-cover">
+                    <p class="text-xl italic text-text-dark mb-6">
                         "A agilidade e a qualidade dos locutores são incomparáveis. Transformou a forma como produzimos nossos spots!"
                     </p>
                     <p class="text-lg font-semibold text-primary">- Ana Paula, Produtora de Vídeo</p>
                 </div>
                 <!-- Depoimento 2 -->
-                <div class="bg-white p-8 rounded-xl shadow-lg flex flex-col items-center text-center">
-                    <p class="text-xl italic text-neutral-gray mb-6">
+                <div class="bg-white p-8 rounded-xl shadow-lg flex flex-col items-center text-center border border-highlight-green">
+                    <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjj6ltKE0aJ-75JJpKrNcHXGOCD6d0or0y8czFpWzZRnOivpNwJLL75Zd9qC85Jft_oI-FyvlwSNWHXvhb4yFw8d_JAddvHJ4xbw7mV6znUMDEqQ01JFtQnNSQYZ9WF90SsqDdI0IbRb2hEATNunvYWVFLP1KancVF4QUjaz10psoda_JgFCFM3kyNFJZo/s320/homem.png" alt="Foto de Ricardo Silva" class="w-24 h-24 rounded-full mx-auto mb-4 object-cover">
+                    <p class="text-xl italic text-text-dark mb-6">
                         "Nunca mais fiquei sem voz para meus comerciais, mesmo nos feriados. A plataforma é intuitiva e o suporte é excelente."
                     </p>
                     <p class="text-lg font-semibold text-primary">- Ricardo Silva, Dono de Comércio</p>
                 </div>
                 <!-- Depoimento 3 -->
-                <div class="bg-white p-8 rounded-xl shadow-lg flex flex-col items-center text-center">
-                    <p class="text-xl italic text-neutral-gray mb-6">
+                <div class="bg-white p-8 rounded-xl shadow-lg flex flex-col items-center text-center border border-highlight-green">
+                    <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhiJGnhMDZlT5RGBpFEAw3QDTVHyqxdXRtWRmb2tYRLVueXM05nXbqiReoAXsS4lfg5wTHLu2Pj3Rw8sjMB5Cgm_oVP3rfRvvAcGeVmp49pJ4zSVKtH_TD4_0eOcrzTAsB_t0tzbEkCnCJ2zFDNz3bLyEGwBUUvtDC7jrC_iOd-aCHEQfnNj9Jwa56O1mk/s320/mulher.png" alt="Foto de Juliana Costa" class="w-24 h-24 rounded-full mx-auto mb-4 object-cover">
+                    <p class="text-xl italic text-text-dark mb-6">
                         "Precisava de uma locução off urgente e a Voz para Anúncio entregou em minutos. A variedade de vozes é impressionante."
                     </p>
                     <p class="text-lg font-semibold text-primary">- Juliana Costa, Agência de Marketing</p>
@@ -188,32 +204,184 @@
         </div>
     </section>
 
-    <!-- Seção: CTA Final -->
-    <section class="py-20 bg-primary text-white text-center">
+    <!-- Seção: Oferta Irrecusável (Dobra 3) -->
+    <section class="py-20 bg-light-background">
+        <div class="container mx-auto px-6 sm:px-10 lg:px-16">
+            <h2 class="text-4xl font-bold text-center text-primary mb-4">🚀 Sua Escolha Inteligente: Voz para Anúncio vs. O Comum</h2>
+            <p class="text-lg text-center text-text-dark mb-12 max-w-3xl mx-auto">Veja por que somos a melhor opção para suas produções de áudio.</p>
+            <div class="overflow-x-auto">
+                <table class="min-w-full bg-white rounded-xl shadow-lg">
+                    <thead>
+                        <tr class="bg-primary text-white">
+                            <th class="py-4 px-6 text-left text-xl font-semibold rounded-tl-xl">Característica</th>
+                            <th class="py-4 px-6 text-center text-xl font-semibold">Voz para Anúncio</th>
+                            <th class="py-4 px-6 text-center text-xl font-semibold rounded-tr-xl">Concorrente Comum</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="border-b border-gray-200">
+                            <td class="py-4 px-6 font-semibold text-text-dark">Tempo de Entrega Locução Off</td>
+                            <td class="py-4 px-6 text-center text-highlight-green font-bold text-2xl">✔️ 10 Minutos</td>
+                            <td class="py-4 px-6 text-center text-button-main font-bold text-2xl">✖️ 24h a 3 Dias</td>
+                        </tr>
+                        <tr class="border-b border-gray-200 bg-gray-50">
+                            <td class="py-4 px-6 font-semibold text-text-dark">Locutores de Plantão</td>
+                            <td class="py-4 px-6 text-center text-highlight-green font-bold text-2xl">✔️ 24/7 (Finais de Semana e Feriados)</td>
+                            <td class="py-4 px-6 text-center text-button-main font-bold text-2xl">✖️ Horário Comercial</td>
+                        </tr>
+                        <tr class="border-b border-gray-200">
+                            <td class="py-4 px-6 font-semibold text-text-dark">Catálogo de Vozes</td>
+                            <td class="py-4 px-6 text-center text-highlight-green font-bold text-2xl">✔️ +300 Vozes Premiadas</td>
+                            <td class="py-4 px-6 text-center text-button-main font-bold text-2xl">✖️ Limitado</td>
+                        </tr>
+                        <tr class="bg-gray-50">
+                            <td class="py-4 px-6 font-semibold text-text-dark rounded-bl-xl">Facilidade de Pedido</td>
+                            <td class="py-4 px-6 text-center text-highlight-green font-bold text-2xl">✔️ Plataforma Intuitiva</td>
+                            <td class="py-4 px-6 text-center text-button-main font-bold text-2xl rounded-br-xl">✖️ Processo Manual</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção: Nossas Vantagens / Benefícios -->
+    <section class="py-20 bg-white">
+        <div class="container mx-auto px-6 sm:px-10 lg:px-16">
+            <h2 class="text-4xl font-bold text-center text-primary mb-4">✨ Por Que Escolher a Voz para Anúncio?</h2>
+            <p class="text-lg text-center text-text-dark mb-12 max-w-3xl mx-auto">Descubra os diferenciais que impulsionarão seus projetos de áudio.</p>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Vantagem 1: Agilidade Imbatível -->
+                <div class="bg-light-background p-8 rounded-xl shadow-lg flex flex-col items-center text-center transform hover:scale-105 transition duration-300">
+                    <div class="text-5xl text-highlight-gold mb-6">
+                        ⚡
+                    </div>
+                    <h3 class="text-2xl font-semibold text-primary mb-4">Agilidade Imbatível</h3>
+                    <p class="text-text-dark text-lg">
+                        Tenha sua locução Off pronta em até 10 minutos. Ideal para quem precisa de rapidez sem abrir mão da qualidade.
+                    </p>
+                </div>
+                <!-- Vantagem 2: Locutores Profissionais 24h -->
+                <div class="bg-light-background p-8 rounded-xl shadow-lg flex flex-col items-center text-center transform hover:scale-105 transition duration-300">
+                    <div class="text-5xl text-highlight-gold mb-6">
+                        🎤
+                    </div>
+                    <h3 class="text-2xl font-semibold text-primary mb-4">Locutores Profissionais 24h</h3>
+                    <p class="text-text-dark text-lg">
+                        Mais de 300 vozes de plantão, disponíveis a qualquer hora, inclusive nos finais de semana e feriados.
+                    </p>
+                </div>
+                <!-- Vantagem 3: Plataforma Intuitiva -->
+                <div class="bg-light-background p-8 rounded-xl shadow-lg flex flex-col items-center text-center transform hover:scale-105 transition duration-300">
+                    <div class="text-5xl text-highlight-gold mb-6">
+                        💻
+                    </div>
+                    <h3 class="text-2xl font-semibold text-primary mb-4">Plataforma Intuitiva</h3>
+                    <p class="text-text-dark text-lg">
+                        Faça seus pedidos e acompanhe o status de suas gravações de forma simples e eficiente, a qualquer momento.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção: Nossos Preços -->
+    <section class="py-20 bg-light-background">
+        <div class="container mx-auto px-6 sm:px-10 lg:px-16">
+            <h2 class="text-4xl font-bold text-center text-primary mb-4">💰 Nossos Preços</h2>
+            <p class="text-lg text-center text-text-dark mb-12 max-w-3xl mx-auto">Confira nossos preços competitivos para locução e produção de áudio.</p>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <!-- Pacote: Locução Off -->
+                <div class="bg-white p-8 rounded-xl shadow-lg flex flex-col items-center text-center transform hover:scale-105 transition duration-300">
+                    <h3 class="text-3xl font-bold text-primary mb-6">Locução Off</h3>
+                    <p class="text-text-dark text-lg mb-8">Somente a voz do locutor, sem edição profissional ou trilha musical. Perfeito para quem já tem sua própria equipe de edição.</p>
+                    <ul class="text-2xl font-semibold text-text-dark space-y-4 mb-8 w-full">
+                        <li class="flex justify-between items-center bg-light-background p-4 rounded-lg shadow-sm"><span>1 OFF:</span> <span class="text-primary font-bold">R$ 11,90</span></li>
+                    </ul>
+                    <a href="https://www.vozparaanuncio.com.br/cadastro" target="_blank" class="btn-gradient-main text-white px-8 py-3 rounded-full font-bold text-lg transition duration-300 shadow-xl w-full min-h-[48px] flex items-center justify-center">
+                        Sim! Quero uma voz profissional agora!
+                    </a>
+                </div>
+
+                <!-- Pacote: Produção (Áudio Completo) -->
+                <div class="bg-white p-8 rounded-xl shadow-lg flex flex-col items-center text-center transform hover:scale-105 transition duration-300">
+                    <h3 class="text-3xl font-bold text-primary mb-6">Produção Completa</h3>
+                    <p class="text-text-dark text-lg mb-8">Áudio gravado e editado profissionalmente, com voz, trilha, efeitos e finalização pronta para uso imediato. Ideal para quem busca uma solução completa.</p>
+                    <ul class="text-2xl font-semibold text-text-dark space-y-4 mb-8 w-full">
+                        <li class="flex justify-between items-center bg-light-background p-4 rounded-lg shadow-sm"><span>1 Spot:</span> <span class="text-primary font-bold">R$ 25,90</span></li>
+                    </ul>
+                    <a href="https://www.vozparaanuncio.com.br/cadastro" target="_blank" class="btn-gradient-main text-white px-8 py-3 rounded-full font-bold text-lg transition duration-300 shadow-xl w-full min-h-[48px] flex items-center justify-center">
+                        Sim! Quero uma voz profissional agora!
+                    </a>
+                </div>
+            </div>
+            <p class="text-center text-text-dark text-lg mt-12 italic">
+                *Observação: Cada crédito corresponde a uma fração de 40 segundos de locução.
+            </p>
+        </div>
+    </section>
+
+    <!-- Seção: CTA Final (Rodapé) -->
+    <section class="py-24 bg-primary text-white text-center">
         <div class="container mx-auto px-6 sm:px-10 lg:px-16">
             <h2 class="text-4xl font-bold mb-6">Não Perca Mais Tempo!</h2>
             <p class="text-xl mb-8 max-w-3xl mx-auto">
                 Garanta locução profissional e produção de áudio de alta qualidade para seus projetos. Cadastre-se agora e experimente a agilidade da Voz para Anúncio!
             </p>
             <div class="flex flex-col sm:flex-row justify-center gap-4">
-                <a href="https://www.vozparaanuncio.com.br/cadastro" target="_blank" class="bg-yellow-accent text-primary px-12 py-5 rounded-full font-bold text-2xl hover:bg-yellow-400 transition duration-300 shadow-xl inline-block animate-pulse">
-                    Quero Minha Voz Profissional!
-                </a>
-                <a href="https://www.vozparaanuncio.com.br/vozes" target="_blank" class="bg-button-secondary text-white px-12 py-5 rounded-full font-bold text-2xl hover:bg-green-700 transition duration-300 shadow-xl inline-block animate-pulse">
-                    Ver Demonstrações!
+                <a href="https://www.vozparaanuncio.com.br/cadastro" target="_blank" class="btn-gradient-main text-white px-12 py-5 rounded-full font-bold text-2xl transition duration-300 shadow-xl inline-block animate-pulse min-w-[200px] min-h-[48px] flex items-center justify-center">
+                    Sim! Quero uma voz profissional agora!
                 </a>
             </div>
+            <a href="https://www.vozparaanuncio.com.br/vozes" target="_blank" class="text-white text-xl mt-6 inline-block hover:underline transition duration-300">
+                Ver Catálogo de Vozes!
+            </a>
         </div>
     </section>
 
     <!-- Rodapé -->
     <footer class="bg-gray-900 text-white py-10">
         <div class="container mx-auto px-6 sm:px-10 lg:px-16">
-            <p class="text-neutral-gray text-sm">&copy; <span id="current-year"></span> Voz para Anúncio. Todos os direitos reservados.</p>
+            <p class="text-text-dark text-sm">&copy; <span id="current-year"></span> Voz para Anúncio. Todos os direitos reservados.</p>
         </div>
     </footer>
 
     <!-- Código do Chat -->
     <script>(function(a,b,c,d){try{var e=b.head||b.getElementsByTagName("head")[0];var f=b.createElement("script");f.setAttribute("src",c);f.setAttribute("charset","UTF-8");f.defer=true;a.neuroleadId=d;e.appendChild(f)}catch(g){}})(window,document,"https://cdn.leadster.com.br/neurolead/neurolead.min.js","ORJ1d5HfphPelhTwNmke3zJM6")</script>
+
+    <script>
+        // Função para atualizar o ano no rodapé
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+
+        // Lógica da contagem regressiva
+        function startCountdown(durationInHours) {
+            const countdownDisplay = document.getElementById('countdown-display');
+            let endTime = new Date();
+            endTime.setHours(endTime.getHours() + durationInHours);
+
+            function updateCountdown() {
+                const now = new Date().getTime();
+                const distance = endTime.getTime() - now;
+
+                if (distance < 0) {
+                    countdownDisplay.innerHTML = "OFERTA ENCERRADA!";
+                    clearInterval(countdownInterval);
+                    return;
+                }
+
+                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+                countdownDisplay.innerHTML = `${hours.toString().padStart(2, '0')}h ${minutes.toString().padStart(2, '0')}min ${seconds.toString().padStart(2, '0')}s`;
+            }
+
+            updateCountdown(); // Atualiza imediatamente
+            const countdownInterval = setInterval(updateCountdown, 1000); // Atualiza a cada segundo
+        }
+
+        // Inicia a contagem regressiva para 3 horas
+        startCountdown(3);
+    </script>
 </body>
 </html>
