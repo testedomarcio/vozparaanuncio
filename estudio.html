@@ -1,14 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-
-    <!-- Google Tag Manager -->
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-N44NGMXG');</script>
-<!-- End Google Tag Manager -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Voz para Anúncio - Locução Profissional e Produção de Áudio</title>
@@ -117,6 +109,12 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         .btn-whatsapp-locutor:hover {
             background-color: #1DA851; /* Verde WhatsApp mais escuro */
         }
+        /* Estilo para preço riscado */
+        .price-strikethrough {
+            text-decoration: line-through;
+            color: #718096; /* Cor mais suave para o preço antigo */
+            margin-right: 0.5rem;
+        }
     </style>
 
     <!-- Schema Markup para SEO LocalBusiness -->
@@ -190,10 +188,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     </script>
 </head>
 <body class="font-inter text-text-dark">
-    <!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-N44NGMXG"
-height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-<!-- End Google Tag Manager (noscript) -->
 
     <!-- Barra Fixa no Topo (Ouro!) -->
     <div class="bg-primary text-white py-2 px-4 text-center font-medium sticky top-0 z-50">
@@ -467,7 +461,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                     <h3 class="text-3xl font-bold text-primary mb-6">Locução Off</h3>
                     <p class="text-text-dark text-lg mb-8">Somente a voz do locutor, sem edição profissional ou trilha musical. Perfeito para quem já tem sua própria equipe de edição.</p>
                     <ul class="text-2xl font-semibold text-text-dark space-y-4 mb-8 w-full">
-                        <li class="flex justify-between items-center bg-light-background p-4 rounded-lg shadow-sm"><span>1 OFF:</span> <span class="text-primary font-bold">R$ 11,90</span></li>
+                        <li class="flex justify-between items-center bg-light-background p-4 rounded-lg shadow-sm">
+                            <span>1 OFF:</span>
+                            <span>
+                                <span class="price-strikethrough">R$ 15,00</span>
+                                <span class="text-primary font-bold">R$ 11,90</span>
+                            </span>
+                        </li>
                     </ul>
                     <a href="https://wa.me/5527997078794" target="_blank" class="btn-gradient-main text-white px-8 py-3 rounded-full font-bold text-lg transition duration-300 shadow-xl w-full min-h-[48px] flex items-center justify-center">
                         Fale Conosco no WhatsApp!
@@ -479,15 +479,24 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                     <h3 class="text-3xl font-bold text-primary mb-6">Produção Completa</h3>
                     <p class="text-text-dark text-lg mb-8">Áudio gravado e editado profissionalmente, com voz, trilha, efeitos e finalização pronta para uso imediato. Ideal para quem busca uma solução completa.</p>
                     <ul class="text-2xl font-semibold text-text-dark space-y-4 mb-8 w-full">
-                        <li class="flex justify-between items-center bg-light-background p-4 rounded-lg shadow-sm"><span>1 Spot:</span> <span class="text-primary font-bold">R$ 25,90</span></li>
+                        <li class="flex justify-between items-center bg-light-background p-4 rounded-lg shadow-sm">
+                            <span>1 Spot:</span>
+                            <span>
+                                <span class="price-strikethrough">R$ 35,00</span>
+                                <span class="text-primary font-bold">R$ 25,90</span>
+                            </span>
+                        </li>
                     </ul>
                     <a href="https://wa.me/5527997078794" target="_blank" class="btn-gradient-main text-white px-8 py-3 rounded-full font-bold text-lg transition duration-300 shadow-xl w-full min-h-[48px] flex items-center justify-center">
                         Fale Conosco no WhatsApp!
                     </a>
                 </div>
             </div>
-            <p class="text-center text-text-dark text-lg mt-12 italic">
-                *Observação: Cada crédito corresponde a uma fração de 40 segundos de locução.
+            <p class="text-center text-text-dark text-lg mt-12 italic font-bold">
+                *Preço fixo garantido fazendo o pedido durante a contagem regressiva!
+            </p>
+            <p class="text-center text-text-dark text-lg mt-4 italic">
+                **Observação: Cada crédito corresponde a uma fração de 40 segundos de locução.
             </p>
         </div>
     </section>
