@@ -35,14 +35,15 @@ function gtag_report_conversion(url) {
     
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Voz Profissional para Seus Anúncios - Entrega em 10 Minutos | Voz para Anúncio</title>
+    <title>Voz para Anúncio - Locução Profissional 24h | Entrega em 10 Minutos</title>
     <meta name="description" content="Locução profissional 24h com +300 vozes. Seu áudio pronto em 10 minutos com garantia de satisfação. Ideal para agências, produtores e comerciantes.">
-    <!-- Otimização de tags meta para Google Ads -->
-    <meta name="keywords" content="locução profissional 24h, produção de áudio rápido, voz para anúncios urgente, gravação em off, locutores para propaganda, áudio para comercial">
-    <!-- Pré-carregar fontes e recursos críticos -->
+    <meta name="keywords" content="locução profissional 24h, produção de áudio rápido, voz para anúncios urgente, gravação em off, locutores para propaganda">
+    
+    <!-- Pré-carregar recursos -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -50,106 +51,22 @@ function gtag_report_conversion(url) {
             theme: {
                 extend: {
                     colors: {
-                        'primary': '#2A5BDD', /* Azul Profundo - Cabeçalho, botões CTA */
-                        'secondary': '#FF6B00', /* Laranja - Botões de ação, destaques */
-                        'dark': '#1E293B', /* Cinza Escuro - Textos principais */
-                        'light': '#F8FAFC', /* Um cinza muito claro para fundos de seção */
-                        'highlight-green': '#00C897', /* Verde Suave - Confirmação, depoimentos */
-                        'highlight-gold': '#FFD700', /* Dourado para destaques */
+                        primary: '#2A5BDD',
+                        secondary: '#FF6B00',
+                        dark: '#1E293B',
+                        light: '#F8FAFC',
+                        highlight: '#00C897'
                     },
                     fontFamily: {
-                        inter: ['Inter', 'sans-serif'], /* Fonte Inter para todo o site */
+                        inter: ['Inter', 'sans-serif'],
                     },
                 }
             }
         }
     </script>
+    
     <style>
-        /* Estilos globais para a fonte e cor de fundo */
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: #ffffff; /* Fundo branco para todo o site */
-            color: #333333; /* Cor de texto principal padrão */
-        }
-        /* Estilo para a seção hero (capa fullscreen) */
-        .hero-section {
-            /* Gradiente de azul para azul mais escuro */
-            background-image: linear-gradient(to bottom, #2A5BDD, #1A3E9C); /* Azul Profundo para um azul mais escuro */
-            background-size: cover; /* A imagem cobre todo o elemento */
-            background-position: center; /* Centraliza a imagem */
-            position: relative; /* Necessário para posicionar o overlay */
-            z-index: 0; /* Garante que o overlay fique acima da imagem de fundo */
-        }
-        /* Overlay na seção hero para dar uma camada envolvente */
-        .hero-overlay {
-            background-color: rgba(42, 91, 221, 0.8); /* primary color com 80% de transparência */
-        }
-        /* Ajuste para as margens laterais em telas maiores */
-        .container {
-            max-width: 1200px; /* Define uma largura máxima para o container */
-        }
-        /* Gradiente para botões principais - VISÍVEL SEMPRE */
-        .btn-gradient-main {
-            background-image: linear-gradient(to right, #FF6B00, #D32929); /* Laranja para Vermelho */
-        }
-        .btn-gradient-main:hover {
-            background-image: linear-gradient(to right, #E65A00, #B32222); /* Laranja mais escuro para Vermelho mais escuro */
-        }
-        /* Estilo para o player de áudio */
-        audio {
-            width: 100%;
-            max-width: 300px; /* Limita a largura para melhor visualização */
-            margin-top: 1rem;
-        }
-        /* Estilos para o container de áudio */
-        .audio-container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            margin-top: 1rem;
-            width: 100%;
-            max-width: 300px;
-        }
-        .audio-container h2 {
-            font-size: 1.25rem; /* text-xl */
-            font-weight: 600; /* font-semibold */
-            color: #333333; /* text-text-dark */
-            margin-bottom: 0.5rem;
-        }
-        .audio-container p {
-            font-size: 0.875rem; /* text-sm */
-            color: #718096; /* neutral-gray ou text-text-dark */
-            margin-top: 0.5rem;
-        }
-        .audio-container a {
-            color: #2A5BDD; /* primary color */
-            text-decoration: underline;
-        }
-        /* Estilo para o botão de WhatsApp dentro do bloco do locutor */
-        .btn-whatsapp-locutor {
-            background-color: #25D366; /* Verde WhatsApp */
-            color: white;
-            padding: 0.75rem 1.5rem;
-            border-radius: 9999px; /* rounded-full */
-            font-weight: 700; /* font-bold */
-            font-size: 1rem; /* text-base */
-            margin-top: 1rem;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            transition: background-color 0.3s ease;
-        }
-        .btn-whatsapp-locutor:hover {
-            background-color: #1DA851; /* Verde WhatsApp mais escuro */
-        }
-        /* Estilo para preço riscado */
-        .price-strikethrough {
-            text-decoration: line-through;
-            color: #718096; /* Cor mais suave para o preço antigo */
-            margin-right: 0.5rem;
-        }
-
-        /* Novas classes para o código do usuário */
+        /* Estilos otimizados */
         .hero-gradient {
             background: linear-gradient(135deg, #1A3E9C 0%, #2A5BDD 100%);
         }
@@ -161,97 +78,64 @@ function gtag_report_conversion(url) {
             50% { transform: scale(1.05); }
             100% { transform: scale(1); }
         }
-        .highlight-box {
-            position: relative;
-        }
-        .highlight-box:before {
-            content: "";
-            position: absolute;
-            top: -5px;
-            left: -5px;
-            right: -5px;
-            bottom: -5px;
-            border: 2px dashed #FF6B00;
-            border-radius: 12px;
-            animation: borderPulse 3s infinite;
-            pointer-events: none;
-        }
-        @keyframes borderPulse {
-            0% { border-color: #FF6B00; }
-            50% { border-color: #FFD700; }
-            100% { border-color: #FF6B00; }
+        .voice-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
         }
     </style>
-
-    <!-- Schema Markup otimizado -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "ProfessionalService",
-      "name": "Voz para Anúncio",
-      "description": "Serviço profissional de locução 24 horas com entrega rápida",
-      "url": "https://www.vozparaanuncio.com.br",
-      "telephone": "+5527997078794",
-      "address": {
-        "@type": "PostalAddress",
-        "addressCountry": "BR"
-      },
-      "openingHours": "Mo,Tu,We,Th,Fr,Sa,Su 00:00-23:59",
-      "priceRange": "R$11.90 - R$25.90"
-    }
-    </script>
 </head>
-<body class="font-inter antialiased">
-    <!-- Barra de urgência sticky -->
-    <div class="bg-secondary text-white py-3 px-4 text-center font-medium sticky top-0 z-50">
-        🚀 OFERTA POR TEMPO LIMITADO: 30% OFF para novos clientes |
-        <a href="tel:+5527997078794" class="font-bold underline ml-1">(27) 99707-8794</a>
+
+<body class="font-inter bg-white text-gray-800">
+    <!-- Barra de contato no topo -->
+    <div class="bg-secondary text-white py-2 px-4 text-center font-medium sticky top-0 z-50">
+        WhatsApp: <a href="https://wa.me/5527997078794" class="font-bold underline">(27) 99707-8794</a> | 
+        Email: <a href="mailto:contato@vozparaanuncio.com.br" class="font-bold underline">contato@vozparaanuncio.com.br</a>
     </div>
 
-    <!-- Seção Hero otimizada -->
-    <section class="hero-gradient text-white py-20 md:py-32 px-6">
-        <div class="max-w-5xl mx-auto text-center">
-            <div class="bg-white/10 inline-block px-4 py-2 rounded-full mb-6">
-                <span class="font-bold">🔥 #1 em Locução Rápida no Brasil</span>
+    <!-- Cabeçalho -->
+    <header class="bg-white shadow-md py-4 sticky top-8 z-40">
+        <div class="container mx-auto px-8 flex justify-between items-center">
+            <a href="/" class="text-2xl font-bold text-primary">Voz para Anúncio</a>
+            
+            <nav class="hidden md:flex space-x-8">
+                <a href="https://www.vozparaanuncio.com.br" class="font-medium hover:text-primary transition">Início</a>
+                <a href="/vozes" class="font-medium hover:text-primary transition">Vozes</a>
+                <a href="/servicos" class="font-medium hover:text-primary transition">Serviços</a>
+                <a href="/precos" class="font-medium hover:text-primary transition">Preços</a>
+                <a href="/tutorial" class="font-medium hover:text-primary transition">Tutoriais</a>
+                <a href="https://www.vozparaanuncio.com.br/faq" class="font-medium hover:text-primary transition">FAQ</a>
+                <a href="https://www.vozparaanuncio.com.br/termos" class="font-medium hover:text-primary transition">Termos</a>
+            </nav>
+            
+            <div class="flex items-center space-x-4">
+                <a href="/painel" class="hidden md:inline-block bg-gray-100 hover:bg-gray-200 px-4 py-2 rounded-lg font-medium transition">Login</a>
+                <a href="/cadastro" class="bg-primary hover:bg-blue-700 text-white px-4 py-2 rounded-lg font-medium transition">Cadastre-se</a>
             </div>
-            <h1 class="text-4xl md:text-6xl font-bold leading-tight mb-6">
-                <span class="text-secondary">Voz Profissional</span> para Seu Anúncio
-                <br><span class="text-3xl md:text-5xl">Pronta em <u>10 Minutos</u> - 24h/dia</span>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-gradient text-white py-20 md:py-32">
+        <div class="container mx-auto px-8 text-center">
+            <h1 class="text-4xl md:text-6xl font-bold leading-tight mb-6 max-w-4xl mx-auto">
+                <span class="text-secondary">Voz Profissional</span> para Seu Anúncio 
+                <br><span class="text-2xl md:text-4xl">Pronta em <u>10 Minutos</u> - 24h/dia</span>
             </h1>
-            <p class="text-xl md:text-2xl max-w-3xl mx-auto mb-10">
-                Gravação e edição profissional que <span class="font-bold">aumenta em até 3x a retenção</span> do seu público nos anúncios
+            
+            <p class="text-xl md:text-2xl mb-10 max-w-3xl mx-auto">
+                Agilidade imbatível com +300 vozes profissionais. Ideal para anúncios, vídeos e comerciais.
             </p>
-
-            <div class="max-w-md mx-auto bg-white/20 p-6 rounded-xl mb-10">
-                <div class="flex justify-center items-center mb-4">
-                    <div class="flex -space-x-2">
-                        <img class="w-10 h-10 rounded-full border-2 border-white" src="https://randomuser.me/api/portraits/women/44.jpg" alt="Cliente satisfeito">
-                        <img class="w-10 h-10 rounded-full border-2 border-white" src="https://randomuser.me/api/portraits/men/32.jpg" alt="Cliente satisfeito">
-                        <img class="w-10 h-10 rounded-full border-2 border-white" src="https://randomuser.me/api/portraits/women/68.jpg" alt="Cliente satisfeito">
-                    </div>
-                    <div class="ml-4 text-left">
-                        <p class="font-bold">+1,237 clientes satisfeitos</p>
-                        <div class="flex text-yellow-400">
-                            ★ ★ ★ ★ ★
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Timer otimizado -->
-                <div id="countdown" class="bg-black/30 p-4 rounded-lg mb-4">
-                    <p class="text-sm mb-2">OFERTA TERMINA EM:</p>
-                    <div class="flex justify-center gap-2 text-2xl font-bold">
-                        <span id="hours">03</span>:<span id="minutes">00</span>:<span id="seconds">00</span>
-                    </div>
-                </div>
-
-                <!-- CTA Principal -->
-                <a href="https://www.vozparaanuncio.com.br/cadastro" class="cta-pulse bg-secondary hover:bg-orange-700 text-white font-bold py-4 px-8 rounded-full text-lg w-full block text-center transition duration-300">
-                    QUERO GRAVAR MEU ANÚNCIO AGORA!
+            
+            <div class="flex flex-col sm:flex-row justify-center gap-4 max-w-md mx-auto">
+                <a href="/vozes" class="cta-pulse bg-secondary hover:bg-orange-700 text-white px-8 py-4 rounded-full font-bold text-lg transition">
+                    Ouça Nossas Vozes
+                </a>
+                <a href="/cadastro" class="bg-white hover:bg-gray-100 text-primary px-8 py-4 rounded-full font-bold text-lg transition">
+                    Criar Conta Grátis
                 </a>
             </div>
-
-            <div class="flex flex-wrap justify-center gap-6 mt-10">
+            
+            <div class="mt-12 flex flex-wrap justify-center gap-6">
                 <div class="flex items-center">
                     <svg class="w-5 h-5 text-green-400 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
                     <span>Entrega em 10 minutos</span>
@@ -268,27 +152,27 @@ function gtag_report_conversion(url) {
         </div>
     </section>
 
-    <!-- Seção de Diferenciais -->
-    <section class="py-20 px-6">
-        <div class="max-w-5xl mx-auto">
+    <!-- Seção de Diferenciais (Agora primeiro bloco após o Hero) -->
+    <section class="py-20">
+        <div class="container mx-auto px-8">
             <div class="text-center mb-16">
-                <h2 class="text-3xl md:text-4xl font-bold text-dark mb-4">Por que escolher a Voz para Anúncio?</h2>
+                <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">Por que escolher a Voz para Anúncio?</h2>
                 <p class="text-lg text-gray-600 max-w-2xl mx-auto">Nossos diferenciais que fazem a diferença no seu projeto</p>
             </div>
-
+            
             <div class="grid md:grid-cols-3 gap-8">
                 <div class="bg-white p-8 rounded-xl shadow-md border border-gray-100 hover:border-secondary transition duration-300">
                     <div class="text-4xl mb-6">⚡</div>
                     <h3 class="text-xl font-bold mb-3">O Mais Rápido do Mercado</h3>
-                    <p class="text-gray-600">Entregamos sua locução em até 10 minutos. Já imaginou ter seu áudio pronto antes mesmo de terminar seu café?</p>
+                    <p class="text-gray-600">Entregamos sua locução em até 10 minutos. Ideal para quem precisa de agilidade sem abrir mão da qualidade.</p>
                 </div>
-
+                
                 <div class="bg-white p-8 rounded-xl shadow-md border border-gray-100 hover:border-secondary transition duration-300">
                     <div class="text-4xl mb-6">🌙</div>
                     <h3 class="text-xl font-bold mb-3">Disponível 24 Horas</h3>
                     <p class="text-gray-600">Precisa de uma locução às 3h da manhã de domingo? Sem problemas! Nossos locutores estão sempre disponíveis.</p>
                 </div>
-
+                
                 <div class="bg-white p-8 rounded-xl shadow-md border border-gray-100 hover:border-secondary transition duration-300">
                     <div class="text-4xl mb-6">🎧</div>
                     <h3 class="text-xl font-bold mb-3">Qualidade Studio</h3>
@@ -298,16 +182,21 @@ function gtag_report_conversion(url) {
         </div>
     </section>
 
-    <!-- Seção de Vozes -->
-    <section class="py-16 bg-gray-50">
-        <div class="max-w-5xl mx-auto px-6">
-            <h2 class="text-3xl font-bold text-center mb-12">Conheça Nossas Vozes <span class="text-primary">Premium</span></h2>
-
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Locutor Cristian Jr. -->
-                <div class="bg-white p-6 rounded-xl shadow-md">
+    <!-- Seção de Demonstração de Vozes (Agora segundo bloco após o Hero) -->
+    <section class="py-20 bg-gray-50">
+        <div class="container mx-auto px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">Conheça Nossas Vozes <span class="text-secondary">Premium</span></h2>
+                <p class="text-lg text-gray-600 max-w-2xl mx-auto">Ouça a diferença que uma locução profissional faz</p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Locutor 1 -->
+                <div class="bg-white p-6 rounded-xl shadow-md voice-card transition duration-300">
                     <div class="flex items-center mb-4">
-                        <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgW5ivfZ6HnwekM89taPi_GS3DVKQsLOU8smsJpNrjsANLaeXkGa1OpQMeVWF6HX0Tx0PYn1mRjqIJDJY2ONZeDr_YU5G06rnDJA_mM9OdGNdd58AwZ-9H1hoZks1u-t3UcruD1J6xZMsaAmsWLtIhyQpEYehuhPC8tjjTInWfjc5g4DY8kwz6tD-HnbPM/s1600/Cristian.jfif" alt="Locutor Cristian Jr." class="w-16 h-16 rounded-full mr-4 object-cover">
+                        <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgW5ivfZ6HnwekM89taPi_GS3DVKQsLOU8smsJpNrjsANLaeXkGa1OpQMeVWF6HX0Tx0PYn1mRjqIJDJY2ONZeDr_YU5G06rnDJA_mM9OdGNdd58AwZ-9H1hoZks1u-t3UcruD1J6xZMsaAmsWLtIhyQpEYehuhPC8tjjTInWfjc5g4DY8kwz6tD-HnbPM/s1600/Cristian.jfif" 
+                                alt="Locutor Cristian Jr." 
+                                class="w-16 h-16 rounded-full object-cover mr-4">
                         <div>
                             <h3 class="font-bold">Cristian Jr.</h3>
                             <p class="text-sm text-gray-600">Voz Profunda • Publicidade</p>
@@ -315,19 +204,19 @@ function gtag_report_conversion(url) {
                     </div>
                     <audio controls class="w-full mt-4">
                         <source src="https://testedomarcio.github.io/meuadio/Cristian.mp3" type="audio/mpeg">
-                        Seu navegador não suporta o elemento de áudio.
                     </audio>
-                    <a href="https://www.vozparaanuncio.com.br/cadastro"
-                       target="_blank"
-                       class="mt-4 inline-block bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-full text-sm font-medium transition">
+                    <a href="https://wa.me/5527997078794?text=Quero%20a%20voz%20do%20Cristian%20Jr." 
+                        class="mt-4 inline-block bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-full text-sm font-medium transition">
                         Pedir esta voz
                     </a>
                 </div>
-
-                <!-- Locutora Lindy -->
-                <div class="bg-white p-6 rounded-xl shadow-md">
+                
+                <!-- Locutor 2 -->
+                <div class="bg-white p-6 rounded-xl shadow-md voice-card transition duration-300">
                     <div class="flex items-center mb-4">
-                        <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj6-mtu5kT3vd84VMheOoXmFM0_hp6dHNp22E7kjxaZ3mK3c1D_bzRp_ckapn6BcZL5Vs_y7aoxTOMilnKc5_HmvIiAhUg9kglE5ZTJpj73kDdUgx5og4Hb6_sGeR5DcTifXQy4vBONtUq6e6lZOrmFMBdlKxeS_8NWlbuneKaaNbWj4iXD0ZrfTk0868U/s1600/lindy.jpeg" alt="Locutora Lindy" class="w-16 h-16 rounded-full mr-4 object-cover">
+                        <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj6-mtu5kT3vd84VMheOoXmFM0_hp6dHNp22E7kjxaZ3mK3c1D_bzRp_ckapn6BcZL5Vs_y7aoxTOMilnKc5_HmvIiAhUg9kglE5ZTJpj73kDdUgx5og4Hb6_sGeR5DcTifXQy4vBONtUq6e6lZOrmFMBdlKxeS_8NWlbuneKaaNbWj4iXD0ZrfTk0868U/s1600/lindy.jpeg" 
+                                alt="Locutora Lindy" 
+                                class="w-16 h-16 rounded-full object-cover mr-4">
                         <div>
                             <h3 class="font-bold">Lindy</h3>
                             <p class="text-sm text-gray-600">Voz Feminina • Jingle</p>
@@ -335,453 +224,195 @@ function gtag_report_conversion(url) {
                     </div>
                     <audio controls class="w-full mt-4">
                         <source src="https://testedomarcio.github.io/meuadio/Lindy.mp3" type="audio/mpeg">
-                        Seu navegador não suporta o elemento de áudio.
                     </audio>
-                    <a href="https://www.vozparaanuncio.com.br/cadastro"
-                       target="_blank"
-                       class="mt-4 inline-block bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-full text-sm font-medium transition">
+                    <a href="https://wa.me/5527997078794?text=Quero%20a%20voz%20da%20Lindy" 
+                        class="mt-4 inline-block bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-full text-sm font-medium transition">
                         Pedir esta voz
                     </a>
                 </div>
-
-                <!-- Locutor Celso -->
-                <div class="bg-white p-6 rounded-xl shadow-md">
+                
+                <!-- Locutor 3 -->
+                <div class="bg-white p-6 rounded-xl shadow-md voice-card transition duration-300">
                     <div class="flex items-center mb-4">
-                        <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi85znRxtP6hdjBHC2oHa9rdKJuGejTNP9r2LWiGm90QAS2dFp1ITqR9NqSXdHX9q0Ox65L61LQXPajB9a3fBYENViCDDppGhME4PWvAHba4MZ-XKHJtdL6fXYqAfYhoa65rmntXVVp29iFTGQ9KuosQ9eLOkDWXCk9ma28Hv9p4iUDxjxAwfmBUP7f64g/s1600/celso.jpg" alt="Locutor Celso" class="w-16 h-16 rounded-full mr-4 object-cover">
+                        <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi85znRxtP6hdjBHC2oHa9rdKJuGejTNP9r2LWiGm90QAS2dFp1ITqR9NqSXdHX9q0Ox65L61LQXPajB9a3fBYENViCDDppGhME4PWvAHba4MZ-XKHJtdL6fXYqAfYhoa65rmntXVVp29iFTGQ9KuosQ9eLOkDWXCk9ma28Hv9p4iUDxjxAwfmBUP7f64g/s1600/celso.jpg" 
+                                alt="Locutor Celso" 
+                                class="w-16 h-16 rounded-full object-cover mr-4">
                         <div>
                             <h3 class="font-bold">Celso</h3>
-                            <p class="text-sm text-gray-600">Voz Marcante • Varejo</p>
+                            <p class="text-sm text-gray-600">Voz Autoritária • Documentários</p>
                         </div>
                     </div>
                     <audio controls class="w-full mt-4">
                         <source src="https://testedomarcio.github.io/meuadio/Celso.mp3" type="audio/mpeg">
-                        Seu navegador não suporta o elemento de áudio.
                     </audio>
-                    <a href="https://www.vozparaanuncio.com.br/cadastro"
-                       target="_blank"
-                       class="mt-4 inline-block bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-full text-sm font-medium transition">
-                        Pedir esta voz
-                    </a>
-                </div>
-
-                <!-- Locutor Leandro -->
-                <div class="bg-white p-6 rounded-xl shadow-md">
-                    <div class="flex items-center mb-4">
-                        <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEisdEkpiaDOcU2cahW2X-hf1XgqJLqKd_26wi3vxJy2ZJoX9TEKSU4yj08bIp2DT0bLoCPn-M2rgzVbjLTbVTQfFAQc1diJkE8Pfwa3_1j0q8gms8WmtM_JOaC0NDa20cyeNOL0qG-fbJ6tNiGmarTFk9-TQgduNgXmhP0sWl3I8xo5GShzhFHSXbtKwUM/s1600/leandro.jpg" alt="Locutor Leandro" class="w-16 h-16 rounded-full mr-4 object-cover">
-                        <div>
-                            <h3 class="font-bold">Leandro</h3>
-                            <p class="text-sm text-gray-600">Voz Versátil • Institucional</p>
-                        </div>
-                    </div>
-                    <audio controls class="w-full mt-4">
-                        <source src="https://testedomarcio.github.io/meuadio/Leandro.mp3" type="audio/mpeg">
-                        Seu navegador não suporta o elemento de áudio.
-                    </audio>
-                    <a href="https://www.vozparaanuncio.com.br/cadastro"
-                       target="_blank"
-                       class="mt-4 inline-block bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-full text-sm font-medium transition">
-                        Pedir esta voz
-                    </a>
-                </div>
-
-                <!-- Locutora Elissandra -->
-                <div class="bg-white p-6 rounded-xl shadow-md">
-                    <div class="flex items-center mb-4">
-                        <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjCloUH1n_D0nzPRDSOB6HhgNuVPC1EThMsYwac4w7HnPo0BuqV1GWo7feXupzuSf0tiFQzy4iDLmEczVpom11t035Irlo0tzFioOliANEN-YOfxV43IR5BwetxmAuP8PtIO_3NSH4gT5w8PsGDMplqS5AHF-ZY52FOKHc27jQXo6Vcl2u9WW7-qSu7bx4/s1600/Elissandra.jpg" alt="Locutora Elissandra" class="w-16 h-16 rounded-full mr-4 object-cover">
-                        <div>
-                            <h3 class="font-bold">Elissandra</h3>
-                            <p class="text-sm text-gray-600">Voz Jovem • Dinâmica</p>
-                        </div>
-                    </div>
-                    <audio controls class="w-full mt-4">
-                        <source src="https://testedomarcio.github.io/meuadio/elissandra.mp3" type="audio/mpeg">
-                        Seu navegador não suporta o elemento de áudio.
-                    </audio>
-                    <a href="https://www.vozparaanuncio.com.br/cadastro"
-                       target="_blank"
-                       class="mt-4 inline-block bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-full text-sm font-medium transition">
-                        Pedir esta voz
-                    </a>
-                </div>
-
-                <!-- Locutor Charles -->
-                <div class="bg-white p-6 rounded-xl shadow-md">
-                    <div class="flex items-center mb-4">
-                        <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh_NF0z-OZdFvVeYODL6jUgWw5MsEMN-m_HIrwTlxd0gmM3LIByGWnkxgm1wVQcg30LeQ9qJ8EQ0ergNqMy77Y95J2_Ehdhh4LEZu48JqEqRUIlAFN5D0fbxVVZxPNEyQPtAh0Gi9NyHTIE3Gum9gE1YXo8hjg-tos3x2bqqOznn6rTtotw8yB4w_ORQ/s1600/charles.png" alt="Locutor Charles" class="w-16 h-16 rounded-full mr-4 object-cover">
-                        <div>
-                            <h3 class="font-bold">Charles</h3>
-                            <p class="text-sm text-gray-600">Voz Impactante • Promocional</p>
-                        </div>
-                    </div>
-                    <audio controls class="w-full mt-4">
-                        <source src="https://testedomarcio.github.io/meuadio/Charles.mp3" type="audio/mpeg">
-                        Seu navegador não suporta o elemento de áudio.
-                    </audio>
-                    <a href="https://www.vozparaanuncio.com.br/cadastro"
-                       target="_blank"
-                       class="mt-4 inline-block bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-full text-sm font-medium transition">
+                    <a href="https://wa.me/5527997078794?text=Quero%20a%20voz%20do%20Celso" 
+                        class="mt-4 inline-block bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-full text-sm font-medium transition">
                         Pedir esta voz
                     </a>
                 </div>
             </div>
-
-            <div class="text-center mt-8">
-                <a href="https://www.vozparaanuncio.com.br/vozes" class="text-primary font-medium hover:underline">Ver todas as vozes (12 categorias)</a>
+            
+            <div class="text-center mt-12">
+                <a href="/vozes" class="text-primary font-medium hover:underline">Ver todas as vozes (12 categorias) →</a>
             </div>
-        </div>
-    </section>
-
-    <!-- Seção de Demonstração -->
-    <section class="py-20 bg-gray-50 px-6">
-        <div class="max-w-5xl mx-auto">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl md:text-4xl font-bold text-dark mb-4">Ouça a diferença</h2>
-                <p class="text-lg text-gray-600 max-w-2xl mx-auto">Comparação entre áudio amador e nossa locução profissional</p>
-            </div>
-
-            <div class="grid md:grid-cols-2 gap-8">
-                <div class="bg-white p-8 rounded-xl shadow-lg">
-                    <h3 class="text-xl font-bold mb-4 text-red-500">Áudio Caseiro</h3>
-                    <div class="mb-4 h-2 bg-gray-200 rounded-full">
-                        <div class="h-2 bg-red-400 rounded-full" style="width: 40%"></div>
-                    </div>
-                    <audio controls class="w-full mt-4">
-                        <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
-                    </audio>
-                    <ul class="mt-6 space-y-3 text-gray-600">
-                        <li class="flex items-start">
-                            <svg class="w-5 h-5 text-red-500 mr-2 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
-                            <span>Voz sem profissionalismo</span>
-                        </li>
-                        <li class="flex items-start">
-                            <svg class="w-5 h-5 text-red-500 mr-2 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
-                            <span>Ruído de fundo</span>
-                        </li>
-                        <li class="flex items-start">
-                            <svg class="w-5 h-5 text-red-500 mr-2 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
-                            <span>Baixa conversão</span>
-                        </li>
-                    </ul>
-                </div>
-
-                <div class="bg-white p-8 rounded-xl shadow-lg highlight-box">
-                    <h3 class="text-xl font-bold mb-4 text-green-600">Áudio Profissional</h3>
-                    <div class="mb-4 h-2 bg-gray-200 rounded-full">
-                        <div class="h-2 bg-green-500 rounded-full" style="width: 95%"></div>
-                    </div>
-                    <audio controls class="w-full mt-4">
-                        <source src="https://testedomarcio.github.io/meuadio/Cristian.mp3" type="audio/mpeg">
-                    </audio>
-                    <ul class="mt-6 space-y-3 text-gray-600">
-                        <li class="flex items-start">
-                            <svg class="w-5 h-5 text-green-500 mr-2 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
-                            <span>Voz impactante</span>
-                        </li>
-                        <li class="flex items-start">
-                            <svg class="w-5 h-5 text-green-500 mr-2 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
-                            <span>Áudio limpo e claro</span>
-                        </li>
-                        <li class="flex items-start">
-                            <svg class="w-5 h-5 text-green-500 mr-2 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
-                            <span>+47% de conversão*</span>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-
-            <p class="text-center text-sm text-gray-500 mt-8">*Resultado médio reportado por nossos clientes</p>
         </div>
     </section>
 
     <!-- Seção de Preços -->
-    <section class="py-20 px-6" id="pricing">
-        <div class="max-w-5xl mx-auto">
+    <section class="py-20 bg-white">
+        <div class="container mx-auto px-8">
             <div class="text-center mb-16">
-                <h2 class="text-3xl md:text-4xl font-bold text-dark mb-4">Planos e Preços</h2>
+                <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">Nossos Planos</h2>
                 <p class="text-lg text-gray-600 max-w-2xl mx-auto">Escolha o serviço perfeito para suas necessidades</p>
             </div>
-
+            
             <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-                <!-- Plano 1 -->
+                <!-- Plano 1: Locução Off -->
                 <div class="bg-white p-8 rounded-xl shadow-md border border-gray-200">
                     <h3 class="text-2xl font-bold mb-2">Locução Off</h3>
                     <p class="text-gray-600 mb-6">Apenas a gravação da voz, sem edição</p>
-
+                    
                     <div class="mb-6">
                         <span class="text-4xl font-bold">R$14,90</span>
-                        <span class="text-gray-500 line-through ml-2">R$18,00</span>
-                        <span class="block text-sm text-green-600 font-medium">Economize 20%</span>
+                        <span class="text-gray-500 line-through ml-2">R$18,90</span>
+                        <span class="block text-sm text-green-600 font-medium">Economize 21%</span>
                     </div>
-
+                    
                     <ul class="space-y-3 mb-8">
                         <li class="flex items-start">
-                            <svg class="w-5 h-5 text-green-500 mr-2 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                            <svg class="w-5 h-5 text-green-500 mr-2 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
                             <span>Entrega em 10 minutos</span>
                         </li>
                         <li class="flex items-start">
-                            <svg class="w-5 h-5 text-green-500 mr-2 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                            <svg class="w-5 h-5 text-green-500 mr-2 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
                             <span>+300 vozes disponíveis</span>
                         </li>
-                        <li class="flex items-start">
-                            <svg class="w-5 h-5 text-green-500 mr-2 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
-                            <span>Atendimento 24/7</span>
-                        </li>
                     </ul>
-
-                    <a href="https://www.vozparaanuncio.com.br/cadastro" class="block w-full bg-primary hover:bg-blue-700 text-white font-bold py-3 px-4 rounded-lg text-center transition duration-300">
+                    
+                    <a href="/cadastro" class="block w-full bg-primary hover:bg-blue-700 text-white font-bold py-3 px-4 rounded-lg text-center transition">
                         Pedir Locução Off
                     </a>
                 </div>
-
-                <!-- Plano 2 (Destaque) -->
+                
+                <!-- Plano 2 (Destaque): Produção Completa -->
                 <div class="bg-white p-8 rounded-xl shadow-lg border-2 border-secondary relative">
                     <div class="absolute top-0 right-0 bg-secondary text-white text-xs font-bold px-3 py-1 transform translate-y-[-50%] rounded-full">
                         MAIS POPULAR
                     </div>
-
+                    
                     <h3 class="text-2xl font-bold mb-2">Produção Completa</h3>
                     <p class="text-gray-600 mb-6">Voz + edição profissional + trilha</p>
-
+                    
                     <div class="mb-6">
                         <span class="text-4xl font-bold">R$29,90</span>
-                        <span class="text-gray-500 line-through ml-2">R$39,00</span>
-                        <span class="block text-sm text-green-600 font-medium">Economize 30%</span>
+                        <span class="text-gray-500 line-through ml-2">R$39,90</span>
+                        <span class="block text-sm text-green-600 font-medium">Economize 25%</span>
                     </div>
-
+                    
                     <ul class="space-y-3 mb-8">
                         <li class="flex items-start">
-                            <svg class="w-5 h-5 text-green-500 mr-2 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                            <svg class="w-5 h-5 text-green-500 mr-2 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
                             <span>Locução profissional</span>
                         </li>
                         <li class="flex items-start">
-                            <svg class="w-5 h-5 text-green-500 mr-2 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                            <svg class="w-5 h-5 text-green-500 mr-2 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
                             <span>Edição de áudio</span>
                         </li>
                         <li class="flex items-start">
-                            <svg class="w-5 h-5 text-green-500 mr-2 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                            <svg class="w-5 h-5 text-green-500 mr-2 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
                             <span>Trilha sonora inclusa</span>
                         </li>
-                        <li class="flex items-start">
-                            <svg class="w-5 h-5 text-green-500 mr-2 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
-                            <span>Revisões gratuitas</span>
-                        </li>
                     </ul>
-
-                    <a href="https://www.vozparaanuncio.com.br/cadastro" class="block w-full bg-secondary hover:bg-orange-700 text-white font-bold py-3 px-4 rounded-lg text-center transition duration-300">
+                    
+                    <a href="/cadastro" class="block w-full bg-secondary hover:bg-orange-700 text-white font-bold py-3 px-4 rounded-lg text-center transition">
                         Pedir Produção Completa
                     </a>
                 </div>
             </div>
-
-            <p class="text-center text-gray-500 mt-8 font-bold">
-                *Valores exclusivos para sua primeira compra, válidos somente durante a contagem regressiva!
-            </p>
-            <p class="text-center text-gray-500 mt-4 italic">
-                **Cada crédito corresponde a até 40 segundos de locução
-            </p>
-        </div>
-    </section>
-
-    <!-- Seção de Depoimentos -->
-    <section class="py-20 bg-gray-50 px-6">
-        <div class="max-w-5xl mx-auto">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl md:text-4xl font-bold text-dark mb-4">O que nossos clientes dizem</h2>
-                <p class="text-lg text-gray-600 max-w-2xl mx-auto">Não acredite em nós, acredite nos resultados</p>
-            </div>
-
-            <div class="grid md:grid-cols-2 gap-8">
-                <!-- Depoimento 1 -->
-                <div class="bg-white p-8 rounded-xl shadow-md">
-                    <div class="flex items-center mb-4">
-                        <div class="flex items-center mr-4">
-                            <div class="text-yellow-400 mr-1">★ ★ ★ ★ ★</div>
-                        </div>
-                        <div class="font-bold">Ana Paula</div>
-                    </div>
-                    <p class="text-gray-700 italic mb-4">"Precisava de uma locução urgente para um cliente às 23h de sábado. Em 15 minutos tinha o áudio perfeito em mãos. Salvou meu projeto!"</p>
-                    <div class="flex items-center">
-                        <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Ana Paula" class="w-10 h-10 rounded-full mr-3">
-                        <div>
-                            <div class="font-medium">Ana Paula</div>
-                            <div class="text-sm text-gray-500">Produtora de Vídeo</div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Depoimento 2 -->
-                <div class="bg-white p-8 rounded-xl shadow-md">
-                    <div class="flex items-center mb-4">
-                        <div class="flex items-center mr-4">
-                            <div class="text-yellow-400 mr-1">★ ★ ★ ★ ★</div>
-                        </div>
-                        <div class="font-bold">Carlos Eduardo</div>
-                    </div>
-                    <p class="text-gray-700 italic mb-4">"Depois que comecei a usar as locuções profissionais, meu CTR nos anúncios aumentou 62%. O investimento valeu cada centavo!"</p>
-                    <div class="flex items-center">
-                        <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhXYilO1uKrasa0mLsyWBmF1wgRJOq2ktLhvX5EjWYlywaDvUahx1wAXDAasRRfKC08Vk4sY4fOSOPjjXaL8DewjBFDbwRFn1mIfjauI564BgzK0kcJTy2FOjEoF_nkrzOUDr6suz7SLtND_XFtU15NIC6QyLNOwJyXUGRoCW03Xy5vNxoFF8Tjcgm5gVA/s320/homem.png" alt="Carlos Eduardo" class="w-10 h-10 rounded-full mr-3">
-                        <div>
-                            <div class="font-medium">Carlos Eduardo</div>
-                            <div class="text-sm text-gray-500">Dono de E-commerce</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Vídeo depoimento (se disponível) -->
-            <div class="mt-12 bg-white p-8 rounded-xl shadow-md max-w-3xl mx-auto">
-                <div class="aspect-w-16 aspect-h-9 bg-gray-200 rounded-lg overflow-hidden">
-                    <!-- Substituir pelo embed real do YouTube/Vimeo -->
-                    <div class="w-full h-full flex items-center justify-center bg-gray-800 text-white">
-                        [VÍDEO DEPOIMENTO]
-                    </div>
-                </div>
-                <div class="mt-4 text-center">
-                    <h4 class="font-bold">Depoimento em vídeo: Juliana - Agência de Marketing</h4>
-                    <p class="text-gray-600">"Aumentamos em 3x a conversão dos anúncios com as locuções profissionais"</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Seção de Perguntas Frequentes -->
-    <section class="py-20 px-6">
-        <div class="max-w-3xl mx-auto">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl md:text-4xl font-bold text-dark mb-4">Perguntas Frequentes</h2>
-                <p class="text-lg text-gray-600 max-w-2xl mx-auto">Tire suas dúvidas sobre nosso serviço</p>
-            </div>
-
-            <div class="space-y-4">
-                <!-- FAQ 1 -->
-                <div class="border border-gray-200 rounded-xl overflow-hidden">
-                    <button class="faq-toggle w-full flex justify-between items-center p-6 text-left font-medium">
-                        <span>Quanto tempo leva para receber minha locução?</span>
-                        <svg class="w-5 h-5 text-gray-500 transform transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
-                    </button>
-                    <div class="faq-content px-6 pb-6 hidden">
-                        <p class="text-gray-600">Nossa entrega padrão é de apenas 10 minutos para locuções off! Para produções completas (com edição), o prazo médio é de 1 hora. Em casos de alta demanda, pode levar até 2 horas, mas isso é raro.</p>
-                    </div>
-                </div>
-
-                <!-- FAQ 2 -->
-                <div class="border border-gray-200 rounded-xl overflow-hidden">
-                    <button class="faq-toggle w-full flex justify-between items-center p-6 text-left font-medium">
-                        <span>Como faço para solicitar uma locução?</span>
-                        <svg class="w-5 h-5 text-gray-500 transform transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
-                    </button>
-                    <div class="faq-content px-6 pb-6 hidden">
-                        <p class="text-gray-600">É super simples! Basta enviar seu texto pelo WhatsApp para (27) 99707-8794 ou através de nossa plataforma online. Você receberá um orçamento imediato e poderá escolher a voz que preferir.</p>
-                    </div>
-                </div>
-
-                <!-- FAQ 3 -->
-                <div class="border border-gray-200 rounded-xl overflow-hidden">
-                    <button class="faq-toggle w-full flex justify-between items-center p-6 text-left font-medium">
-                        <span>Posso pedir alterações após receber o áudio?</span>
-                        <svg class="w-5 h-5 text-gray-500 transform transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
-                    </button>
-                    <div class="faq-content px-6 pb-6 hidden">
-                        <p class="text-gray-600">Sim! Oferecemos 2 revisões gratuitas para ajustes no texto ou na entonação. Para produções completas, pequenos ajustes na edição também estão inclusos.</p>
-                    </div>
-                </div>
-
-                <!-- FAQ 4 -->
-                <div class="border border-gray-200 rounded-xl overflow-hidden">
-                    <button class="faq-toggle w-full flex justify-between items-center p-6 text-left font-medium">
-                        <span>Vocês trabalham com urgências durante a madrugada?</span>
-                        <svg class="w-5 h-5 text-gray-500 transform transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
-                    </button>
-                    <div class="faq-content px-6 pb-6 hidden">
-                        <p class="text-gray-600">Com certeza! Temos locutores de plantão 24 horas por dia, 7 dias por semana, inclusive nos feriados. Não importa a hora, estamos prontos para atender.</p>
-                    </div>
-                </div>
-            </div>
+            
+            <p class="text-center text-gray-500 mt-8">*Cada crédito corresponde a até 40 segundos de locução</p>
         </div>
     </section>
 
     <!-- Seção CTA Final -->
-    <section class="py-20 bg-primary text-white px-6" id="cta-section">
-        <div class="max-w-4xl mx-auto text-center">
+    <section class="py-24 bg-primary text-white">
+        <div class="container mx-auto px-8 text-center">
             <h2 class="text-3xl md:text-4xl font-bold mb-6">Pronto para transformar seus anúncios?</h2>
             <p class="text-xl mb-8 max-w-2xl mx-auto">Sua voz profissional está a apenas um clique de distância</p>
-
+            
             <div class="flex flex-col sm:flex-row justify-center gap-4 max-w-md mx-auto">
-                <a href="https://wa.me/5527997078794" class="bg-secondary hover:bg-orange-700 text-white font-bold py-4 px-8 rounded-full text-lg transition duration-300 shadow-lg flex items-center justify-center">
+                <a href="https://wa.me/5527997078794" class="bg-secondary hover:bg-orange-700 text-white px-8 py-4 rounded-full font-bold text-lg transition flex items-center justify-center">
                     <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
                     WhatsApp (Resposta Rápida)
                 </a>
+                <a href="/cadastro" class="bg-white hover:bg-gray-100 text-primary px-8 py-4 rounded-full font-bold text-lg transition">
+                    Criar Conta Grátis
+                </a>
             </div>
-
-            <p class="text-sm opacity-80 mt-6">
-                Ou se preferir, ligue para nós: <a href="tel:+5527997078794" class="font-bold underline">(27) 99707-8794</a>
-            </p>
         </div>
     </section>
 
     <!-- Rodapé -->
-    <footer class="bg-dark text-white py-10 px-6">
-        <div class="max-w-5xl mx-auto text-center">
-            <p class="text-sm opacity-70">&copy; <span id="current-year"></span> Voz para Anúncio. Todos os direitos reservados.</p>
-            <p class="text-sm opacity-70 mt-4">
-                📞 Atendimento via WhatsApp: <a href="https://wa.me/5527997078794" class="underline font-bold">(27) 99707-8794</a>
-            </p>
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="container mx-auto px-8">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4 text-white">Voz para Anúncio</h3>
+                    <p class="text-gray-400">Locução profissional 24 horas com a mais rápida entrega do mercado.</p>
+                </div>
+                
+                <div>
+                    <h3 class="text-xl font-bold mb-4 text-white">Serviços</h3>
+                    <ul class="space-y-2">
+                        <li><a href="/vozes" class="text-gray-400 hover:text-white transition">Vozes</a></li>
+                        <li><a href="/servicos" class="text-gray-400 hover:text-white transition">Serviços</a></li>
+                        <li><a href="/precos" class="text-gray-400 hover:text-white transition">Preços</a></li>
+                        <li><a href="/faq" class="text-gray-400 hover:text-white transition">FAQ</a></li>
+                        <li><a href="/termos" class="text-gray-400 hover:text-white transition">Termos</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-xl font-bold mb-4 text-white">Contato</h3>
+                    <ul class="space-y-2">
+                        <li class="flex items-start">
+                            <svg class="w-5 h-5 mr-2 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+                            <a href="tel:+5527997078794" class="text-gray-400 hover:text-white transition">(27) 99707-8794</a>
+                        </li>
+                        <li class="flex items-start">
+                            <svg class="w-5 h-5 mr-2 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+                            <a href="mailto:contato@vozparaanuncio.com.br" class="text-gray-400 hover:text-white transition">contato@vozparaanuncio.com.br</a>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-xl font-bold mb-4 text-white">Redes Sociais</h3>
+                    <div class="flex space-x-4">
+                        <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-primary transition">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M22.675 0h-21.35c-.732 0-1.325.593-1.325 1.325v21.351c0 .731.593 1.324 1.325 1.324h11.495v-9.294h-3.128v-3.622h3.128v-2.671c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.313h3.587l-.467 3.622h-3.12v9.293h6.116c.73 0 1.323-.593 1.323-1.325v-21.35c0-.732-.593-1.325-1.325-1.325z"/></svg>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-primary transition">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-700 pt-8 mt-8 text-center">
+                <p class="text-gray-400 text-sm">&copy; <span id="year"></span> Voz para Anúncio. Todos os direitos reservados.</p>
+            </div>
         </div>
     </footer>
 
+    <!-- Botão do WhatsApp -->
+    <a href="https://wa.me/5527997078794" class="fixed bottom-6 right-6 bg-green-500 hover:bg-green-600 text-white p-4 rounded-full shadow-lg z-50 animate-bounce">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+    </a>
+
     <script>
-        // Função para atualizar o ano no rodapé
-        document.getElementById('current-year').textContent = new Date().getFullYear();
-
-        // Lógica da contagem regressiva
-        function startCountdown(durationInHours) {
-            const hoursDisplay = document.getElementById('hours');
-            const minutesDisplay = document.getElementById('minutes');
-            const secondsDisplay = document.getElementById('seconds');
-            let endTime = new Date();
-            endTime.setHours(endTime.getHours() + durationInHours);
-
-            function updateCountdown() {
-                const now = new Date().getTime();
-                const distance = endTime.getTime() - now;
-
-                if (distance < 0) {
-                    hoursDisplay.textContent = "00";
-                    minutesDisplay.textContent = "00";
-                    secondsDisplay.textContent = "00";
-                    clearInterval(countdownInterval);
-                    return;
-                }
-
-                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-                const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-                hoursDisplay.textContent = hours.toString().padStart(2, '0');
-                minutesDisplay.textContent = minutes.toString().padStart(2, '0');
-                secondsDisplay.textContent = seconds.toString().padStart(2, '0');
-            }
-
-            updateCountdown(); // Atualiza imediatamente
-            const countdownInterval = setInterval(updateCountdown, 1000); // Atualiza a cada segundo
-        }
-
-        // Inicia a contagem regressiva para 3 horas
-        startCountdown(3);
-
-        // Lógica para FAQ
-        document.querySelectorAll('.faq-toggle').forEach(button => {
-            button.addEventListener('click', () => {
-                const content = button.nextElementSibling;
-                const svg = button.querySelector('svg');
-
-                content.classList.toggle('hidden');
-                svg.classList.toggle('rotate-180');
-            });
-        });
+        // Atualiza o ano no rodapé
+        document.getElementById('year').textContent = new Date().getFullYear();
     </script>
-
-    <!-- Código do Chat -->
-    <script>(function(a,b,c,d){try{var e=b.head||b.getElementsByTagName("head")[0];var f=b.createElement("script");f.setAttribute("src",c);f.setAttribute("charset","UTF-8");f.defer=true;a.neuroleadId=d;e.appendChild(f)}catch(g){}})(window,document,"https://cdn.leadster.com.br/neurolead/neurolead.min.js","ORJ1d5HfphPelhTwNmke3zJM6")</script>
 </body>
 </html>
