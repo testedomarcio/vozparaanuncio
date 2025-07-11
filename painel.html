@@ -24,6 +24,7 @@
                         'light-gray': '#e2e8f0', /* Cinza claro para seções de fundo */
                         'white': '#ffffff', /* Branco */
                         'dark-header': '#111827', /* Cor para o cabeçalho */
+                        'secondary': '#FF6B00', /* Laranja - Adicionado para a tarja */
                     },
                     fontFamily: {
                         inter: ['Inter', 'sans-serif'], /* Fonte Inter para todo o site */
@@ -43,7 +44,7 @@
         /* Estilo para o iframe para garantir que ele ocupe o máximo de espaço */
         .iframe-container {
             width: 100%;
-            height: 100vh; /* Ocupa 100% da altura da viewport */
+            height: calc(100vh - 56px); /* Ocupa 100% da altura da viewport menos a altura da tarja */
             padding-top: 0; /* Não há cabeçalho para compensar */
             background-color: #1d41ab; /* Cor de fundo adicionada para preencher o espaço */
         }
@@ -53,6 +54,34 @@
             display: block;
             margin: 0; /* Remove qualquer margem */
             border: none; /* Remove a borda padrão do iframe */
+        }
+        /* Estilo para a tarja de aviso */
+        .tutorial-banner {
+            background-color: #FF6B00; /* Cor laranja secundária */
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap; /* Permite que os itens quebrem a linha em telas menores */
+            gap: 10px; /* Espaçamento entre os itens */
+            position: sticky;
+            top: 0;
+            z-index: 50;
+        }
+        .tutorial-banner a {
+            background-color: white;
+            color: #FF6B00; /* Cor do texto do botão para combinar com a tarja */
+            padding: 8px 15px;
+            border-radius: 9999px; /* Botão arredondado */
+            font-weight: bold;
+            transition: background-color 0.3s ease, color 0.3s ease;
+            white-space: nowrap; /* Evita que o texto do botão quebre */
+        }
+        .tutorial-banner a:hover {
+            background-color: #f0f0f0; /* Um cinza claro no hover */
+            color: #E65A00; /* Um laranja mais escuro no hover */
         }
     </style>
 
@@ -67,26 +96,24 @@
     <!-- Event snippet for Visualização de página conversion page -->
     <script>
       gtag('event', 'conversion', {
-          'send_to': 'AW-17294217421/wsZ2CIaO2ucaEM2hw7ZA',
-          'value': 1.0,
-          'currency': 'BRL'
-      });
+            'send_to': 'AW-17294217421/wsZ2CIaO2ucaEM2hw7ZA',
+            'value': 1.0,
+            'currency': 'BRL'
+        });
     </script>
 </head>
 <body>
 
-    <!-- Cabeçalho / Barra de Navegação - REMOVIDO -->
+    <!-- Tarja de aviso de tutoriais -->
+    <div class="tutorial-banner">
+        <span>Confira tutoriais em vídeo de como utilizar o Painel de Gravação:</span>
+        <a href="https://www.vozparaanuncio.com.br/tutorial" target="_blank">Ver Tutoriais</a>
+    </div>
 
     <!-- Seção do Iframe com o site de login -->
     <section class="iframe-container">
         <iframe src="https://paineldegravacao.com.br/vozparaanuncio" name="painelLogin" scrolling="auto" title="Página de Login Voz para Anúncio"></iframe>
     </section>
 
-    <!-- Rodapé - REMOVIDO -->
-
-    <script>
-        // Atualiza o ano no rodapé automaticamente - Este script não é mais necessário sem o rodapé, mas mantido para evitar erros se outras partes do site o esperarem.
-        // document.getElementById('current-year').textContent = new Date().getFullYear();
-    </script>
 </body>
 </html>
