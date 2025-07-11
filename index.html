@@ -82,6 +82,21 @@ function gtag_report_conversion(url) {
             transform: translateY(-5px);
             box-shadow: 0 10px 25px rgba(0,0,0,0.1);
         }
+        .container {
+            max-width: 1200px;
+            padding-left: 1.5rem;
+            padding-right: 1.5rem;
+        }
+        @media (min-width: 1024px) {
+            .voice-card {
+                max-width: 350px;
+            }
+            .feature-card {
+                max-width: 380px;
+                margin-left: auto;
+                margin-right: auto;
+            }
+        }
     </style>
 </head>
 
@@ -94,7 +109,7 @@ function gtag_report_conversion(url) {
 
     <!-- Cabeçalho -->
     <header class="bg-white shadow-md py-4 sticky top-8 z-40">
-        <div class="container mx-auto px-8 flex justify-between items-center">
+        <div class="container mx-auto px-4 flex justify-between items-center">
             <a href="/" class="text-2xl font-bold text-primary">Voz para Anúncio</a>
             
             <nav class="hidden md:flex space-x-8">
@@ -116,7 +131,7 @@ function gtag_report_conversion(url) {
 
     <!-- Hero Section -->
     <section class="hero-gradient text-white py-20 md:py-32">
-        <div class="container mx-auto px-8 text-center">
+        <div class="container mx-auto px-4 text-center">
             <h1 class="text-4xl md:text-6xl font-bold leading-tight mb-6 max-w-4xl mx-auto">
                 <span class="text-secondary">Voz Profissional</span> para Seu Anúncio 
                 <br><span class="text-2xl md:text-4xl">Pronta em <u>10 Minutos</u> - 24h/dia</span>
@@ -154,26 +169,26 @@ function gtag_report_conversion(url) {
 
     <!-- Seção de Diferenciais (Agora primeiro bloco após o Hero) -->
     <section class="py-20">
-        <div class="container mx-auto px-8">
+        <div class="container mx-auto px-4">
             <div class="text-center mb-16">
                 <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">Por que escolher a Voz para Anúncio?</h2>
                 <p class="text-lg text-gray-600 max-w-2xl mx-auto">Nossos diferenciais que fazem a diferença no seu projeto</p>
             </div>
             
             <div class="grid md:grid-cols-3 gap-8">
-                <div class="bg-white p-8 rounded-xl shadow-md border border-gray-100 hover:border-secondary transition duration-300">
+                <div class="bg-white p-6 rounded-xl shadow-md border border-gray-100 hover:border-secondary transition duration-300 feature-card">
                     <div class="text-4xl mb-6">⚡</div>
                     <h3 class="text-xl font-bold mb-3">O Mais Rápido do Mercado</h3>
                     <p class="text-gray-600">Entregamos sua locução em até 10 minutos. Ideal para quem precisa de agilidade sem abrir mão da qualidade.</p>
                 </div>
                 
-                <div class="bg-white p-8 rounded-xl shadow-md border border-gray-100 hover:border-secondary transition duration-300">
+                <div class="bg-white p-6 rounded-xl shadow-md border border-gray-100 hover:border-secondary transition duration-300 feature-card">
                     <div class="text-4xl mb-6">🌙</div>
                     <h3 class="text-xl font-bold mb-3">Disponível 24 Horas</h3>
                     <p class="text-gray-600">Precisa de uma locução às 3h da manhã de domingo? Sem problemas! Nossos locutores estão sempre disponíveis.</p>
                 </div>
                 
-                <div class="bg-white p-8 rounded-xl shadow-md border border-gray-100 hover:border-secondary transition duration-300">
+                <div class="bg-white p-6 rounded-xl shadow-md border border-gray-100 hover:border-secondary transition duration-300 feature-card">
                     <div class="text-4xl mb-6">🎧</div>
                     <h3 class="text-xl font-bold mb-3">Qualidade Studio</h3>
                     <p class="text-gray-600">Gravação em estúdio profissional com equipamentos de última geração para um áudio cristalino.</p>
@@ -184,22 +199,22 @@ function gtag_report_conversion(url) {
 
     <!-- Seção de Demonstração de Vozes (Agora segundo bloco após o Hero) -->
     <section class="py-20 bg-gray-50">
-        <div class="container mx-auto px-8">
+        <div class="container mx-auto px-4">
             <div class="text-center mb-16">
                 <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">Conheça Nossas Vozes <span class="text-secondary">Premium</span></h2>
                 <p class="text-lg text-gray-600 max-w-2xl mx-auto">Ouça a diferença que uma locução profissional faz</p>
             </div>
             
-            <div class="grid md:grid-cols-3 gap-8">
+            <div class="grid md:grid-cols-3 gap-8 justify-center">
                 <!-- Locutor 1 -->
-                <div class="bg-white p-6 rounded-xl shadow-md voice-card transition duration-300">
+                <div class="bg-white p-6 rounded-xl shadow-md voice-card transition duration-300 mx-auto">
                     <div class="flex items-center mb-4">
                         <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgW5ivfZ6HnwekM89taPi_GS3DVKQsLOU8smsJpNrjsANLaeXkGa1OpQMeVWF6HX0Tx0PYn1mRjqIJDJY2ONZeDr_YU5G06rnDJA_mM9OdGNdd58AwZ-9H1hoZks1u-t3UcruD1J6xZMsaAmsWLtIhyQpEYehuhPC8tjjTInWfjc5g4DY8kwz6tD-HnbPM/s1600/Cristian.jfif" 
                                 alt="Locutor Cristian Jr." 
                                 class="w-16 h-16 rounded-full object-cover mr-4">
                         <div>
                             <h3 class="font-bold">Cristian Jr.</h3>
-                            <p class="text-sm text-gray-600">Voz Profunda • Publicidade</p>
+                            <p class="text-sm text-gray-600">Estilo PADRÃO, JOVEM, VAREJO, INSTITUCIONAL, UP-FESTAS</p>
                         </div>
                     </div>
                     <audio controls class="w-full mt-4">
@@ -212,14 +227,14 @@ function gtag_report_conversion(url) {
                 </div>
                 
                 <!-- Locutor 2 -->
-                <div class="bg-white p-6 rounded-xl shadow-md voice-card transition duration-300">
+                <div class="bg-white p-6 rounded-xl shadow-md voice-card transition duration-300 mx-auto">
                     <div class="flex items-center mb-4">
                         <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj6-mtu5kT3vd84VMheOoXmFM0_hp6dHNp22E7kjxaZ3mK3c1D_bzRp_ckapn6BcZL5Vs_y7aoxTOMilnKc5_HmvIiAhUg9kglE5ZTJpj73kDdUgx5og4Hb6_sGeR5DcTifXQy4vBONtUq6e6lZOrmFMBdlKxeS_8NWlbuneKaaNbWj4iXD0ZrfTk0868U/s1600/lindy.jpeg" 
                                 alt="Locutora Lindy" 
                                 class="w-16 h-16 rounded-full object-cover mr-4">
                         <div>
                             <h3 class="font-bold">Lindy</h3>
-                            <p class="text-sm text-gray-600">Voz Feminina • Jingle</p>
+                            <p class="text-sm text-gray-600">Estilo PADRÃO, JOVEM, VAREJO, INSTITUCIONAL, UP-FESTAS</p>
                         </div>
                     </div>
                     <audio controls class="w-full mt-4">
@@ -232,14 +247,14 @@ function gtag_report_conversion(url) {
                 </div>
                 
                 <!-- Locutor 3 -->
-                <div class="bg-white p-6 rounded-xl shadow-md voice-card transition duration-300">
+                <div class="bg-white p-6 rounded-xl shadow-md voice-card transition duration-300 mx-auto">
                     <div class="flex items-center mb-4">
                         <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi85znRxtP6hdjBHC2oHa9rdKJuGejTNP9r2LWiGm90QAS2dFp1ITqR9NqSXdHX9q0Ox65L61LQXPajB9a3fBYENViCDDppGhME4PWvAHba4MZ-XKHJtdL6fXYqAfYhoa65rmntXVVp29iFTGQ9KuosQ9eLOkDWXCk9ma28Hv9p4iUDxjxAwfmBUP7f64g/s1600/celso.jpg" 
                                 alt="Locutor Celso" 
                                 class="w-16 h-16 rounded-full object-cover mr-4">
                         <div>
                             <h3 class="font-bold">Celso</h3>
-                            <p class="text-sm text-gray-600">Voz Autoritária • Documentários</p>
+                            <p class="text-sm text-gray-600">Estilo VAREJO, INSTITUCIONAL, IMPACTO, ALEGRE, PADRAO</p>
                         </div>
                     </div>
                     <audio controls class="w-full mt-4">
@@ -260,7 +275,7 @@ function gtag_report_conversion(url) {
 
     <!-- Seção de Preços -->
     <section class="py-20 bg-white">
-        <div class="container mx-auto px-8">
+        <div class="container mx-auto px-4">
             <div class="text-center mb-16">
                 <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">Nossos Planos</h2>
                 <p class="text-lg text-gray-600 max-w-2xl mx-auto">Escolha o serviço perfeito para suas necessidades</p>
@@ -336,7 +351,7 @@ function gtag_report_conversion(url) {
 
     <!-- Seção CTA Final -->
     <section class="py-24 bg-primary text-white">
-        <div class="container mx-auto px-8 text-center">
+        <div class="container mx-auto px-4 text-center">
             <h2 class="text-3xl md:text-4xl font-bold mb-6">Pronto para transformar seus anúncios?</h2>
             <p class="text-xl mb-8 max-w-2xl mx-auto">Sua voz profissional está a apenas um clique de distância</p>
             
@@ -354,7 +369,7 @@ function gtag_report_conversion(url) {
 
     <!-- Rodapé -->
     <footer class="bg-gray-900 text-white py-12">
-        <div class="container mx-auto px-8">
+        <div class="container mx-auto px-4">
             <div class="grid md:grid-cols-4 gap-8">
                 <div>
                     <h3 class="text-xl font-bold mb-4 text-white">Voz para Anúncio</h3>
