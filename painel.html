@@ -2,118 +2,438 @@
 <html lang="pt-BR">
 <head>
 
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-17336714744">
+</script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'AW-17336714744');
+</script>
+
+    <!-- Event snippet for Visualização de página conversion page
+In your html page, add the snippet and call gtag_report_conversion when someone clicks on the chosen link or button. -->
+<script>
+function gtag_report_conversion(url) {
+  var callback = function () {
+    if (typeof(url) != 'undefined') {
+      window.location = url;
+    }
+  };
+  gtag('event', 'conversion', {
+      'send_to': 'AW-17336714744/nUuWCNbYh-4aEPiL5cpA',
+      'value': 1.0,
+      'currency': 'BRL',
+      'event_callback': callback
+  });
+  return false;
+}
+</script>
+
+    
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Voz para Anúncio - Login</title>
-    <meta name="description" content="Acesse sua conta na Voz para Anúncio para gerenciar seus pedidos de locução e produção de áudio.">
-    <meta name="keywords" content="login, voz para anúncio, painel, acesso, plataforma">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <!-- Inclui o CDN do Tailwind CSS -->
+    <title>Voz para Anúncio - Locução Profissional | Entrega em rápida</title>
+    <meta name="description" content="Locução profissional 24h com +300 vozes. Seu áudio pronto em 10 minutos com garantia de satisfação. Ideal para agências, produtores e comerciantes.">
+    <meta name="keywords" content="locução profissional 24h, produção de áudio rápido, voz para anúncios urgente, gravação em off, locutores para propaganda">
+    
+    <!-- Pré-carregar recursos -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
-        // Configuração personalizada do Tailwind CSS para incluir as cores da marca
         tailwind.config = {
             theme: {
                 extend: {
                     colors: {
-                        'primary': '#1c3faa', /* Cor principal da marca (azul escuro) */
-                        'button-main': '#d32929', /* Cor para botões principais (vermelho) */
-                        'button-secondary': '#91c714', /* Cor para botões secundários (verde) */
-                        'neutral-gray': '#718096', /* Tom de cinza neutro */
-                        'yellow-accent': '#fbc500', /* Cor de destaque (amarelo) */
-                        'light-gray': '#e2e8f0', /* Cinza claro para seções de fundo */
-                        'white': '#ffffff', /* Branco */
-                        'dark-header': '#111827', /* Cor para o cabeçalho */
-                        'secondary': '#FF6B00', /* Laranja - Adicionado para a tarja */
+                        primary: '#2A5BDD',
+                        secondary: '#FF6B00',
+                        dark: '#1E293B',
+                        light: '#F8FAFC',
+                        highlight: '#00C897'
                     },
                     fontFamily: {
-                        inter: ['Inter', 'sans-serif'], /* Fonte Inter para todo o site */
+                        inter: ['Inter', 'sans-serif'],
+                    },
+                    spacing: {
+                        '18': '4.5rem',
                     }
                 }
             }
         }
     </script>
+    
     <style>
-        /* Estilos globais para a fonte e cor de fundo */
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: #ffffff; /* Fundo branco para todo o site */
-            margin: 0; /* Garante que não há margem padrão no corpo */
-            overflow: hidden; /* Evita barras de rolagem indesejadas se o iframe for 100vh */
+        /* Estilos otimizados */
+        .hero-gradient {
+            background: linear-gradient(135deg, #1A3E9C 0%, #2A5BDD 100%);
         }
-        /* Estilo para o iframe para garantir que ele ocupe o máximo de espaço */
-        .iframe-container {
-            width: 100%;
-            height: calc(100vh - 56px); /* Ocupa 100% da altura da viewport menos a altura da tarja */
-            padding-top: 0; /* Não há cabeçalho para compensar */
-            background-color: #1d41ab; /* Cor de fundo adicionada para preencher o espaço */
+        .cta-pulse {
+            animation: pulse 2s infinite;
         }
-        .iframe-container iframe {
-            width: 100%;
-            height: 100%; /* Ocupa 100% da altura do seu contêiner (100vh) */
-            display: block;
-            margin: 0; /* Remove qualquer margem */
-            border: none; /* Remove a borda padrão do iframe */
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
         }
-        /* Estilo para a tarja de aviso */
-        .tutorial-banner {
-            background-color: #FF6B00; /* Cor laranja secundária */
-            color: white;
-            padding: 10px 20px;
-            text-align: center;
+        .voice-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+        .container {
+            max-width: 1200px;
+            padding-left: 1.25rem;
+            padding-right: 1.25rem;
+        }
+        .feature-card {
+            height: 100%;
             display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-wrap: wrap; /* Permite que os itens quebrem a linha em telas menores */
-            gap: 10px; /* Espaçamento entre os itens */
-            position: sticky;
-            top: 0;
-            z-index: 50;
+            flex-direction: column;
         }
-        .tutorial-banner a {
-            background-color: white;
-            color: #FF6B00; /* Cor do texto do botão para combinar com a tarja */
-            padding: 8px 15px;
-            border-radius: 9999px; /* Botão arredondado */
-            font-weight: bold;
-            transition: background-color 0.3s ease, color 0.3s ease;
-            white-space: nowrap; /* Evita que o texto do botão quebre */
+        .voice-description {
+            font-size: 0.875rem;
+            line-height: 1.4;
+            margin-top: 0.25rem;
         }
-        .tutorial-banner a:hover {
-            background-color: #f0f0f0; /* Um cinza claro no hover */
-            color: #E65A00; /* Um laranja mais escuro no hover */
+        audio {
+            border-radius: 8px;
+            height: 40px;
+        }
+        audio::-webkit-media-controls-panel {
+            background-color: #f3f4f6;
         }
     </style>
-
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17294217421"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'AW-17294217421');
-    </script>
-    <!-- Event snippet for Visualização de página conversion page -->
-    <script>
-      gtag('event', 'conversion', {
-            'send_to': 'AW-17294217421/wsZ2CIaO2ucaEM2hw7ZA',
-            'value': 1.0,
-            'currency': 'BRL'
-        });
-    </script>
 </head>
-<body>
 
-    <!-- Tarja de aviso de tutoriais -->
-    <div class="tutorial-banner">
-        <span>Confira tutoriais em vídeo de como utilizar o Painel de Gravação:</span>
-        <a href="https://www.vozparaanuncio.com.br/tutorial" target="_blank">Ver Tutoriais</a>
+<body class="font-inter bg-white text-gray-800">
+    <!-- Barra de contato no topo -->
+    <div class="bg-secondary text-white py-2 px-4 text-center font-medium sticky top-0 z-50 text-sm sm:text-base">
+        WhatsApp: <a href="https://wa.me/5527997078794" class="font-bold underline">(27) 99707-8794</a> | 
+        Email: <a href="mailto:contato@vozparaanuncio.com.br" class="font-bold underline">contato@vozparaanuncio.com.br</a>
     </div>
 
-    <!-- Seção do Iframe com o site de login -->
-    <section class="iframe-container">
-        <iframe src="https://paineldegravacao.com.br/vozparaanuncio" name="painelLogin" scrolling="auto" title="Página de Login Voz para Anúncio"></iframe>
+    <!-- Cabeçalho -->
+    <header class="bg-white shadow-md py-4 sticky top-8 z-40">
+        <div class="container mx-auto px-4 flex justify-between items-center">
+            <a href="/" class="text-xl sm:text-2xl font-bold text-primary">Voz para Anúncio</a>
+            
+            <nav class="hidden md:flex space-x-6 lg:space-x-8">
+                <a href="https://www.vozparaanuncio.com.br" class="font-medium hover:text-primary transition">Início</a>
+                <a href="/vozes" class="font-medium hover:text-primary transition">Vozes</a>
+                <a href="/servicos" class="font-medium hover:text-primary transition">Serviços</a>
+                <a href="/precos" class="font-medium hover:text-primary transition">Preços</a>
+                <a href="/tutorial" class="font-medium hover:text-primary transition">Tutoriais</a>
+                <a href="https://www.vozparaanuncio.com.br/faq" class="font-medium hover:text-primary transition">FAQ</a>
+            </nav>
+            
+            <div class="flex items-center space-x-3 sm:space-x-4">
+                <a href="/painel" class="hidden md:inline-block bg-gray-100 hover:bg-gray-200 px-3 py-1.5 sm:px-4 sm:py-2 rounded-lg font-medium transition text-sm sm:text-base">Login</a>
+                <a href="/cadastro" class="bg-primary hover:bg-blue-700 text-white px-3 py-1.5 sm:px-4 sm:py-2 rounded-lg font-medium transition text-sm sm:text-base">Cadastre-se</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-gradient text-white py-16 md:py-24">
+        <div class="container mx-auto px-4 text-center">
+            <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-4 md:mb-6 max-w-4xl mx-auto">
+                <span class="text-secondary">Voz Profissional</span> para Seu Anúncio 
+                <br><span class="text-xl sm:text-2xl md:text-3xl lg:text-4xl">Locução profissional com <u>entrega rápida</u></span>
+
+            </h1>
+            
+            <p class="text-lg sm:text-xl md:text-2xl mb-8 md:mb-10 max-w-3xl mx-auto">
+              Locuções profissionais, com agilidade e interpretação sob medida para o seu projeto.
+            </p>
+            
+            <div class="flex flex-col sm:flex-row justify-center gap-3 sm:gap-4 max-w-md mx-auto">
+                <a href="/vozes" class="cta-pulse bg-secondary hover:bg-orange-700 text-white px-6 py-3 sm:px-8 sm:py-4 rounded-full font-bold text-base sm:text-lg transition">
+                    Ouça Nossas Vozes
+                </a>
+                <a href="/cadastro" class="bg-white hover:bg-gray-100 text-primary px-6 py-3 sm:px-8 sm:py-4 rounded-full font-bold text-base sm:text-lg transition">
+                    Criar Conta Grátis
+                </a>
+            </div>
+            
+            <div class="mt-10 md:mt-12 flex flex-wrap justify-center gap-4 sm:gap-6 text-sm sm:text-base">
+                <div class="flex items-center">
+                    <svg class="w-4 h-4 sm:w-5 sm:h-5 text-green-400 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                    <span>Entrega rápida com qualidade profissional</span>
+                </div>
+                <div class="flex items-center">
+                    <svg class="w-4 h-4 sm:w-5 sm:h-5 text-green-400 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                    <span>Vozes humanas para todos os estilos e projetos</span>
+                </div>
+               
+        </div>
     </section>
 
+    <!-- Seção de Diferenciais -->
+    <section class="py-12 md:py-16">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12 md:mb-14">
+                <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold text-primary mb-3 md:mb-4">Por que escolher a Voz para Anúncio?</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Nossos diferenciais que fazem a diferença no seu projeto</p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-6 md:gap-8 max-w-5xl mx-auto">
+                <div class="bg-white p-6 rounded-xl shadow-md border border-gray-100 hover:border-secondary transition duration-300 feature-card">
+                    <div class="text-4xl mb-4">⚡</div>
+                    <h3 class="text-lg sm:text-xl font-bold mb-2 sm:mb-3">O Mais Rápido do Mercado</h3>
+                    <p class="text-gray-600 text-sm sm:text-base">Você pode enviar seu pedido a qualquer hora. Nossa equipe trabalha com agilidade e atenção para garantir um atendimento eficiente.</p>
+                </div>
+                
+                <div class="bg-white p-6 rounded-xl shadow-md border border-gray-100 hover:border-secondary transition duration-300 feature-card">
+                    <div class="text-4xl mb-4">🌙</div>
+                    <h3 class="text-lg sm:text-xl font-bold mb-2 sm:mb-3">Suporte Quando Você Precisa</h3>
+                    <p class="text-gray-600 text-sm sm:text-base">Precisa de uma locução às 3h da manhã de domingo? Sem problemas! Nossos locutores estão sempre disponíveis.</p>
+                </div>
+                
+                <div class="bg-white p-6 rounded-xl shadow-md border border-gray-100 hover:border-secondary transition duration-300 feature-card">
+                    <div class="text-4xl mb-4">🎧</div>
+                    <h3 class="text-lg sm:text-xl font-bold mb-2 sm:mb-3">Áudio com Qualidade Profissional</h3>
+                    <p class="text-gray-600 text-sm sm:text-base">Gravado em estúdio profissional com equipamentos de ponta, garantindo som limpo, nítido e pronto para uso imediato.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção de Demonstração de Vozes -->
+    <section class="py-12 md:py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12 md:mb-14">
+                <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold text-primary mb-3 md:mb-4">Conheça Nossas Vozes <span class="text-secondary">Premium</span></h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Ouça a diferença que uma locução profissional faz</p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-6 md:gap-8 max-w-5xl mx-auto">
+                <!-- Locutor 1 -->
+                <div class="bg-white p-5 sm:p-6 rounded-xl shadow-md voice-card transition duration-300 mx-auto w-full max-w-sm">
+                    <div class="flex items-center mb-3 sm:mb-4">
+                        <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgW5ivfZ6HnwekM89taPi_GS3DVKQsLOU8smsJpNrjsANLaeXkGa1OpQMeVWF6HX0Tx0PYn1mRjqIJDJY2ONZeDr_YU5G06rnDJA_mM9OdGNdd58AwZ-9H1hoZks1u-t3UcruD1J6xZMsaAmsWLtIhyQpEYehuhPC8tjjTInWfjc5g4DY8kwz6tD-HnbPM/s1600/Cristian.jfif" 
+                                alt="Locutor Cristian Jr." 
+                                class="w-14 h-14 sm:w-16 sm:h-16 rounded-full object-cover mr-3 sm:mr-4">
+                        <div>
+                            <h3 class="font-bold text-base sm:text-lg">Cristian Jr.</h3>
+                            <p class="voice-description text-gray-600">Estilo: padrão, jovem, varejo, institucional, up-festas</p>
+                        </div>
+                    </div>
+                    <audio controls class="w-full mt-3 sm:mt-4">
+                        <source src="https://testedomarcio.github.io/meuadio/Cristian.mp3" type="audio/mpeg">
+                    </audio>
+                    <a href="https://wa.me/5527997078794?text=Quero%20a%20voz%20do%20Cristian%20Jr." 
+                        class="mt-3 sm:mt-4 inline-block bg-green-500 hover:bg-green-600 text-white px-3 py-1.5 sm:px-4 sm:py-2 rounded-full text-xs sm:text-sm font-medium transition w-full text-center">
+                        Pedir esta voz
+                    </a>
+                </div>
+                
+                <!-- Locutor 2 -->
+                <div class="bg-white p-5 sm:p-6 rounded-xl shadow-md voice-card transition duration-300 mx-auto w-full max-w-sm">
+                    <div class="flex items-center mb-3 sm:mb-4">
+                        <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj6-mtu5kT3vd84VMheOoXmFM0_hp6dHNp22E7kjxaZ3mK3c1D_bzRp_ckapn6BcZL5Vs_y7aoxTOMilnKc5_HmvIiAhUg9kglE5ZTJpj73kDdUgx5og4Hb6_sGeR5DcTifXQy4vBONtUq6e6lZOrmFMBdlKxeS_8NWlbuneKaaNbWj4iXD0ZrfTk0868U/s1600/lindy.jpeg" 
+                                alt="Locutora Lindy" 
+                                class="w-14 h-14 sm:w-16 sm:h-16 rounded-full object-cover mr-3 sm:mr-4">
+                        <div>
+                            <h3 class="font-bold text-base sm:text-lg">Lindy</h3>
+                            <p class="voice-description text-gray-600">Estilo: padrão, jovem, varejo, institucional, up-festas</p>
+                        </div>
+                    </div>
+                    <audio controls class="w-full mt-3 sm:mt-4">
+                        <source src="https://testedomarcio.github.io/meuadio/Lindy.mp3" type="audio/mpeg">
+                    </audio>
+                    <a href="https://wa.me/5527997078794?text=Quero%20a%20voz%20da%20Lindy" 
+                        class="mt-3 sm:mt-4 inline-block bg-green-500 hover:bg-green-600 text-white px-3 py-1.5 sm:px-4 sm:py-2 rounded-full text-xs sm:text-sm font-medium transition w-full text-center">
+                        Pedir esta voz
+                    </a>
+                </div>
+                
+                <!-- Locutor 3 -->
+                <div class="bg-white p-5 sm:p-6 rounded-xl shadow-md voice-card transition duration-300 mx-auto w-full max-w-sm">
+                    <div class="flex items-center mb-3 sm:mb-4">
+                        <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi85znRxtP6hdjBHC2oHa9rdKJuGejTNP9r2LWiGm90QAS2dFp1ITqR9NqSXdHX9q0Ox65L61LQXPajB9a3fBYENViCDDppGhME4PWvAHba4MZ-XKHJtdL6fXYqAfYhoa65rmntXVVp29iFTGQ9KuosQ9eLOkDWXCk9ma28Hv9p4iUDxjxAwfmBUP7f64g/s1600/celso.jpg" 
+                                alt="Locutor Celso" 
+                                class="w-14 h-14 sm:w-16 sm:h-16 rounded-full object-cover mr-3 sm:mr-4">
+                        <div>
+                            <h3 class="font-bold text-base sm:text-lg">Celso</h3>
+                            <p class="voice-description text-gray-600">Estilo: varejo, institucional, impacto, alegre, padrão</p>
+                        </div>
+                    </div>
+                    <audio controls class="w-full mt-3 sm:mt-4">
+                        <source src="https://testedomarcio.github.io/meuadio/Celso.mp3" type="audio/mpeg">
+                    </audio>
+                    <a href="https://wa.me/5527997078794?text=Quero%20a%20voz%20do%20Celso" 
+                        class="mt-3 sm:mt-4 inline-block bg-green-500 hover:bg-green-600 text-white px-3 py-1.5 sm:px-4 sm:py-2 rounded-full text-xs sm:text-sm font-medium transition w-full text-center">
+                        Pedir esta voz
+                    </a>
+                </div>
+            </div>
+            
+            <div class="text-center mt-10 md:mt-12">
+                <a href="/vozes" class="text-primary font-medium hover:underline text-sm sm:text-base">Ver todas as vozes (12 categorias) →</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção de Preços -->
+    <section class="py-12 md:py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12 md:mb-14">
+                <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold text-primary mb-3 md:mb-4">Nossos Planos</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Escolha o serviço perfeito para suas necessidades</p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-6 md:gap-8 max-w-4xl mx-auto">
+                <!-- Plano 1: Locução Off -->
+                <div class="bg-white p-6 sm:p-8 rounded-xl shadow-md border border-gray-200">
+                    <h3 class="text-xl sm:text-2xl font-bold mb-2">Locução Off</h3>
+                    <p class="text-gray-600 mb-4 sm:mb-6 text-sm sm:text-base">Apenas a gravação da voz, sem edição</p>
+                    
+                    <div class="mb-4 sm:mb-6">
+                        <span class="text-3xl sm:text-4xl font-bold">R$14,90</span>
+                        <span class="text-gray-500 line-through ml-2 text-sm sm:text-base">R$18,90</span>
+                        <span class="block text-sm text-green-600 font-medium mt-1">Economize 21%</span>
+                    </div>
+                    
+                    <ul class="space-y-2 sm:space-y-3 mb-6 sm:mb-8 text-sm sm:text-base">
+                        <li class="flex items-start">
+                            <svg class="w-4 h-4 sm:w-5 sm:h-5 text-green-500 mr-2 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                            <span>Agilidade na gravação</span>
+                        </li>
+                        <li class="flex items-start">
+                            <svg class="w-4 h-4 sm:w-5 sm:h-5 text-green-500 mr-2 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                            <span>Diversas vozes e estilos</span>
+                        </li>
+                    </ul>
+                    
+                    <a href="/cadastro" class="block w-full bg-primary hover:bg-blue-700 text-white font-bold py-2 sm:py-3 px-4 rounded-lg text-center transition text-sm sm:text-base">
+                        Pedir Locução Off
+                    </a>
+                </div>
+                
+                <!-- Plano 2 (Destaque): Produção Completa -->
+                <div class="bg-white p-6 sm:p-8 rounded-xl shadow-lg border-2 border-secondary relative">
+                    <div class="absolute top-0 right-0 bg-secondary text-white text-xs font-bold px-3 py-1 transform translate-y-[-50%] rounded-full">
+                        MAIS POPULAR
+                    </div>
+                    
+                    <h3 class="text-xl sm:text-2xl font-bold mb-2">Produção Completa</h3>
+                    <p class="text-gray-600 mb-4 sm:mb-6 text-sm sm:text-base">Voz + edição profissional + trilha</p>
+                    
+                    <div class="mb-4 sm:mb-6">
+                        <span class="text-3xl sm:text-4xl font-bold">R$29,90</span>
+                        <span class="text-gray-500 line-through ml-2 text-sm sm:text-base">R$39,90</span>
+                        <span class="block text-sm text-green-600 font-medium mt-1">Economize 25%</span>
+                    </div>
+                    
+                    <ul class="space-y-2 sm:space-y-3 mb-6 sm:mb-8 text-sm sm:text-base">
+                        <li class="flex items-start">
+                            <svg class="w-4 h-4 sm:w-5 sm:h-5 text-green-500 mr-2 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                            <span>Locução profissional</span>
+                        </li>
+                        <li class="flex items-start">
+                            <svg class="w-4 h-4 sm:w-5 sm:h-5 text-green-500 mr-2 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                            <span>Edição de áudio</span>
+                        </li>
+                        <li class="flex items-start">
+                            <svg class="w-4 h-4 sm:w-5 sm:h-5 text-green-500 mr-2 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                            <span>Trilha sonora inclusa</span>
+                        </li>
+                    </ul>
+                    
+                    <a href="/cadastro" class="block w-full bg-secondary hover:bg-orange-700 text-white font-bold py-2 sm:py-3 px-4 rounded-lg text-center transition text-sm sm:text-base">
+                        Pedir Produção Completa
+                    </a>
+                </div>
+            </div>
+            
+            <p class="text-center text-gray-500 mt-6 sm:mt-8 text-xs sm:text-sm">*Cada crédito corresponde a até 40 segundos de locução</p>
+        </div>
+    </section>
+
+    <!-- Seção CTA Final -->
+    <section class="py-16 sm:py-20 md:py-24 bg-primary text-white">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 sm:mb-6">Pronto para transformar seus anúncios?</h2>
+            <p class="text-lg sm:text-xl mb-6 sm:mb-8 max-w-2xl mx-auto">Sua voz profissional está a apenas um clique de distância</p>
+            
+            <div class="flex flex-col sm:flex-row justify-center gap-3 sm:gap-4 max-w-md mx-auto">
+                <a href="https://wa.me/5527997078794" class="bg-secondary hover:bg-orange-700 text-white px-6 py-3 sm:px-8 sm:py-4 rounded-full font-bold text-base sm:text-lg transition flex items-center justify-center">
+                    <svg class="w-4 h-4 sm:w-5 sm:h-5 mr-2" fill="currentColor" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+                    WhatsApp (Resposta Rápida)
+                </a>
+                <a href="/cadastro" class="bg-white hover:bg-gray-100 text-primary px-6 py-3 sm:px-8 sm:py-4 rounded-full font-bold text-base sm:text-lg transition">
+                    Criar Conta Grátis
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Rodapé -->
+    <footer class="bg-gray-900 text-white py-10 sm:py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid md:grid-cols-4 gap-6 sm:gap-8">
+                <div>
+                    <h3 class="text-lg sm:text-xl font-bold mb-3 sm:mb-4 text-white">Voz para Anúncio</h3>
+                    <p class="text-gray-400 text-sm sm:text-base">Locução profissional 24 horas com a mais rápida entrega do mercado.</p>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg sm:text-xl font-bold mb-3 sm:mb-4 text-white">Serviços</h3>
+                    <ul class="space-y-2 text-sm sm:text-base">
+                        <li><a href="/vozes" class="text-gray-400 hover:text-white transition">Vozes</a></li>
+                        <li><a href="/servicos" class="text-gray-400 hover:text-white transition">Serviços</a></li>
+                        <li><a href="/precos" class="text-gray-400 hover:text-white transition">Preços</a></li>
+                        <li><a href="/faq" class="text-gray-400 hover:text-white transition">FAQ</a></li>
+                        <li><a href="/termos" class="text-gray-400 hover:text-white transition">Termos</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg sm:text-xl font-bold mb-3 sm:mb-4 text-white">Contato</h3>
+                    <ul class="space-y-2 text-sm sm:text-base">
+                        <li class="flex items-start">
+                            <svg class="w-4 h-4 sm:w-5 sm:h-5 mr-2 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+                            <a href="tel:+5527997078794" class="text-gray-400 hover:text-white transition">(27) 99707-8794</a>
+                        </li>
+                        <li class="flex items-start">
+                            <svg class="w-4 h-4 sm:w-5 sm:h-5 mr-2 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+                            <a href="mailto:contato@vozparaanuncio.com.br" class="text-gray-400 hover:text-white transition">contato@vozparaanuncio.com.br</a>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg sm:text-xl font-bold mb-3 sm:mb-4 text-white">Redes Sociais</h3>
+                    <div class="flex space-x-3 sm:space-x-4">
+                        <a href="#" class="w-9 h-9 sm:w-10 sm:h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-primary transition">
+                            <svg class="w-4 h-4 sm:w-5 sm:h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M22.675 0h-21.35c-.732 0-1.325.593-1.325 1.325v21.351c0 .731.593 1.324 1.325 1.324h11.495v-9.294h-3.128v-3.622h3.128v-2.671c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.313h3.587l-.467 3.622h-3.12v9.293h6.116c.73 0 1.323-.593 1.323-1.325v-21.35c0-.732-.593-1.325-1.325-1.325z"/></svg>
+                        </a>
+                        <a href="#" class="w-9 h-9 sm:w-10 sm:h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-primary transition">
+                            <svg class="w-4 h-4 sm:w-5 sm:h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-700 pt-6 sm:pt-8 mt-6 sm:mt-8 text-center">
+                <p class="text-gray-400 text-xs sm:text-sm">&copy; <span id="year"></span> Voz para Anúncio. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Botão do WhatsApp -->
+    <a href="https://wa.me/5527997078794" class="fixed bottom-6 right-6 bg-green-500 hover:bg-green-600 text-white p-3 sm:p-4 rounded-full shadow-lg z-50 animate-bounce">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+    </a>
+
+    <script>
+        // Atualiza o ano no rodapé
+        document.getElementById('year').textContent = new Date().getFullYear();
+    </script>
 </body>
 </html>
