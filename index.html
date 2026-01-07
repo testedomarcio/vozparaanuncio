@@ -1,0 +1,426 @@
+import React, { useState, useEffect, useRef } from 'react';
+import { 
+  Mic, 
+  Play, 
+  Pause,
+  CheckCircle, 
+  Zap, 
+  Users, 
+  Headphones, 
+  MessageCircle, 
+  Menu, 
+  X, 
+  ArrowRight,
+  Globe,
+  Award,
+  Volume2
+} from 'lucide-react';
+
+const App = () => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [onlineVoices, setOnlineVoices] = useState(172);
+  const [playingId, setPlayingId] = useState(null);
+  const audioRef = useRef(null);
+
+  // Dados dos locutores destaque
+  const featuredVoices = [
+    {
+      id: 'celso',
+      name: 'Locutor Celso',
+      photo: 'https://testedomarcio.github.io/meuadio/celso.jpg',
+      audio: 'https://testedomarcio.github.io/meuadio/Celso.mp3',
+      style: 'Varejo / Impacto'
+    },
+    {
+      id: 'charles',
+      name: 'Locutor Charles',
+      photo: 'https://testedomarcio.github.io/meuadio/charles.png',
+      audio: 'https://testedomarcio.github.io/meuadio/Charles.mp3',
+      style: 'Institucional / Médio'
+    },
+    {
+      id: 'cristian',
+      name: 'Locutor Cristian',
+      photo: 'https://testedomarcio.github.io/meuadio/Cristian.jfif',
+      audio: 'https://testedomarcio.github.io/meuadio/Cristian.mp3',
+      style: 'Coloquial / Jovem'
+    },
+    {
+      id: 'leandro',
+      name: 'Locutor Leandro',
+      photo: 'https://testedomarcio.github.io/meuadio/leandro.jpg',
+      audio: 'https://testedomarcio.github.io/meuadio/Leandro.mp3',
+      style: 'Varejo / Dinâmico'
+    },
+    {
+      id: 'elissandra',
+      name: 'Locutor Elissandra',
+      photo: 'https://testedomarcio.github.io/meuadio/Elissandra.jpg',
+      audio: 'https://testedomarcio.github.io/meuadio/elissandra.mp3',
+      style: 'Feminino / Versátil'
+    }
+  ];
+
+  // Controle do Player de Áudio
+  const togglePlay = (id, url) => {
+    if (playingId === id) {
+      audioRef.current.pause();
+      setPlayingId(null);
+    } else {
+      if (audioRef.current) {
+        audioRef.current.src = url;
+        audioRef.current.play();
+        setPlayingId(id);
+      }
+    }
+  };
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      const variation = Math.floor(Math.random() * 5) - 2;
+      setOnlineVoices(prev => Math.min(200, Math.max(160, prev + variation)));
+    }, 10000);
+    return () => clearInterval(interval);
+  }, []);
+
+  return (
+    <div className="min-h-screen bg-[#0f0f12] text-slate-200 font-sans selection:bg-orange-500/30">
+      <audio ref={audioRef} onEnded={() => setPlayingId(null)} />
+
+      {/* --- NAVEGAÇÃO --- */}
+      <nav className="fixed w-full z-50 bg-[#0f0f12]/80 backdrop-blur-md border-b border-white/5">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex justify-between items-center h-20">
+            <div className="flex items-center gap-2">
+              <div className="w-10 h-10 bg-gradient-to-br from-orange-500 to-yellow-600 rounded-lg flex items-center justify-center">
+                <Mic className="text-black w-6 h-6" />
+              </div>
+              <span className="text-xl font-bold tracking-tighter text-white uppercase">Comerciais <span className="text-orange-500 italic">Top</span></span>
+            </div>
+
+            <div className="hidden md:flex items-center gap-8">
+              <a href="#vozes" className="text-sm font-medium hover:text-orange-400 transition-colors uppercase tracking-widest">Nossas Vozes</a>
+              <a href="#servicos" className="text-sm font-medium hover:text-orange-400 transition-colors uppercase tracking-widest">Serviços</a>
+              <a href="#contato" className="text-sm font-medium hover:text-orange-400 transition-colors uppercase tracking-widest">Fale Conosco</a>
+              <div className="flex gap-4 border-l border-white/10 pl-8">
+                <button className="text-sm font-medium hover:text-white transition-colors">Login</button>
+                <button className="bg-orange-500 hover:bg-orange-600 text-black font-bold px-6 py-2 rounded-full text-sm transition-all transform hover:scale-105">
+                  CADASTRAR
+                </button>
+              </div>
+            </div>
+
+            <button className="md:hidden" onClick={() => setIsMenuOpen(!isMenuOpen)}>
+              {isMenuOpen ? <X /> : <Menu />}
+            </button>
+          </div>
+        </div>
+      </nav>
+
+      {/* --- HERO SECTION --- */}
+      <section className="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden">
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full pointer-events-none opacity-20">
+          <div className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-orange-600/30 blur-[120px] rounded-full" />
+          <div className="absolute bottom-0 right-1/4 w-[500px] h-[500px] bg-purple-600/20 blur-[120px] rounded-full" />
+        </div>
+
+        <div className="max-w-7xl mx-auto px-4 text-center relative z-10">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 mb-8 animate-fade-in">
+            <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
+            <span className="text-xs font-bold uppercase tracking-widest text-white">
+              {onlineVoices} Locutores Online Agora
+            </span>
+          </div>
+          
+          <h1 className="text-5xl lg:text-7xl font-extrabold text-white mb-6 leading-tight">
+            Vozes com <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-yellow-500">alma.</span><br />
+            Resultados com vida.
+          </h1>
+          
+          <p className="text-lg lg:text-xl text-slate-400 max-w-2xl mx-auto mb-10">
+            A **Comerciais Top** oferece locução 100% humana para quem não aceita a frieza das IAs. 
+            Disponível 24h por dia para todo o Brasil.
+          </p>
+
+          <div className="flex flex-col sm:flex-row justify-center gap-4">
+            <button className="bg-orange-500 hover:bg-orange-600 text-black font-extrabold px-10 py-5 rounded-2xl text-lg flex items-center justify-center gap-3 transition-all transform hover:scale-105 shadow-[0_0_30px_rgba(249,115,22,0.3)]">
+              OUVIR DEMONSTRATIVOS <ArrowRight className="w-5 h-5" />
+            </button>
+            <button className="bg-white/5 hover:bg-white/10 text-white font-bold px-10 py-5 rounded-2xl text-lg border border-white/10 transition-all">
+              Falar com Consultor
+            </button>
+          </div>
+
+          <div className="mt-20 flex flex-wrap justify-center gap-8 lg:gap-16 opacity-50 transition-all duration-700">
+             <div className="flex items-center gap-2 grayscale hover:grayscale-0"><div className="w-2 h-2 bg-orange-500 rounded-full" /><span className="text-lg font-bold">UNIVERSO INTERNET</span></div>
+             <div className="flex items-center gap-2 grayscale hover:grayscale-0"><div className="w-2 h-2 bg-orange-500 rounded-full" /><span className="text-lg font-bold">AGÊNCIA MELLODY</span></div>
+             <div className="flex items-center gap-2 grayscale hover:grayscale-0"><div className="w-2 h-2 bg-orange-500 rounded-full" /><span className="text-lg font-bold">POUPE MAIS FARMA</span></div>
+             <div className="flex items-center gap-2 grayscale hover:grayscale-0"><div className="w-2 h-2 bg-orange-500 rounded-full" /><span className="text-lg font-bold">TOCA PRODUTORA</span></div>
+          </div>
+        </div>
+      </section>
+
+      {/* --- VOZES DESTAQUE DA SEMANA --- */}
+      <section id="vozes" className="py-24 bg-[#16161a]">
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="text-center mb-16">
+            <span className="text-orange-500 font-bold uppercase tracking-widest text-sm mb-4 block">Curadoria Exclusiva</span>
+            <h2 className="text-3xl lg:text-5xl font-bold text-white mb-6">Vozes Destaque da Semana</h2>
+            <p className="text-slate-400 max-w-2xl mx-auto">Selecionamos os melhores talentos para garantir que sua mensagem tenha a interpretação perfeita.</p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-6">
+            {featuredVoices.map((voice) => (
+              <div 
+                key={voice.id} 
+                className={`group relative bg-[#0f0f12] border transition-all duration-500 rounded-3xl overflow-hidden ${playingId === voice.id ? 'border-orange-500 shadow-[0_0_20px_rgba(249,115,22,0.1)]' : 'border-white/5 hover:border-white/20'}`}
+              >
+                <div className="aspect-[3/4] overflow-hidden relative">
+                  <img 
+                    src={voice.photo} 
+                    alt={voice.name} 
+                    className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 group-hover:scale-110"
+                    onError={(e) => { e.target.src = 'https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?auto=format&fit=crop&q=80&w=400'; }}
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#0f0f12] via-transparent to-transparent opacity-90" />
+                  
+                  {/* Play Overlay */}
+                  <button 
+                    onClick={() => togglePlay(voice.id, voice.audio)}
+                    className="absolute inset-0 flex items-center justify-center group-hover:opacity-100 transition-opacity"
+                  >
+                    <div className={`w-16 h-16 rounded-full flex items-center justify-center backdrop-blur-md transition-all ${playingId === voice.id ? 'bg-orange-500 text-black scale-110' : 'bg-white/10 text-white scale-100'}`}>
+                      {playingId === voice.id ? <Pause fill="currentColor" /> : <Play className="ml-1" fill="currentColor" />}
+                    </div>
+                  </button>
+                </div>
+
+                <div className="p-5">
+                  <h4 className="text-lg font-bold text-white mb-1">{voice.name}</h4>
+                  <div className="flex items-center gap-2 text-xs text-slate-500 uppercase tracking-widest font-medium">
+                    <Volume2 className="w-3 h-3 text-orange-500" />
+                    {voice.style}
+                  </div>
+                  <button 
+                    onClick={() => togglePlay(voice.id, voice.audio)}
+                    className={`mt-4 w-full py-3 rounded-xl text-xs font-bold uppercase tracking-widest transition-all ${playingId === voice.id ? 'bg-orange-500 text-black' : 'bg-white/5 text-white hover:bg-white/10'}`}
+                  >
+                    {playingId === voice.id ? 'Ouvindo...' : 'Ouvir Demo'}
+                  </button>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* --- O DIFERENCIAL --- */}
+      <section className="py-24 bg-[#0f0f12]">
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="grid md:grid-cols-2 gap-8 items-center">
+            <div className="bg-gradient-to-br from-purple-900/40 to-[#0f0f12] p-10 rounded-3xl border border-purple-500/30">
+              <h3 className="text-3xl font-bold text-white mb-6 italic">"Por que a IA nunca vai vender como um locutor profissional?"</h3>
+              <p className="text-slate-300 leading-relaxed mb-8">
+                A voz neural é perfeita, mas a perfeição é fria. Ela não entende a ironia, não sabe quando sorrir enquanto fala e não consegue adaptar o sotaque para gerar identificação regional. 
+                Na **Comerciais Top**, entregamos interpretação. Nossos locutores respiram e dão intenção às palavras.
+              </p>
+              <ul className="space-y-4">
+                <li className="flex items-center gap-3 text-orange-400 font-bold"><CheckCircle className="w-5 h-5" /> Entende a Ironia e o Sorriso</li>
+                <li className="flex items-center gap-3 text-orange-400 font-bold"><CheckCircle className="w-5 h-5" /> Sotaques Regionais Naturais</li>
+                <li className="flex items-center gap-3 text-orange-400 font-bold"><CheckCircle className="w-5 h-5" /> Conexão Emocional Humana</li>
+              </ul>
+            </div>
+            
+            <div className="grid grid-cols-2 gap-4">
+                <div className="bg-[#16161a] p-6 rounded-2xl border border-white/5 text-center">
+                    <h5 className="text-4xl font-bold text-white mb-2">100%</h5>
+                    <p className="text-xs text-slate-500 uppercase font-bold tracking-widest">Humano</p>
+                </div>
+                <div className="bg-[#16161a] p-6 rounded-2xl border border-white/5 text-center">
+                    <h5 className="text-4xl font-bold text-white mb-2">2h</h5>
+                    <p className="text-xs text-slate-500 uppercase font-bold tracking-widest">Entrega Urgente</p>
+                </div>
+                <div className="bg-[#16161a] p-6 rounded-2xl border border-white/5 text-center">
+                    <h5 className="text-4xl font-bold text-white mb-2">24h</h5>
+                    <p className="text-xs text-slate-500 uppercase font-bold tracking-widest">Disponibilidade</p>
+                </div>
+                <div className="bg-[#16161a] p-6 rounded-2xl border border-white/5 text-center">
+                    <h5 className="text-4xl font-bold text-white mb-2">0%</h5>
+                    <p className="text-xs text-slate-500 uppercase font-bold tracking-widest">Robótico</p>
+                </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* --- PAINEL DE GRAVAÇÃO (UX) --- */}
+      <section className="py-24 bg-[#16161a] border-y border-white/5">
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="flex flex-col lg:flex-row gap-16 items-center">
+            <div className="flex-1">
+              <span className="text-orange-500 font-bold uppercase tracking-widest text-sm mb-4 block">Experiência Simples</span>
+              <h2 className="text-4xl lg:text-5xl font-bold text-white mb-8">Sua gravação em poucos cliques.</h2>
+              <div className="space-y-6">
+                {[
+                    { n: 1, t: "Briefing Inteligente", d: "Cole seu texto e o sistema calcula o tempo automaticamente." },
+                    { n: 2, t: "Escolha o Talento", d: "Filtre por estilo e ouça as demonstrações em tempo real." },
+                    { n: 3, t: "Entrega Garantida", d: "Receba o áudio tratado e pronto para usar em tempo recorde." }
+                ].map((item) => (
+                    <div key={item.n} className="flex gap-5 items-start">
+                        <div className="w-12 h-12 rounded-2xl bg-orange-600/10 text-orange-500 flex items-center justify-center font-black shrink-0 border border-orange-500/20">{item.n}</div>
+                        <div>
+                            <h4 className="text-xl font-bold text-white mb-1">{item.t}</h4>
+                            <p className="text-slate-400 text-sm leading-relaxed">{item.d}</p>
+                        </div>
+                    </div>
+                ))}
+              </div>
+            </div>
+
+            <div className="flex-1 w-full max-w-lg">
+                <div className="bg-[#0f0f12] rounded-3xl p-8 border border-white/10 shadow-2xl relative overflow-hidden">
+                    <div className="absolute top-0 right-0 p-4">
+                        <div className="flex items-center gap-2 px-3 py-1 bg-green-500/10 rounded-full">
+                            <div className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse" />
+                            <span className="text-[10px] text-green-500 font-bold uppercase tracking-widest">Painel Online</span>
+                        </div>
+                    </div>
+                    <div className="mb-6">
+                        <label className="block text-sm font-medium text-slate-400 mb-2">Roteiro do Comercial</label>
+                        <textarea className="w-full bg-[#16161a] border border-white/10 rounded-xl p-4 text-white focus:outline-none focus:ring-1 focus:ring-orange-500 h-32 resize-none" placeholder="Digite ou cole seu roteiro aqui..."></textarea>
+                    </div>
+                    <div className="grid grid-cols-2 gap-4 mb-6">
+                        <div className="bg-[#16161a] p-3 rounded-xl border border-white/10 text-center">
+                            <span className="block text-[10px] text-slate-500 uppercase font-bold">Palavras</span>
+                            <span className="text-lg font-bold text-white">42</span>
+                        </div>
+                        <div className="bg-[#16161a] p-3 rounded-xl border border-white/10 text-center">
+                            <span className="block text-[10px] text-slate-500 uppercase font-bold">Tempo Est.</span>
+                            <span className="text-lg font-bold text-orange-500">28s</span>
+                        </div>
+                    </div>
+                    <button className="w-full bg-orange-500 hover:bg-orange-600 text-black font-extrabold py-4 rounded-xl flex items-center justify-center gap-2 transition-all">
+                        AVANÇAR PARA SELEÇÃO <Zap className="w-4 h-4" />
+                    </button>
+                </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* --- SERVIÇOS --- */}
+      <section id="servicos" className="py-24">
+        <div className="max-w-7xl mx-auto px-4">
+            <div className="grid md:grid-cols-3 gap-8">
+                {[
+                    {
+                        title: "Locução Off",
+                        desc: "Voz seca e limpa para sua edição. Gravada com equipamentos de ponta.",
+                        icon: <Mic className="w-10 h-10 text-orange-500" />
+                    },
+                    {
+                        title: "Produção Completa",
+                        desc: "Comerciais prontos para rádio e TV, com trilhas e efeitos sonoros.",
+                        icon: <Headphones className="w-10 h-10 text-purple-500" />
+                    },
+                    {
+                        title: "Jingles de Impacto",
+                        desc: "Músicas exclusivas que não saem da cabeça do seu cliente.",
+                        icon: <Award className="w-10 h-10 text-yellow-500" />
+                    }
+                ].map((s, i) => (
+                    <div key={i} className="p-8 bg-[#16161a] border border-white/5 rounded-3xl hover:border-white/20 transition-all group">
+                        <div className="mb-6 transform group-hover:scale-110 transition-transform">{s.icon}</div>
+                        <h3 className="text-2xl font-bold text-white mb-4 uppercase tracking-tighter">{s.title}</h3>
+                        <p className="text-slate-400 text-sm leading-relaxed">{s.desc}</p>
+                    </div>
+                ))}
+            </div>
+        </div>
+      </section>
+
+      {/* --- FOOTER --- */}
+      <footer id="contato" className="bg-[#0f0f12] border-t border-white/5 pt-20 pb-10">
+        <div className="max-w-7xl mx-auto px-4 grid md:grid-cols-4 gap-12 mb-20">
+            <div className="col-span-1 md:col-span-1">
+                <div className="flex items-center gap-2 mb-6">
+                    <div className="w-8 h-8 bg-orange-500 rounded-lg flex items-center justify-center">
+                        <Mic className="text-black w-5 h-5" />
+                    </div>
+                    <span className="text-xl font-bold text-white">COMERCIAIS TOP</span>
+                </div>
+                <p className="text-slate-500 text-sm">Vozes com alma, resultados com vida. Líder em produção de áudio humanizada no Brasil.</p>
+            </div>
+
+            <div>
+                <h5 className="text-white font-bold mb-6 text-sm uppercase tracking-widest">Serviços</h5>
+                <ul className="space-y-4 text-xs text-slate-500 uppercase font-bold tracking-widest">
+                    <li className="hover:text-white cursor-pointer transition-colors">Locução Off</li>
+                    <li className="hover:text-white cursor-pointer transition-colors">Jingles</li>
+                    <li className="hover:text-white cursor-pointer transition-colors">Spots de Rádio</li>
+                    <li className="hover:text-white cursor-pointer transition-colors">Vídeos Corporativos</li>
+                </ul>
+            </div>
+
+            <div>
+                <h5 className="text-white font-bold mb-6 text-sm uppercase tracking-widest">Menu</h5>
+                <ul className="space-y-4 text-xs text-slate-500 uppercase font-bold tracking-widest">
+                    <li className="hover:text-white cursor-pointer transition-colors">Nossas Vozes</li>
+                    <li className="hover:text-white cursor-pointer transition-colors">Painel</li>
+                    <li className="hover:text-white cursor-pointer transition-colors">Fale Conosco</li>
+                    <li className="hover:text-white cursor-pointer transition-colors">Cadastre-se</li>
+                </ul>
+            </div>
+
+            <div className="bg-[#16161a] p-6 rounded-3xl border border-white/5">
+                <h5 className="text-white font-bold mb-4 flex items-center gap-2"><MessageCircle className="w-5 h-5 text-green-500" /> Atendimento</h5>
+                <p className="text-[10px] text-slate-500 uppercase font-bold tracking-widest mb-4 leading-loose">Segunda a Sábado, 24h. Fale agora no WhatsApp.</p>
+                <button className="w-full bg-green-600 text-white font-bold py-3 rounded-xl hover:bg-green-700 transition-all flex items-center justify-center gap-2">
+                    <MessageCircle className="w-4 h-4" /> WHATSAPP
+                </button>
+            </div>
+        </div>
+        
+        <div className="max-w-7xl mx-auto px-4 pt-10 border-t border-white/5 flex flex-col md:row-row justify-between items-center text-[10px] text-slate-600 uppercase font-bold tracking-widest text-center">
+            <p>© 2026 COMERCIAIS TOP PRODUTORA. TODOS OS DIREITOS RESERVADOS.</p>
+            <div className="flex gap-4 mt-4 md:mt-0">
+                <span>Vozes 100% Humanas</span>
+                <span className="text-orange-500">Qualidade Premium</span>
+            </div>
+        </div>
+      </footer>
+
+      {/* --- WHATSAPP FLOATING --- */}
+      <div className="fixed bottom-8 right-8 z-[60]">
+        <button className="bg-green-600 text-white w-16 h-16 rounded-full flex items-center justify-center shadow-[0_10px_30px_rgba(22,163,74,0.4)] hover:scale-110 transition-transform animate-bounce">
+            <MessageCircle className="w-8 h-8" />
+        </button>
+      </div>
+
+      <style jsx global>{`
+        @keyframes fade-in {
+          from { opacity: 0; transform: translateY(10px); }
+          to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-fade-in {
+          animation: fade-in 1s ease-out forwards;
+        }
+        ::-webkit-scrollbar {
+          width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+          background: #0f0f12;
+        }
+        ::-webkit-scrollbar-thumb {
+          background: #27272a;
+          border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+          background: #3f3f46;
+        }
+      `}</style>
+    </div>
+  );
+};
+
+export default App;
