@@ -3,21 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Comerciais Top - Locução Profissional</title>
-    <!-- Tailwind CSS para Estilização -->
+    <title>Estúdio A Locução | Produção de Áudio Profissional</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- React e Babel para rodar o código no navegador -->
     <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
     <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
-    <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap');
         
-        html {
-            scroll-behavior: smooth;
-        }
+        html { scroll-behavior: smooth; }
 
         body {
             font-family: 'Inter', sans-serif;
@@ -29,9 +24,13 @@
             from { opacity: 0; transform: translateY(10px); }
             to { opacity: 1; transform: translateY(0); }
         }
-        .animate-fade-in {
-            animation: fade-in 1s ease-out forwards;
+        .animate-fade-in { animation: fade-in 1s ease-out forwards; }
+
+        @keyframes slide-up {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
         }
+        .animate-slide-up { animation: slide-up 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
 
         .glass-card {
             background: rgba(22, 22, 26, 0.7);
@@ -52,7 +51,6 @@
     <script type="text/babel">
         const { useState, useEffect, useRef } = React;
 
-        // Componente de Ícone Simples para funcionar no HTML estático
         const Icon = ({ name, className = "w-5 h-5" }) => {
             useEffect(() => {
                 if (window.lucide) {
@@ -65,6 +63,7 @@
         const App = () => {
             const [onlineVoices, setOnlineVoices] = useState(172);
             const [playingId, setPlayingId] = useState(null);
+            const [notification, setNotification] = useState(null);
             const audioRef = useRef(null);
 
             const featuredVoices = [
@@ -86,6 +85,7 @@
                 }
             };
 
+            // Efeito para o contador de locutores
             useEffect(() => {
                 const interval = setInterval(() => {
                     const variation = Math.floor(Math.random() * 5) - 2;
@@ -94,27 +94,54 @@
                 return () => clearInterval(interval);
             }, []);
 
+            // Sistema de Notificações de Vendas (Prova Social) - Fundo Branco
+            useEffect(() => {
+                const names = ["Carlos Mendes", "Agência Vértice", "Ana Paula", "Produtora X", "Roberto Silva", "Juliana M.", "Rádio Cidade", "Marcos R."];
+                const actions = ["acabou de adquirir 5 créditos de Off.", "solicitou a produção de um Spot.", "adicionou R$ 150 em créditos na plataforma.", "solicitou 2 Offs Comerciais."];
+                const times = ["agora mesmo", "há 1 minuto", "há 3 minutos", "há 5 minutos"];
+
+                const showNotification = () => {
+                    const randomName = names[Math.floor(Math.random() * names.length)];
+                    const randomAction = actions[Math.floor(Math.random() * actions.length)];
+                    const randomTime = times[Math.floor(Math.random() * times.length)];
+
+                    setNotification({ name: randomName, action: randomAction, time: randomTime });
+
+                    // Esconde a notificação após 6 segundos
+                    setTimeout(() => setNotification(null), 6000);
+                };
+
+                // Mostra a primeira notificação após 5 segundos, depois repete a cada 25 segundos
+                const timeoutId = setTimeout(showNotification, 5000);
+                const intervalId = setInterval(showNotification, 25000);
+
+                return () => {
+                    clearTimeout(timeoutId);
+                    clearInterval(intervalId);
+                };
+            }, []);
+
             return (
                 <div className="min-h-screen">
                     <audio ref={audioRef} onEnded={() => setPlayingId(null)} />
 
                     {/* NAVEGAÇÃO */}
-                    <nav className="fixed w-full z-50 bg-[#0f0f12]/95 backdrop-blur-md border-b border-white/5">
+                    <nav className="fixed w-full z-40 bg-[#0f0f12]/95 backdrop-blur-md border-b border-white/5">
                         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                             <div className="flex justify-between items-center h-20">
                                 <div className="flex items-center gap-2">
-                                    <div className="w-10 h-10 bg-gradient-to-br from-orange-500 to-yellow-600 rounded-lg flex items-center justify-center">
-                                        <Icon name="mic" className="text-black w-6 h-6" />
+                                    <div className="w-10 h-10 bg-gradient-to-br from-blue-500 to-cyan-600 rounded-lg flex items-center justify-center">
+                                        <Icon name="mic" className="text-white w-6 h-6" />
                                     </div>
-                                    <span className="text-xl font-bold tracking-tighter text-white uppercase">Comerciais <span className="text-orange-500 italic">Top</span></span>
+                                    <span className="text-xl font-bold tracking-tighter text-white uppercase">Estúdio <span className="text-blue-500">A</span> Locução</span>
                                 </div>
 
                                 <div className="hidden md:flex items-center gap-8 text-xs font-bold uppercase tracking-widest">
-                                    <a href="https://paineldegravacao.com.br/comerciaistop/lista-locutores" target="_blank" className="hover:text-orange-400 transition-colors">Nossas Vozes</a>
-                                    <a href="#servicos" className="hover:text-orange-400 transition-colors">Serviços</a>
-                                    <a href="https://wa.me/5527996529832" target="_blank" className="hover:text-orange-400 transition-colors">Contato</a>
-                                    <a href="https://paineldegravacao.com.br/comerciaistop/cadastro" target="_blank" className="bg-orange-500 hover:bg-orange-600 text-black px-6 py-2 rounded-full transition-all transform hover:scale-105">
-                                        CADASTRE-SE
+                                    <a href="https://paineldegravacao.com.br/comerciaistop/lista-locutores" target="_blank" className="hover:text-blue-400 transition-colors">Nossas Vozes</a>
+                                    <a href="#servicos" className="hover:text-blue-400 transition-colors">Serviços</a>
+                                    <a href="#contato" className="hover:text-blue-400 transition-colors">Contato</a>
+                                    <a href="https://paineldegravacao.com.br/comerciaistop/cadastro" target="_blank" className="bg-blue-600 hover:bg-blue-500 text-white px-6 py-2 rounded-full transition-all transform hover:scale-105">
+                                        ACESSAR PAINEL
                                     </a>
                                 </div>
                             </div>
@@ -124,7 +151,7 @@
                     {/* HERO SECTION */}
                     <section className="relative pt-40 pb-20 overflow-hidden text-center">
                         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full pointer-events-none opacity-20">
-                            <div className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-orange-600/20 blur-[120px] rounded-full" />
+                            <div className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-blue-600/20 blur-[120px] rounded-full" />
                         </div>
                         <div className="max-w-4xl mx-auto px-4 relative z-10 animate-fade-in">
                             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 mb-8">
@@ -132,27 +159,26 @@
                                 <span className="text-[10px] font-bold uppercase tracking-widest text-white">{onlineVoices} Locutores Online Agora</span>
                             </div>
                             <h1 className="text-5xl lg:text-7xl font-extrabold text-white mb-6 leading-tight">
-                                Vozes com <span className="text-orange-500">alma.</span><br />Resultados com vida.
+                                Vozes com <span className="text-blue-500">alma.</span><br />Resultados com vida.
                             </h1>
                             <p className="text-slate-400 text-lg mb-10 max-w-2xl mx-auto">
-                                Locução 100% humana para quem não aceita a frieza das IAs. 
-                                Entregamos emoção e sotaques reais para todo o Brasil.
+                                Locução 100% humana, áudio profissional e entrega a partir de 10 minutos. Plataforma automatizada para Produtores e Agências.
                             </p>
                             <div className="flex flex-col sm:flex-row justify-center gap-4 mb-20">
-                                <a href="#vozes" className="bg-orange-500 hover:bg-orange-600 text-black font-black px-10 py-5 rounded-2xl text-lg transition-all shadow-lg shadow-orange-500/20">
-                                    Escolher minha Voz agora
+                                <a href="#vozes" className="bg-blue-600 hover:bg-blue-500 text-white font-black px-10 py-5 rounded-2xl text-lg transition-all shadow-lg shadow-blue-500/20 flex justify-center items-center gap-2">
+                                    <Icon name="play-circle" className="w-5 h-5" /> Ouvir Banco de Vozes
                                 </a>
-                                <a href="https://wa.me/5527996529832" target="_blank" className="bg-white/5 border border-white/10 px-10 py-5 rounded-2xl text-white font-bold hover:bg-white/10 transition-all flex items-center justify-center gap-2">
-                                    <Icon name="message-circle" className="w-5 h-5" /> Falar com um Consultor (WhatsApp)
+                                <a href="#servicos" className="bg-white/5 border border-white/10 px-10 py-5 rounded-2xl text-white font-bold hover:bg-white/10 transition-all flex items-center justify-center gap-2">
+                                    <Icon name="zap" className="w-5 h-5 text-blue-400" /> Ver Planos e Preços
                                 </a>
                             </div>
                             
                             <div className="space-y-6">
-                                <h3 className="text-[10px] text-slate-500 font-bold uppercase tracking-[0.4em]">Nossos Clientes</h3>
+                                <h3 className="text-[10px] text-slate-500 font-bold uppercase tracking-[0.4em]">Confiança de quem produz</h3>
                                 <div className="flex flex-wrap justify-center gap-8 lg:gap-12 opacity-40 text-[11px] font-bold tracking-[0.2em] uppercase">
                                     <span>Universo Internet</span>
                                     <span>Agência Mellody</span>
-                                    <span>Poupe mais farma</span>
+                                    <span>Poupe Mais Farma</span>
                                     <span>Toca Produtora</span>
                                 </div>
                             </div>
@@ -167,25 +193,25 @@
                             
                             <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-6">
                                 {featuredVoices.map(voice => (
-                                    <div key={voice.id} className={`glass-card rounded-3xl overflow-hidden transition-all duration-500 ${playingId === voice.id ? 'ring-2 ring-orange-500 shadow-[0_0_20px_rgba(249,115,22,0.2)]' : ''}`}>
+                                    <div key={voice.id} className={`glass-card rounded-3xl overflow-hidden transition-all duration-500 ${playingId === voice.id ? 'ring-2 ring-blue-500 shadow-[0_0_20px_rgba(59,130,246,0.2)]' : ''}`}>
                                         <div className="relative aspect-[3/4] group cursor-pointer" onClick={() => togglePlay(voice.id, voice.audio)}>
                                             <img src={voice.photo} className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700" alt={voice.name} />
                                             <div className="absolute inset-0 bg-gradient-to-t from-[#0f0f12] to-transparent opacity-60" />
                                             <div className="absolute inset-0 flex items-center justify-center">
-                                                <div className={`w-14 h-14 rounded-full flex items-center justify-center transition-all ${playingId === voice.id ? 'bg-orange-500 text-black scale-110' : 'bg-white/10 text-white hover:scale-110 group-hover:bg-orange-500/50'}`}>
+                                                <div className={`w-14 h-14 rounded-full flex items-center justify-center transition-all ${playingId === voice.id ? 'bg-blue-600 text-white scale-110' : 'bg-white/10 text-white hover:scale-110 group-hover:bg-blue-600/80'}`}>
                                                     <Icon name={playingId === voice.id ? 'pause' : 'play'} className="w-6 h-6" />
                                                 </div>
                                             </div>
                                         </div>
                                         <div className="p-5 text-left">
                                             <h4 className="text-white font-bold mb-1">{voice.name}</h4>
-                                            <p className="text-[10px] text-orange-500 font-bold uppercase tracking-widest">{voice.style}</p>
+                                            <p className="text-[10px] text-blue-400 font-bold uppercase tracking-widest">{voice.style}</p>
                                         </div>
                                     </div>
                                 ))}
                             </div>
                             <div className="mt-12">
-                                <a href="https://paineldegravacao.com.br/comerciaistop/lista-locutores" target="_blank" className="text-orange-500 font-bold uppercase tracking-widest text-sm hover:underline">Ver banco completo de vozes</a>
+                                <a href="https://paineldegravacao.com.br/comerciaistop/lista-locutores" target="_blank" className="text-blue-500 font-bold uppercase tracking-widest text-sm hover:underline">Ver banco completo (+300 vozes)</a>
                             </div>
                         </div>
                     </section>
@@ -195,40 +221,70 @@
                         <div className="max-w-7xl mx-auto px-4">
                             <div className="text-center mb-16">
                                 <h2 className="text-3xl lg:text-5xl font-bold text-white mb-4">Nossos Serviços</h2>
-                                <p className="text-slate-500 uppercase tracking-widest text-xs font-bold">Benefícios Objetivos para o seu Negócio</p>
+                                <p className="text-slate-500 uppercase tracking-widest text-xs font-bold">Transparência e Agilidade para o seu Negócio</p>
                             </div>
                             
-                            <div className="grid md:grid-cols-3 gap-8">
-                                <div className="p-8 glass-card rounded-[32px] hover:border-orange-500/30 transition-all group">
-                                    <div className="w-14 h-14 bg-orange-500/10 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-orange-500 group-hover:text-black transition-colors">
-                                        <Icon name="mic-2" className="w-8 h-8" />
+                            <div className="grid md:grid-cols-3 gap-8 mb-10">
+                                {/* Card Off */}
+                                <div className="p-8 glass-card rounded-[32px] hover:border-blue-500/30 transition-all group flex flex-col h-full">
+                                    <div className="w-14 h-14 bg-blue-500/10 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-blue-500 group-hover:text-white transition-colors">
+                                        <Icon name="mic-2" className="w-8 h-8 text-blue-500 group-hover:text-white" />
                                     </div>
-                                    <h3 className="text-xl font-bold text-white mb-4">Locução Off</h3>
-                                    <p className="text-slate-400 text-sm leading-relaxed">
-                                        Voz seca e limpa, gravada em estúdios tratados. Pronta para sua edição em tempo recorde.
+                                    <h3 className="text-xl font-bold text-white mb-2">Locução Off</h3>
+                                    <div className="text-3xl font-black text-white mb-4">R$ 15<span className="text-sm font-normal text-slate-400">,00 / crédito</span></div>
+                                    <p className="text-slate-400 text-sm leading-relaxed flex-grow">
+                                        Ideal para editores. Voz seca e limpa, gravada em estúdios tratados. Pronta para sua edição em tempo recorde.
                                     </p>
+                                    <a href="https://alocucao.com.br/offs" className="mt-6 w-full bg-blue-500/10 hover:bg-blue-500 text-blue-500 hover:text-white py-4 rounded-xl font-bold text-sm transition-all flex items-center justify-center gap-2">
+                                        Ver detalhes do Off <Icon name="arrow-right" className="w-4 h-4" />
+                                    </a>
                                 </div>
 
-                                <div className="p-8 glass-card rounded-[32px] hover:border-orange-500/30 transition-all group">
-                                    <div className="w-14 h-14 bg-orange-500/10 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-orange-500 group-hover:text-black transition-colors">
-                                        <Icon name="headphones" className="w-8 h-8" />
+                                {/* Card Spot */}
+                                <div className="p-8 glass-card rounded-[32px] hover:border-blue-500/30 transition-all group flex flex-col h-full relative overflow-hidden">
+                                    <div className="absolute top-0 right-0 bg-blue-600 text-[10px] font-bold px-3 py-1 rounded-bl-xl uppercase tracking-wider">Mais Vendido</div>
+                                    <div className="w-14 h-14 bg-blue-500/10 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-blue-500 group-hover:text-white transition-colors">
+                                        <Icon name="headphones" className="w-8 h-8 text-blue-500 group-hover:text-white" />
                                     </div>
-                                    <h3 className="text-xl font-bold text-white mb-4">Produção Completa</h3>
-                                    <p className="text-slate-400 text-sm leading-relaxed">
-                                        Dê vida ao seu texto. Incluímos trilhas licenciadas e efeitos sonoros que potencializam a mensagem.
+                                    <h3 className="text-xl font-bold text-white mb-2">Spot Comercial (Produção)</h3>
+                                    <div className="text-3xl font-black text-white mb-4">R$ 30<span className="text-sm font-normal text-slate-400">,00 / crédito</span></div>
+                                    <p className="text-slate-400 text-sm leading-relaxed flex-grow">
+                                        Ideal para empresas finais. Áudio completo com locução, trilha sonora e efeitos. Entregamos o arquivo finalizado e o Off de brinde.
                                     </p>
+                                    <a href="https://alocucao.com.br/spots" className="mt-6 w-full bg-blue-600 hover:bg-blue-500 text-white py-4 rounded-xl font-bold text-sm transition-all flex items-center justify-center gap-2">
+                                        Como funciona a Produção <Icon name="arrow-right" className="w-4 h-4" />
+                                    </a>
                                 </div>
 
-                                <div className="p-8 glass-card rounded-[32px] hover:border-orange-500/30 transition-all group">
-                                    <div className="w-14 h-14 bg-orange-500/10 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-orange-500 group-hover:text-black transition-colors">
-                                        <Icon name="music" className="w-8 h-8" />
+                                {/* Card Plataforma */}
+                                <div className="p-8 glass-card rounded-[32px] border border-blue-900/50 hover:border-blue-500/30 transition-all group flex flex-col h-full">
+                                    <div className="w-14 h-14 bg-blue-500/10 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-blue-500 group-hover:text-white transition-colors">
+                                        <Icon name="laptop" className="w-8 h-8 text-blue-500 group-hover:text-white" />
                                     </div>
-                                    <h3 className="text-xl font-bold text-white mb-4">Jingles Exclusivos</h3>
-                                    <p className="text-slate-400 text-sm leading-relaxed">
-                                        Sua marca gravada na memória. Composições musicais únicas que criam identidade e desejo.
-                                    </p>
+                                    <h3 className="text-xl font-bold text-white mb-4">Plataforma Inteligente</h3>
+                                    <ul className="text-slate-400 text-sm space-y-3 flex-grow">
+                                        <li className="flex items-center gap-2"><Icon name="check" className="w-4 h-4 text-blue-500" /> Liberação imediata via PIX/Cartão</li>
+                                        <li className="flex items-center gap-2"><Icon name="check" className="w-4 h-4 text-blue-500" /> +300 vozes humanas (M/F/Infantil)</li>
+                                        <li className="flex items-center gap-2"><Icon name="check" className="w-4 h-4 text-blue-500" /> Notificação no WhatsApp</li>
+                                        <li className="flex items-center gap-2"><Icon name="check" className="w-4 h-4 text-blue-500" /> IA integrada para roteiros</li>
+                                    </ul>
+                                    <a href="https://paineldegravacao.com.br/comerciaistop/cadastro" target="_blank" className="mt-6 w-full bg-white/5 hover:bg-white/10 text-white py-4 rounded-xl font-bold text-sm transition-all flex items-center justify-center gap-2 border border-white/10">
+                                        Criar Conta Grátis <Icon name="external-link" className="w-4 h-4" />
+                                    </a>
                                 </div>
                             </div>
+
+                            {/* Banner Regra de Tempo */}
+                            <div className="bg-blue-900/20 border border-blue-500/30 rounded-2xl p-6 text-center max-w-4xl mx-auto flex flex-col md:flex-row items-center justify-center gap-4">
+                                <div className="bg-blue-500/20 p-3 rounded-full">
+                                    <Icon name="clock" className="w-6 h-6 text-blue-400" />
+                                </div>
+                                <div className="text-left">
+                                    <h4 className="text-white font-bold mb-1">Entenda a cobrança por créditos (Regra dos 40s)</h4>
+                                    <p className="text-slate-400 text-sm">Cada crédito comprado equivale a uma gravação de <strong>até 40 segundos</strong>. Textos que ultrapassam esse tempo consomem um novo crédito a cada nova fração de 40 segundos.</p>
+                                </div>
+                            </div>
+
                         </div>
                     </section>
 
@@ -238,57 +294,87 @@
                             <div>
                                 <h3 className="text-3xl font-bold text-white mb-6 italic">"IA não entende o sorriso na voz."</h3>
                                 <p className="text-slate-400 leading-relaxed mb-6">
-                                    Na <strong>Comerciais Top</strong>, acreditamos que a conexão emocional é o que vende. Nossos locutores dão intenção às palavras, respiram no tempo certo e adaptam o sotaque para gerar identificação imediata.
+                                    No <strong>Estúdio A Locução</strong>, acreditamos que a conexão emocional é o que vende. Nossos locutores dão intenção às palavras, respiram no tempo certo e adaptam o sotaque para gerar identificação imediata.
                                 </p>
                                 <div className="grid grid-cols-2 gap-4">
                                     <div className="p-4 glass-card rounded-2xl">
-                                        <span className="text-orange-500 block font-black text-2xl">24h</span>
-                                        <span className="text-[10px] uppercase font-bold text-slate-500">Disponibilidade</span>
+                                        <span className="text-blue-500 block font-black text-2xl">24h</span>
+                                        <span className="text-[10px] uppercase font-bold text-slate-500">Plataforma Aberta</span>
                                     </div>
                                     <div className="p-4 glass-card rounded-2xl">
-                                        <span className="text-orange-500 block font-black text-2xl">2h</span>
-                                        <span className="text-[10px] uppercase font-bold text-slate-500">Entrega Urgente</span>
+                                        <span className="text-blue-500 block font-black text-2xl">10m</span>
+                                        <span className="text-[10px] uppercase font-bold text-slate-500">Prazo Mínimo p/ Offs</span>
                                     </div>
                                 </div>
                             </div>
-                            <div className="p-8 glass-card rounded-[40px] border-orange-500/20">
+                            <div className="p-8 glass-card rounded-[40px] border-blue-500/20">
                                 <div className="flex items-center gap-4 mb-8">
                                     <div className="w-12 h-12 bg-green-500/10 rounded-full flex items-center justify-center"><Icon name="check-circle" className="text-green-500" /></div>
-                                    <h4 className="font-bold text-white uppercase tracking-widest text-sm">Painel Online</h4>
+                                    <h4 className="font-bold text-white uppercase tracking-widest text-sm">Painel do Cliente</h4>
                                 </div>
                                 <div className="space-y-4">
                                     <p className="text-xs text-slate-500 uppercase font-bold tracking-widest">Qualidade e Agilidade</p>
-                                    <div className="h-2 w-full bg-white/5 rounded-full overflow-hidden"><div className="w-3/4 h-full bg-orange-500"></div></div>
-                                    <div className="h-2 w-full bg-white/5 rounded-full overflow-hidden"><div className="w-1/2 h-full bg-orange-500"></div></div>
-                                    <a href="https://paineldegravacao.com.br/comerciaistop/cadastro" target="_blank" className="block w-full mt-6 bg-orange-500 py-4 rounded-2xl text-black font-black uppercase text-xs tracking-[0.2em] text-center hover:bg-orange-600 transition-colors">
-                                        Cadastre-se Agora
+                                    <div className="h-2 w-full bg-white/5 rounded-full overflow-hidden"><div className="w-3/4 h-full bg-blue-500"></div></div>
+                                    <div className="h-2 w-full bg-white/5 rounded-full overflow-hidden"><div className="w-1/2 h-full bg-blue-500"></div></div>
+                                    <a href="https://paineldegravacao.com.br/comerciaistop/cadastro" target="_blank" className="block w-full mt-6 bg-blue-600 py-4 rounded-2xl text-white font-black uppercase text-xs tracking-[0.2em] text-center hover:bg-blue-500 transition-colors">
+                                        Criar Conta Gratuita
                                     </a>
                                 </div>
                             </div>
                         </div>
                     </section>
 
-                    {/* FOOTER */}
+                    {/* FOOTER & ATENDIMENTO */}
                     <footer id="contato" className="py-20 border-t border-white/5 bg-[#0f0f12]">
                         <div className="max-w-7xl mx-auto px-4 text-center">
+                            <div className="grid md:grid-cols-2 gap-6 max-w-3xl mx-auto mb-16">
+                                <div className="glass-card p-6 rounded-2xl text-left flex items-start gap-4">
+                                    <div className="p-3 bg-green-500/10 rounded-xl"><Icon name="bot" className="w-6 h-6 text-green-500" /></div>
+                                    <div>
+                                        <h4 className="text-white font-bold mb-1">WhatsApp (24h)</h4>
+                                        <p className="text-slate-400 text-xs mb-3">Atendimento operado por Inteligência Artificial para dúvidas, status e guia rápido.</p>
+                                        <a href="https://wa.me/5527996529832" target="_blank" className="text-green-500 text-sm font-bold hover:underline">Chamar no Zap</a>
+                                    </div>
+                                </div>
+                                <div className="glass-card p-6 rounded-2xl text-left flex items-start gap-4">
+                                    <div className="p-3 bg-blue-500/10 rounded-xl"><Icon name="mail" className="w-6 h-6 text-blue-500" /></div>
+                                    <div>
+                                        <h4 className="text-white font-bold mb-1">E-mail (Suporte Humano)</h4>
+                                        <p className="text-slate-400 text-xs mb-3">Para análises de pedidos, suporte técnico avançado ou tratativas complexas.</p>
+                                        <a href="mailto:contato@alocucao.com.br" className="text-blue-500 text-sm font-bold hover:underline">contato@alocucao.com.br</a>
+                                    </div>
+                                </div>
+                            </div>
+
                             <div className="flex items-center justify-center gap-2 mb-8">
-                                <Icon name="mic" className="text-orange-500 w-8 h-8" />
-                                <span className="text-2xl font-black text-white">COMERCIAIS TOP</span>
+                                <Icon name="mic" className="text-blue-500 w-8 h-8" />
+                                <span className="text-2xl font-black text-white">ESTÚDIO A LOCUÇÃO</span>
                             </div>
-                            <p className="text-slate-500 text-sm max-w-md mx-auto mb-10">Líder em produção de áudio humanizada no Brasil. Locutores reais para marcas reais.</p>
-                            <div className="flex justify-center gap-8 mb-16">
-                                <a href="https://wa.me/5527996529832" target="_blank" className="bg-green-600 hover:bg-green-700 text-white px-8 py-3 rounded-full font-bold flex items-center gap-2 transition-all">
-                                    <Icon name="message-circle" className="w-5 h-5" /> WHATSAPP
-                                </a>
-                            </div>
-                            <p className="text-[10px] text-slate-700 font-bold uppercase tracking-[0.3em]">© 2026 COMERCIAIS TOP - 100% HUMANO</p>
+                            <p className="text-slate-500 text-sm max-w-md mx-auto mb-10">Tecnologia em áudio e locutores reais para marcas reais em todo o Brasil.</p>
+                            <p className="text-[10px] text-slate-700 font-bold uppercase tracking-[0.3em]">© 2026 ESTÚDIO A LOCUÇÃO - TODOS OS DIREITOS RESERVADOS.</p>
                         </div>
                     </footer>
 
                     {/* BOTÃO FLUTUANTE WHATSAPP */}
-                    <a href="https://wa.me/5527996529832" target="_blank" className="fixed bottom-6 right-6 z-50 bg-green-500 text-white p-4 rounded-full shadow-2xl hover:bg-green-600 transition-all hover:scale-110 active:scale-95">
+                    <a href="https://wa.me/5527996529832" target="_blank" className="fixed bottom-6 right-6 z-40 bg-green-500 text-white p-4 rounded-full shadow-2xl hover:bg-green-600 transition-all hover:scale-110 active:scale-95">
                         <Icon name="message-circle" className="w-8 h-8" />
                     </a>
+
+                    {/* POP-UP NOTIFICAÇÃO DE VENDAS (PROVA SOCIAL) - FUNDO BRANCO */}
+                    {notification && (
+                        <div className="fixed bottom-6 left-6 z-50 bg-white border border-slate-200 p-4 rounded-2xl shadow-[0_10px_40px_rgba(0,0,0,0.8)] flex items-center gap-4 animate-slide-up max-w-[320px]">
+                            <div className="bg-blue-100 p-3 rounded-full flex-shrink-0">
+                                <Icon name="shopping-bag" className="w-5 h-5 text-blue-600" />
+                            </div>
+                            <div>
+                                <p className="text-slate-800 text-[13px] leading-tight mb-1">
+                                    <strong className="font-extrabold text-black">{notification.name}</strong> <span className="text-slate-600">{notification.action}</span>
+                                </p>
+                                <p className="text-[10px] text-blue-600 uppercase tracking-widest font-bold">{notification.time}</p>
+                            </div>
+                        </div>
+                    )}
+
                 </div>
             );
         };
