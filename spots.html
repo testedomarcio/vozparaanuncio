@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spot Comercial | Estúdio A Locução</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap');
+        
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0f0f12;
+            color: #e2e8f0;
+        }
+
+        @keyframes fade-in {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-fade-in { animation: fade-in 1s ease-out forwards; }
+
+        @keyframes slide-up {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-slide-up { animation: slide-up 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+
+        .glass-card {
+            background: rgba(22, 22, 26, 0.7);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #0f0f12; }
+        ::-webkit-scrollbar-thumb { background: #27272a; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #3f3f46; }
+    </style>
+</head>
+<body>
+    <div id="root"></div>
+
+    <script type="text/babel">
+        const { useState, useEffect, useRef } = React;
+
+        const Icon = ({ name, className = "w-5 h-5" }) => {
+            useEffect(() => {
+                if (window.lucide) {
+                    window.lucide.createIcons();
+                }
+            }, [name]);
+            return <i data-lucide={name} className={className}></i>;
+        };
+
+        const App = () => {
+            const [playingId, setPlayingId] = useState(null);
+            const [notification, setNotification] = useState(null);
+            const audioRef = useRef(null);
+
+            // Exemplos de Spots (Substitua os links de áudio pelos seus melhores Spots prontos)
+            const spotExamples = [
+                { id: 'spot1', name: 'Promoção Varejo', type: 'Carro de Som', audio: 'https://testedomarcio.github.io/meuadio/Celso.mp3' },
+                { id: 'spot2', name: 'Institucional', type: 'Rádio', audio: 'https://testedomarcio.github.io/meuadio/Charles.mp3' },
+                { id: 'spot3', name: 'Convite de Evento', type: 'Redes Sociais', audio: 'https://testedomarcio.github.io/meuadio/elissandra.mp3' }
+            ];
+
+            const togglePlay = (id, url) => {
+                if (playingId === id) {
+                    audioRef.current.pause();
+                    setPlayingId(null);
+                } else {
+                    audioRef.current.src = url;
+                    audioRef.current.play();
+                    setPlayingId(id);
+                }
+            };
+
+            // Sistema de Notificações de Vendas (Focado em empresas/comércios comprando Spots)
+            useEffect(() => {
+                const names = ["Supermercado Preço Bom", "Farmácia Saúde", "Loja de Roupas MD", "Clínica Sorriso", "Mecânica do João", "Pizzaria Bella"];
+                const actions = ["solicitou um Spot para Carro de Som.", "enviou texto para gravação de Comercial.", "acabou de receber um Spot pronto.", "adquiriu a Produção Completa."];
+                const times = ["agora mesmo", "há 2 minutos", "há 4 minutos", "há 7 minutos"];
+
+                const showNotification = () => {
+                    const randomName = names[Math.floor(Math.random() * names.length)];
+                    const randomAction = actions[Math.floor(Math.random() * actions.length)];
+                    const randomTime = times[Math.floor(Math.random() * times.length)];
+
+                    setNotification({ name: randomName, action: randomAction, time: randomTime });
+
+                    setTimeout(() => setNotification(null), 6000);
+                };
+
+                const timeoutId = setTimeout(showNotification, 4000);
+                const intervalId = setInterval(showNotification, 28000);
+
+                return () => {
+                    clearTimeout(timeoutId);
+                    clearInterval(intervalId);
+                };
+            }, []);
+
+            return (
+                <div className="min-h-screen">
+                    <audio ref={audioRef} onEnded={() => setPlayingId(null)} />
+
+                    {/* NAVEGAÇÃO SIMPLIFICADA (Foco em manter o cliente na página) */}
+                    <nav className="fixed w-full z-40 bg-[#0f0f12]/95 backdrop-blur-md border-b border-white/5">
+                        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                            <div className="flex justify-between items-center h-20">
+                                <a href="/" className="flex items-center gap-2 hover:opacity-80 transition-opacity">
+                                    <div className="w-10 h-10 bg-gradient-to-br from-blue-500 to-cyan-600 rounded-lg flex items-center justify-center">
+                                        <Icon name="mic" className="text-white w-6 h-6" />
+                                    </div>
+                                    <span className="text-xl font-bold tracking-tighter text-white uppercase hidden sm:block">Estúdio <span className="text-blue-500">A</span> Locução</span>
+                                </a>
+
+                                <div className="flex items-center gap-6">
+                                    <a href="/" className="text-sm font-bold text-slate-400 hover:text-white flex items-center gap-2">
+                                        <Icon name="arrow-left" className="w-4 h-4" /> Voltar ao Início
+                                    </a>
+                                    <a href="https://paineldegravacao.com.br/comerciaistop/cadastro" target="_blank" className="bg-blue-600 hover:bg-blue-500 text-white px-6 py-2 rounded-full font-bold text-sm transition-all shadow-lg shadow-blue-500/30">
+                                        CRIAR MEU COMERCIAL
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </nav>
+
+                    {/* HERO SECTION - Focado no Resultado */}
+                    <section className="relative pt-40 pb-20 overflow-hidden">
+                        <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-blue-600/10 blur-[150px] rounded-full pointer-events-none" />
+                        
+                        <div className="max-w-7xl mx-auto px-4 grid lg:grid-cols-2 gap-12 items-center relative z-10 animate-fade-in">
+                            <div>
+                                <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-500/10 border border-blue-500/20 mb-6 text-blue-400 font-bold text-xs uppercase tracking-widest">
+                                    <Icon name="headphones" className="w-4 h-4" /> Produção Completa
+                                </div>
+                                <h1 className="text-5xl lg:text-6xl font-extrabold text-white mb-6 leading-tight">
+                                    Seu comercial pronto para <span className="text-blue-500">tocar e vender.</span>
+                                </h1>
+                                <p className="text-slate-400 text-lg mb-8 leading-relaxed max-w-xl">
+                                    Você não precisa entender de áudio. Nós colocamos a voz profissional, a trilha sonora perfeita e os efeitos. Entregamos o seu comercial no mesmo dia, pronto para tocar na rádio, carro de som ou Instagram.
+                                </p>
+                                
+                                <div className="flex flex-col sm:flex-row gap-4 mb-10">
+                                    <a href="https://paineldegravacao.com.br/comerciaistop/cadastro" target="_blank" className="bg-blue-600 hover:bg-blue-500 text-white font-black px-8 py-4 rounded-2xl text-lg transition-all shadow-lg shadow-blue-500/20 flex justify-center items-center gap-2">
+                                        Quero Produzir Agora
+                                    </a>
+                                </div>
+
+                                <div className="flex items-center gap-6 text-sm font-bold text-slate-300">
+                                    <div className="flex items-center gap-2"><Icon name="check-circle" className="w-5 h-5 text-green-500" /> Entrega Rápida</div>
+                                    <div className="flex items-center gap-2"><Icon name="check-circle" className="w-5 h-5 text-green-500" /> +300 Vozes</div>
+                                </div>
+                            </div>
+
+                            {/* Card de Preço Destacado */}
+                            <div className="glass-card p-8 rounded-[40px] border-2 border-blue-500/20 relative">
+                                <div className="absolute -top-4 -right-4 bg-green-500 text-white font-black px-4 py-2 rounded-xl text-sm transform rotate-3 shadow-lg">
+                                    Melhor Custo x Benefício
+                                </div>
+                                <h3 className="text-2xl font-bold text-white mb-2">Spot Comercial</h3>
+                                <p className="text-slate-400 text-sm mb-6">Gravação Humana + Trilha + Efeitos</p>
+                                <div className="text-5xl font-black text-white mb-2">R$ 30<span className="text-xl font-normal text-slate-400">,00</span></div>
+                                <p className="text-blue-400 text-xs font-bold uppercase tracking-widest mb-8">Por crédito (Até 40 segundos)</p>
+                                
+                                <ul className="space-y-4 mb-8">
+                                    <li className="flex items-start gap-3 text-slate-300">
+                                        <div className="bg-blue-500/20 p-1 rounded-md mt-1"><Icon name="check" className="w-4 h-4 text-blue-500" /></div>
+                                        <span><strong>Voz Profissional:</strong> Escolha entre homens, mulheres ou vozes infantis.</span>
+                                    </li>
+                                    <li className="flex items-start gap-3 text-slate-300">
+                                        <div className="bg-blue-500/20 p-1 rounded-md mt-1"><Icon name="check" className="w-4 h-4 text-blue-500" /></div>
+                                        <span><strong>Áudio Finalizado:</strong> Misturado com músicas sem direitos autorais.</span>
+                                    </li>
+                                    <li className="flex items-start gap-3 text-slate-300">
+                                        <div className="bg-blue-500/20 p-1 rounded-md mt-1"><Icon name="check" className="w-4 h-4 text-blue-500" /></div>
+                                        <span><strong>Brinde Exclusivo:</strong> Enviamos a "Voz Seca" (Off) de brinde junto com o áudio final.</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </section>
+
+                    {/* COMO FUNCIONA - Foco na Facilidade */}
+                    <section className="py-24 bg-[#16161a] border-t border-white/5">
+                        <div className="max-w-7xl mx-auto px-4">
+                            <div className="text-center mb-16">
+                                <h2 className="text-3xl lg:text-4xl font-bold text-white mb-4">Como funciona? É muito simples.</h2>
+                                <p className="text-slate-400">Tudo é feito pela nossa plataforma online, 24 horas por dia.</p>
+                            </div>
+
+                            <div className="grid md:grid-cols-3 gap-8 relative">
+                                {/* Linha conectora (visível apenas em desktop) */}
+                                <div className="hidden md:block absolute top-12 left-[15%] right-[15%] h-0.5 bg-gradient-to-r from-blue-500/0 via-blue-500/30 to-blue-500/0"></div>
+
+                                <div className="glass-card p-8 rounded-3xl text-center relative z-10">
+                                    <div className="w-16 h-16 bg-blue-600 rounded-2xl flex items-center justify-center text-white font-black text-2xl mx-auto mb-6 shadow-lg shadow-blue-500/30">1</div>
+                                    <h3 className="text-xl font-bold text-white mb-3">Escreva seu texto</h3>
+                                    <p className="text-slate-400 text-sm">Sem criatividade? Nossa <strong>Inteligência Artificial</strong> integrada te ajuda a criar um texto vendedor na mesma hora.</p>
+                                </div>
+
+                                <div className="glass-card p-8 rounded-3xl text-center relative z-10">
+                                    <div className="w-16 h-16 bg-blue-600 rounded-2xl flex items-center justify-center text-white font-black text-2xl mx-auto mb-6 shadow-lg shadow-blue-500/30">2</div>
+                                    <h3 className="text-xl font-bold text-white mb-3">Escolha a Voz</h3>
+                                    <p className="text-slate-400 text-sm">Ouça os estilos, sotaques e escolha o locutor que mais combina com a sua empresa.</p>
+                                </div>
+
+                                <div className="glass-card p-8 rounded-3xl text-center relative z-10">
+                                    <div className="w-16 h-16 bg-blue-600 rounded-2xl flex items-center justify-center text-white font-black text-2xl mx-auto mb-6 shadow-lg shadow-blue-500/30">3</div>
+                                    <h3 className="text-xl font-bold text-white mb-3">Receba e Toque</h3>
+                                    <p className="text-slate-400 text-sm">Para pedidos feitos até as 17h (dias úteis), nós entregamos a produção completa no mesmo dia. Avisamos no seu WhatsApp!</p>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    {/* EXEMPLOS DE PRODUÇÃO */}
+                    <section className="py-24 bg-[#0f0f12]">
+                        <div className="max-w-5xl mx-auto px-4 text-center">
+                            <h2 className="text-3xl font-bold text-white mb-4">Ouça como fica o resultado final</h2>
+                            <p className="text-slate-500 mb-12">Dê o play e sinta a qualidade da nossa produção.</p>
+
+                            <div className="grid md:grid-cols-3 gap-6">
+                                {spotExamples.map(spot => (
+                                    <div key={spot.id} className={`glass-card p-6 rounded-3xl transition-all duration-300 ${playingId === spot.id ? 'border-blue-500 shadow-[0_0_30px_rgba(59,130,246,0.15)]' : 'border-white/5'}`}>
+                                        <div className="flex flex-col items-center">
+                                            <div 
+                                                onClick={() => togglePlay(spot.id, spot.audio)}
+                                                className={`w-16 h-16 rounded-full flex items-center justify-center cursor-pointer transition-all mb-4 ${playingId === spot.id ? 'bg-blue-600 text-white scale-110 shadow-lg shadow-blue-500/40' : 'bg-white/5 text-blue-500 hover:bg-white/10'}`}
+                                            >
+                                                <Icon name={playingId === spot.id ? 'pause' : 'play'} className="w-8 h-8 ml-1" />
+                                            </div>
+                                            <h4 className="text-white font-bold text-lg">{spot.name}</h4>
+                                            <span className="text-blue-400 text-[10px] uppercase font-bold tracking-widest">{spot.type}</span>
+                                        </div>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+                    </section>
+
+                    {/* FOOTER */}
+                    <footer className="py-12 border-t border-white/5 bg-[#0f0f12] text-center">
+                        <div className="max-w-7xl mx-auto px-4">
+                            <p className="text-slate-500 text-sm mb-4">Precisa de ajuda antes de comprar? Fale com nossa Inteligência Artificial no WhatsApp 24h.</p>
+                            <a href="https://wa.me/5527996529832" target="_blank" className="inline-flex items-center gap-2 text-green-500 font-bold hover:underline mb-8">
+                                <Icon name="message-circle" className="w-5 h-5" /> Chamar no WhatsApp
+                            </a>
+                            <p className="text-[10px] text-slate-700 font-bold uppercase tracking-[0.3em]">© 2026 ESTÚDIO A LOCUÇÃO.</p>
+                        </div>
+                    </footer>
+
+                    {/* POP-UP NOTIFICAÇÃO DE VENDAS (PROVA SOCIAL) - FUNDO BRANCO */}
+                    {notification && (
+                        <div className="fixed bottom-6 left-6 z-50 bg-white border border-slate-200 p-4 rounded-2xl shadow-[0_10px_40px_rgba(0,0,0,0.8)] flex items-center gap-4 animate-slide-up max-w-[320px]">
+                            <div className="bg-blue-100 p-3 rounded-full flex-shrink-0">
+                                <Icon name="volume-2" className="w-5 h-5 text-blue-600" />
+                            </div>
+                            <div>
+                                <p className="text-slate-800 text-[13px] leading-tight mb-1">
+                                    <strong className="font-extrabold text-black">{notification.name}</strong> <span className="text-slate-600">{notification.action}</span>
+                                </p>
+                                <p className="text-[10px] text-blue-600 uppercase tracking-widest font-bold">{notification.time}</p>
+                            </div>
+                        </div>
+                    )}
+
+                </div>
+            );
+        };
+
+        const root = ReactDOM.createRoot(document.getElementById('root'));
+        root.render(<App />);
+    </script>
+</body>
+</html>
