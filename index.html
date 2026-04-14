@@ -3,384 +3,347 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Estúdio A Locução | Produção de Áudio Profissional</title>
+    <title>A Locução | Estúdio de Gravação e Locução Profissional 24h</title>
+    <meta name="description" content="Sua produtora de áudio completa. Gravamos Offs, Spots Comerciais, Vinhetas e Jingles com mais de 200 vozes reais. Entrega em 10 minutos!">
+    <meta name="keywords" content="locução profissional, gravação em off, spot comercial, vinhetas rádio, jingle político, banco de vozes, edição de áudio">
+    
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
-    <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
-    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
-    <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap');
+        body { font-family: 'Inter', sans-serif; scroll-behavior: smooth; }
+        .gradient-bg { background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); }
+        .accent-color { color: #22d3ee; }
+        .btn-primary { background: #22d3ee; transition: all 0.3s ease; }
+        .btn-primary:hover { background: #0891b2; transform: translateY(-2px); }
+        .card-service:hover { border-color: #22d3ee; transform: scale(1.02); }
+        .logo-img { max-height: 50px; width: auto; }
         
-        html { scroll-behavior: smooth; }
-
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: #0f0f12;
-            color: #e2e8f0;
+        /* Mobile menu transitions */
+        #mobile-menu {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
         }
-
-        @keyframes fade-in {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
+        #mobile-menu.active {
+            max-height: 500px;
         }
-        .animate-fade-in { animation: fade-in 1s ease-out forwards; }
-
-        @keyframes slide-up {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        .animate-slide-up { animation: slide-up 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
-
-        .glass-card {
-            background: rgba(22, 22, 26, 0.7);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-        }
-
-        /* Custom Scrollbar */
-        ::-webkit-scrollbar { width: 8px; }
-        ::-webkit-scrollbar-track { background: #0f0f12; }
-        ::-webkit-scrollbar-thumb { background: #27272a; border-radius: 4px; }
-        ::-webkit-scrollbar-thumb:hover { background: #3f3f46; }
     </style>
 </head>
-<body>
-    <div id="root"></div>
+<body class="bg-slate-50 text-slate-900">
 
-    <script type="text/babel">
-        const { useState, useEffect, useRef } = React;
-
-        const Icon = ({ name, className = "w-5 h-5" }) => {
-            useEffect(() => {
-                if (window.lucide) {
-                    window.lucide.createIcons();
-                }
-            }, [name]);
-            return <i data-lucide={name} className={className}></i>;
-        };
-
-        const App = () => {
-            const [onlineVoices, setOnlineVoices] = useState(172);
-            const [playingId, setPlayingId] = useState(null);
-            const [notification, setNotification] = useState(null);
-            const audioRef = useRef(null);
-
-            const featuredVoices = [
-                { id: 'celso', name: 'Locutor Celso', photo: 'https://testedomarcio.github.io/meuadio/celso.jpg', audio: 'https://testedomarcio.github.io/meuadio/Celso.mp3', style: 'Varejo / Impacto' },
-                { id: 'charles', name: 'Locutor Charles', photo: 'https://testedomarcio.github.io/meuadio/charles.png', audio: 'https://testedomarcio.github.io/meuadio/Charles.mp3', style: 'Institucional / Médio' },
-                { id: 'cristian', name: 'Locutor Cristian', photo: 'https://testedomarcio.github.io/meuadio/Cristian.jfif', audio: 'https://testedomarcio.github.io/meuadio/Cristian.mp3', style: 'Coloquial / Jovem' },
-                { id: 'leandro', name: 'Locutor Leandro', photo: 'https://testedomarcio.github.io/meuadio/leandro.jpg', audio: 'https://testedomarcio.github.io/meuadio/Leandro.mp3', style: 'Varejo / Dinâmico' },
-                { id: 'elissandra', name: 'Locutor Elissandra', photo: 'https://testedomarcio.github.io/meuadio/Elissandra.jpg', audio: 'https://testedomarcio.github.io/meuadio/elissandra.mp3', style: 'Feminino / Versátil' }
-            ];
-
-            const togglePlay = (id, url) => {
-                if (playingId === id) {
-                    audioRef.current.pause();
-                    setPlayingId(null);
-                } else {
-                    audioRef.current.src = url;
-                    audioRef.current.play();
-                    setPlayingId(id);
-                }
-            };
-
-            // Efeito para o contador de locutores
-            useEffect(() => {
-                const interval = setInterval(() => {
-                    const variation = Math.floor(Math.random() * 5) - 2;
-                    setOnlineVoices(prev => Math.min(200, Math.max(160, prev + variation)));
-                }, 10000);
-                return () => clearInterval(interval);
-            }, []);
-
-            // Sistema de Notificações de Vendas (Prova Social) - Fundo Branco
-            useEffect(() => {
-                const names = ["Carlos Mendes", "Agência Vértice", "Ana Paula", "Produtora X", "Roberto Silva", "Juliana M.", "Rádio Cidade", "Marcos R."];
-                const actions = ["acabou de adquirir 5 créditos de Off.", "solicitou a produção de um Spot.", "adicionou R$ 150 em créditos na plataforma.", "solicitou 2 Offs Comerciais."];
-                const times = ["agora mesmo", "há 1 minuto", "há 3 minutos", "há 5 minutos"];
-
-                const showNotification = () => {
-                    const randomName = names[Math.floor(Math.random() * names.length)];
-                    const randomAction = actions[Math.floor(Math.random() * actions.length)];
-                    const randomTime = times[Math.floor(Math.random() * times.length)];
-
-                    setNotification({ name: randomName, action: randomAction, time: randomTime });
-
-                    // Esconde a notificação após 6 segundos
-                    setTimeout(() => setNotification(null), 6000);
-                };
-
-                // Mostra a primeira notificação após 5 segundos, depois repete a cada 25 segundos
-                const timeoutId = setTimeout(showNotification, 5000);
-                const intervalId = setInterval(showNotification, 25000);
-
-                return () => {
-                    clearTimeout(timeoutId);
-                    clearInterval(intervalId);
-                };
-            }, []);
-
-            return (
-                <div className="min-h-screen">
-                    <audio ref={audioRef} onEnded={() => setPlayingId(null)} />
-
-                    {/* NAVEGAÇÃO */}
-                    <nav className="fixed w-full z-40 bg-[#0f0f12]/95 backdrop-blur-md border-b border-white/5">
-                        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                            <div className="flex justify-between items-center h-20">
-                                <div className="flex items-center gap-2">
-                                    <div className="w-10 h-10 bg-gradient-to-br from-blue-500 to-cyan-600 rounded-lg flex items-center justify-center">
-                                        <Icon name="mic" className="text-white w-6 h-6" />
-                                    </div>
-                                    <span className="text-xl font-bold tracking-tighter text-white uppercase">Estúdio <span className="text-blue-500">A</span> Locução</span>
-                                </div>
-
-                                <div className="hidden md:flex items-center gap-8 text-xs font-bold uppercase tracking-widest">
-                                    <a href="https://paineldegravacao.com.br/comerciaistop/lista-locutores" target="_blank" className="hover:text-blue-400 transition-colors">Nossas Vozes</a>
-                                    <a href="#servicos" className="hover:text-blue-400 transition-colors">Serviços</a>
-                                    <a href="#contato" className="hover:text-blue-400 transition-colors">Contato</a>
-                                    <a href="https://paineldegravacao.com.br/comerciaistop/cadastro" target="_blank" className="bg-blue-600 hover:bg-blue-500 text-white px-6 py-2 rounded-full transition-all transform hover:scale-105">
-                                        ACESSAR PAINEL
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </nav>
-
-                    {/* HERO SECTION */}
-                    <section className="relative pt-40 pb-20 overflow-hidden text-center">
-                        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full pointer-events-none opacity-20">
-                            <div className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-blue-600/20 blur-[120px] rounded-full" />
-                        </div>
-                        <div className="max-w-4xl mx-auto px-4 relative z-10 animate-fade-in">
-                            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 mb-8">
-                                <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
-                                <span className="text-[10px] font-bold uppercase tracking-widest text-white">{onlineVoices} Locutores Online Agora</span>
-                            </div>
-                            <h1 className="text-5xl lg:text-7xl font-extrabold text-white mb-6 leading-tight">
-                                Vozes com <span className="text-blue-500">alma.</span><br />Resultados com vida.
-                            </h1>
-                            <p className="text-slate-400 text-lg mb-10 max-w-2xl mx-auto">
-                                Locução 100% humana, áudio profissional e entrega a partir de 10 minutos. Plataforma automatizada para Produtores e Agências.
-                            </p>
-                            <div className="flex flex-col sm:flex-row justify-center gap-4 mb-20">
-                                <a href="#vozes" className="bg-blue-600 hover:bg-blue-500 text-white font-black px-10 py-5 rounded-2xl text-lg transition-all shadow-lg shadow-blue-500/20 flex justify-center items-center gap-2">
-                                    <Icon name="play-circle" className="w-5 h-5" /> Ouvir Banco de Vozes
-                                </a>
-                                <a href="#servicos" className="bg-white/5 border border-white/10 px-10 py-5 rounded-2xl text-white font-bold hover:bg-white/10 transition-all flex items-center justify-center gap-2">
-                                    <Icon name="zap" className="w-5 h-5 text-blue-400" /> Ver Planos e Preços
-                                </a>
-                            </div>
-                            
-                            <div className="space-y-6">
-                                <h3 className="text-[10px] text-slate-500 font-bold uppercase tracking-[0.4em]">Confiança de quem produz</h3>
-                                <div className="flex flex-wrap justify-center gap-8 lg:gap-12 opacity-40 text-[11px] font-bold tracking-[0.2em] uppercase">
-                                    <span>Universo Internet</span>
-                                    <span>Agência Mellody</span>
-                                    <span>Poupe Mais Farma</span>
-                                    <span>Toca Produtora</span>
-                                </div>
-                            </div>
-                        </div>
-                    </section>
-
-                    {/* VOZES DESTAQUE */}
-                    <section id="vozes" className="py-24 bg-[#16161a]">
-                        <div className="max-w-7xl mx-auto px-4 text-center">
-                            <h2 className="text-3xl lg:text-5xl font-bold text-white mb-4">Vozes Destaque da Semana</h2>
-                            <p className="text-slate-500 mb-16 uppercase tracking-widest text-xs font-bold">A interpretação perfeita para o seu projeto</p>
-                            
-                            <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-6">
-                                {featuredVoices.map(voice => (
-                                    <div key={voice.id} className={`glass-card rounded-3xl overflow-hidden transition-all duration-500 ${playingId === voice.id ? 'ring-2 ring-blue-500 shadow-[0_0_20px_rgba(59,130,246,0.2)]' : ''}`}>
-                                        <div className="relative aspect-[3/4] group cursor-pointer" onClick={() => togglePlay(voice.id, voice.audio)}>
-                                            <img src={voice.photo} className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700" alt={voice.name} />
-                                            <div className="absolute inset-0 bg-gradient-to-t from-[#0f0f12] to-transparent opacity-60" />
-                                            <div className="absolute inset-0 flex items-center justify-center">
-                                                <div className={`w-14 h-14 rounded-full flex items-center justify-center transition-all ${playingId === voice.id ? 'bg-blue-600 text-white scale-110' : 'bg-white/10 text-white hover:scale-110 group-hover:bg-blue-600/80'}`}>
-                                                    <Icon name={playingId === voice.id ? 'pause' : 'play'} className="w-6 h-6" />
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div className="p-5 text-left">
-                                            <h4 className="text-white font-bold mb-1">{voice.name}</h4>
-                                            <p className="text-[10px] text-blue-400 font-bold uppercase tracking-widest">{voice.style}</p>
-                                        </div>
-                                    </div>
-                                ))}
-                            </div>
-                            <div className="mt-12">
-                                <a href="https://paineldegravacao.com.br/comerciaistop/lista-locutores" target="_blank" className="text-blue-500 font-bold uppercase tracking-widest text-sm hover:underline">Ver banco completo (+300 vozes)</a>
-                            </div>
-                        </div>
-                    </section>
-
-                    {/* SEÇÃO DE SERVIÇOS */}
-                    <section id="servicos" className="py-24 bg-[#0f0f12]">
-                        <div className="max-w-7xl mx-auto px-4">
-                            <div className="text-center mb-16">
-                                <h2 className="text-3xl lg:text-5xl font-bold text-white mb-4">Nossos Serviços</h2>
-                                <p className="text-slate-500 uppercase tracking-widest text-xs font-bold">Transparência e Agilidade para o seu Negócio</p>
-                            </div>
-                            
-                            <div className="grid md:grid-cols-3 gap-8 mb-10">
-                                {/* Card Off */}
-                                <div className="p-8 glass-card rounded-[32px] hover:border-blue-500/30 transition-all group flex flex-col h-full">
-                                    <div className="w-14 h-14 bg-blue-500/10 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-blue-500 group-hover:text-white transition-colors">
-                                        <Icon name="mic-2" className="w-8 h-8 text-blue-500 group-hover:text-white" />
-                                    </div>
-                                    <h3 className="text-xl font-bold text-white mb-2">Locução Off</h3>
-                                    <div className="text-3xl font-black text-white mb-4">R$ 15<span className="text-sm font-normal text-slate-400">,00 / crédito</span></div>
-                                    <p className="text-slate-400 text-sm leading-relaxed flex-grow">
-                                        Ideal para editores. Voz seca e limpa, gravada em estúdios tratados. Pronta para sua edição em tempo recorde.
-                                    </p>
-                                    <a href="https://alocucao.com.br/offs" className="mt-6 w-full bg-blue-500/10 hover:bg-blue-500 text-blue-500 hover:text-white py-4 rounded-xl font-bold text-sm transition-all flex items-center justify-center gap-2">
-                                        Ver detalhes do Off <Icon name="arrow-right" className="w-4 h-4" />
-                                    </a>
-                                </div>
-
-                                {/* Card Spot */}
-                                <div className="p-8 glass-card rounded-[32px] hover:border-blue-500/30 transition-all group flex flex-col h-full relative overflow-hidden">
-                                    <div className="absolute top-0 right-0 bg-blue-600 text-[10px] font-bold px-3 py-1 rounded-bl-xl uppercase tracking-wider">Mais Vendido</div>
-                                    <div className="w-14 h-14 bg-blue-500/10 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-blue-500 group-hover:text-white transition-colors">
-                                        <Icon name="headphones" className="w-8 h-8 text-blue-500 group-hover:text-white" />
-                                    </div>
-                                    <h3 className="text-xl font-bold text-white mb-2">Spot Comercial (Produção)</h3>
-                                    <div className="text-3xl font-black text-white mb-4">R$ 30<span className="text-sm font-normal text-slate-400">,00 / crédito</span></div>
-                                    <p className="text-slate-400 text-sm leading-relaxed flex-grow">
-                                        Ideal para empresas finais. Áudio completo com locução, trilha sonora e efeitos. Entregamos o arquivo finalizado e o Off de brinde.
-                                    </p>
-                                    <a href="https://alocucao.com.br/spots" className="mt-6 w-full bg-blue-600 hover:bg-blue-500 text-white py-4 rounded-xl font-bold text-sm transition-all flex items-center justify-center gap-2">
-                                        Como funciona a Produção <Icon name="arrow-right" className="w-4 h-4" />
-                                    </a>
-                                </div>
-
-                                {/* Card Plataforma */}
-                                <div className="p-8 glass-card rounded-[32px] border border-blue-900/50 hover:border-blue-500/30 transition-all group flex flex-col h-full">
-                                    <div className="w-14 h-14 bg-blue-500/10 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-blue-500 group-hover:text-white transition-colors">
-                                        <Icon name="laptop" className="w-8 h-8 text-blue-500 group-hover:text-white" />
-                                    </div>
-                                    <h3 className="text-xl font-bold text-white mb-4">Plataforma Inteligente</h3>
-                                    <ul className="text-slate-400 text-sm space-y-3 flex-grow">
-                                        <li className="flex items-center gap-2"><Icon name="check" className="w-4 h-4 text-blue-500" /> Liberação imediata via PIX/Cartão</li>
-                                        <li className="flex items-center gap-2"><Icon name="check" className="w-4 h-4 text-blue-500" /> +300 vozes humanas (M/F/Infantil)</li>
-                                        <li className="flex items-center gap-2"><Icon name="check" className="w-4 h-4 text-blue-500" /> Notificação no WhatsApp</li>
-                                        <li className="flex items-center gap-2"><Icon name="check" className="w-4 h-4 text-blue-500" /> IA integrada para roteiros</li>
-                                    </ul>
-                                    <a href="https://paineldegravacao.com.br/comerciaistop/cadastro" target="_blank" className="mt-6 w-full bg-white/5 hover:bg-white/10 text-white py-4 rounded-xl font-bold text-sm transition-all flex items-center justify-center gap-2 border border-white/10">
-                                        Criar Conta Grátis <Icon name="external-link" className="w-4 h-4" />
-                                    </a>
-                                </div>
-                            </div>
-
-                            {/* Banner Regra de Tempo */}
-                            <div className="bg-blue-900/20 border border-blue-500/30 rounded-2xl p-6 text-center max-w-4xl mx-auto flex flex-col md:flex-row items-center justify-center gap-4">
-                                <div className="bg-blue-500/20 p-3 rounded-full">
-                                    <Icon name="clock" className="w-6 h-6 text-blue-400" />
-                                </div>
-                                <div className="text-left">
-                                    <h4 className="text-white font-bold mb-1">Entenda a cobrança por créditos (Regra dos 40s)</h4>
-                                    <p className="text-slate-400 text-sm">Cada crédito comprado equivale a uma gravação de <strong>até 40 segundos</strong>. Textos que ultrapassam esse tempo consomem um novo crédito a cada nova fração de 40 segundos.</p>
-                                </div>
-                            </div>
-
-                        </div>
-                    </section>
-
-                    {/* MANIFESTO */}
-                    <section className="py-24 bg-[#16161a]">
-                        <div className="max-w-5xl mx-auto px-4 grid md:grid-cols-2 gap-12 items-center">
-                            <div>
-                                <h3 className="text-3xl font-bold text-white mb-6 italic">"IA não entende o sorriso na voz."</h3>
-                                <p className="text-slate-400 leading-relaxed mb-6">
-                                    No <strong>Estúdio A Locução</strong>, acreditamos que a conexão emocional é o que vende. Nossos locutores dão intenção às palavras, respiram no tempo certo e adaptam o sotaque para gerar identificação imediata.
-                                </p>
-                                <div className="grid grid-cols-2 gap-4">
-                                    <div className="p-4 glass-card rounded-2xl">
-                                        <span className="text-blue-500 block font-black text-2xl">24h</span>
-                                        <span className="text-[10px] uppercase font-bold text-slate-500">Plataforma Aberta</span>
-                                    </div>
-                                    <div className="p-4 glass-card rounded-2xl">
-                                        <span className="text-blue-500 block font-black text-2xl">10m</span>
-                                        <span className="text-[10px] uppercase font-bold text-slate-500">Prazo Mínimo p/ Offs</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="p-8 glass-card rounded-[40px] border-blue-500/20">
-                                <div className="flex items-center gap-4 mb-8">
-                                    <div className="w-12 h-12 bg-green-500/10 rounded-full flex items-center justify-center"><Icon name="check-circle" className="text-green-500" /></div>
-                                    <h4 className="font-bold text-white uppercase tracking-widest text-sm">Painel do Cliente</h4>
-                                </div>
-                                <div className="space-y-4">
-                                    <p className="text-xs text-slate-500 uppercase font-bold tracking-widest">Qualidade e Agilidade</p>
-                                    <div className="h-2 w-full bg-white/5 rounded-full overflow-hidden"><div className="w-3/4 h-full bg-blue-500"></div></div>
-                                    <div className="h-2 w-full bg-white/5 rounded-full overflow-hidden"><div className="w-1/2 h-full bg-blue-500"></div></div>
-                                    <a href="https://paineldegravacao.com.br/comerciaistop/cadastro" target="_blank" className="block w-full mt-6 bg-blue-600 py-4 rounded-2xl text-white font-black uppercase text-xs tracking-[0.2em] text-center hover:bg-blue-500 transition-colors">
-                                        Criar Conta Gratuita
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </section>
-
-                    {/* FOOTER & ATENDIMENTO */}
-                    <footer id="contato" className="py-20 border-t border-white/5 bg-[#0f0f12]">
-                        <div className="max-w-7xl mx-auto px-4 text-center">
-                            <div className="grid md:grid-cols-2 gap-6 max-w-3xl mx-auto mb-16">
-                                <div className="glass-card p-6 rounded-2xl text-left flex items-start gap-4">
-                                    <div className="p-3 bg-green-500/10 rounded-xl"><Icon name="bot" className="w-6 h-6 text-green-500" /></div>
-                                    <div>
-                                        <h4 className="text-white font-bold mb-1">WhatsApp (24h)</h4>
-                                        <p className="text-slate-400 text-xs mb-3">Atendimento operado por Inteligência Artificial para dúvidas, status e guia rápido.</p>
-                                        <a href="https://wa.me/5527996529832" target="_blank" className="text-green-500 text-sm font-bold hover:underline">Chamar no Zap</a>
-                                    </div>
-                                </div>
-                                <div className="glass-card p-6 rounded-2xl text-left flex items-start gap-4">
-                                    <div className="p-3 bg-blue-500/10 rounded-xl"><Icon name="mail" className="w-6 h-6 text-blue-500" /></div>
-                                    <div>
-                                        <h4 className="text-white font-bold mb-1">E-mail (Suporte Humano)</h4>
-                                        <p className="text-slate-400 text-xs mb-3">Para análises de pedidos, suporte técnico avançado ou tratativas complexas.</p>
-                                        <a href="mailto:contato@alocucao.com.br" className="text-blue-500 text-sm font-bold hover:underline">contato@alocucao.com.br</a>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div className="flex items-center justify-center gap-2 mb-8">
-                                <Icon name="mic" className="text-blue-500 w-8 h-8" />
-                                <span className="text-2xl font-black text-white">ESTÚDIO A LOCUÇÃO</span>
-                            </div>
-                            <p className="text-slate-500 text-sm max-w-md mx-auto mb-10">Tecnologia em áudio e locutores reais para marcas reais em todo o Brasil.</p>
-                            <p className="text-[10px] text-slate-700 font-bold uppercase tracking-[0.3em]">© 2026 ESTÚDIO A LOCUÇÃO - TODOS OS DIREITOS RESERVADOS.</p>
-                        </div>
-                    </footer>
-
-                    {/* BOTÃO FLUTUANTE WHATSAPP */}
-                    <a href="https://wa.me/5527996529832" target="_blank" className="fixed bottom-6 right-6 z-40 bg-green-500 text-white p-4 rounded-full shadow-2xl hover:bg-green-600 transition-all hover:scale-110 active:scale-95">
-                        <Icon name="message-circle" className="w-8 h-8" />
+    <!-- Header / Navbar -->
+    <header class="sticky top-0 z-50 bg-slate-900 text-white shadow-xl">
+        <nav class="container mx-auto px-6 py-4">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center gap-2">
+                    <a href="https://alocucao.com.br">
+                        <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj_sBFI94b0Jhnsl6DY4UwsTOpsmltn1MNvF5n6zcrkdLUd7oqFJfxF5NAtCEwBchu-b65jEsMXi60X2SlPb04XheC1fuEaG-sRzEbENAbN4eMSX5YHbdk6oGhfGTHQOPR1tZJn_GwXOAjUL6UX4ZvpVITZOL6is83xruSEkk343d-9VEx5osefurjX8aY/s1600/logo.png" alt="A Locução Logo" class="logo-img">
                     </a>
-
-                    {/* POP-UP NOTIFICAÇÃO DE VENDAS (PROVA SOCIAL) - FUNDO BRANCO */}
-                    {notification && (
-                        <div className="fixed bottom-6 left-6 z-50 bg-white border border-slate-200 p-4 rounded-2xl shadow-[0_10px_40px_rgba(0,0,0,0.8)] flex items-center gap-4 animate-slide-up max-w-[320px]">
-                            <div className="bg-blue-100 p-3 rounded-full flex-shrink-0">
-                                <Icon name="shopping-bag" className="w-5 h-5 text-blue-600" />
-                            </div>
-                            <div>
-                                <p className="text-slate-800 text-[13px] leading-tight mb-1">
-                                    <strong className="font-extrabold text-black">{notification.name}</strong> <span className="text-slate-600">{notification.action}</span>
-                                </p>
-                                <p className="text-[10px] text-blue-600 uppercase tracking-widest font-bold">{notification.time}</p>
-                            </div>
-                        </div>
-                    )}
-
                 </div>
-            );
-        };
+                
+                <!-- Desktop Menu -->
+                <div class="hidden lg:flex space-x-6 font-medium text-sm uppercase tracking-wider">
+                    <a href="https://alocucao.com.br" class="hover:text-cyan-400 transition">Início</a>
+                    <a href="https://alocucao.com.br/servicos" class="hover:text-cyan-400 transition">Serviços</a>
+                    <a href="https://alocucao.com.br/vozes" class="hover:text-cyan-400 transition text-cyan-400 font-bold">Vozes</a>
+                    <a href="https://alocucao.com.br/precos" class="hover:text-cyan-400 transition">Preços</a>
+                    <a href="#tecnologia" class="hover:text-cyan-400 transition">Recursos</a>
+                </div>
 
-        const root = ReactDOM.createRoot(document.getElementById('root'));
-        root.render(<App />);
+                <div class="flex items-center gap-4">
+                    <a href="https://alocucao.com.br/vozes" class="hidden lg:block text-sm font-bold border border-cyan-400 px-4 py-2 rounded-full hover:bg-cyan-400 hover:text-slate-900 transition uppercase">LOGIN</a>
+                    <a href="https://paineldegravacao.com.br/comerciaistop/cadastro" target="_blank" class="hidden sm:block btn-primary text-slate-900 font-bold px-6 py-2 rounded-full shadow-lg text-sm uppercase tracking-tighter">CADASTRE-SE</a>
+                    
+                    <!-- Hamburger Button -->
+                    <button id="menu-toggle" class="lg:hidden text-2xl text-cyan-400 focus:outline-none">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Mobile Menu Container -->
+            <div id="mobile-menu" class="lg:hidden">
+                <div class="flex flex-col space-y-4 pt-6 pb-4 border-t border-slate-800 mt-4">
+                    <a href="https://alocucao.com.br" class="text-slate-300 hover:text-cyan-400 py-2 transition uppercase text-sm font-bold">Início</a>
+                    <a href="https://alocucao.com.br/servicos" class="text-slate-300 hover:text-cyan-400 py-2 transition uppercase text-sm font-bold">Serviços</a>
+                    <a href="https://alocucao.com.br/vozes" class="text-cyan-400 py-2 transition uppercase text-sm font-bold border-l-2 border-cyan-400 pl-3">Vozes</a>
+                    <a href="https://alocucao.com.br/precos" class="text-slate-300 hover:text-cyan-400 py-2 transition uppercase text-sm font-bold">Preços</a>
+                    <a href="https://alocucao.com.br/vozes" class="bg-slate-800 text-cyan-400 text-center py-3 rounded-xl font-bold uppercase text-xs">LOGIN</a>
+                    <a href="https://paineldegravacao.com.br/comerciaistop/cadastro" target="_blank" class="btn-primary text-slate-900 text-center py-3 rounded-xl font-bold uppercase text-xs">CADASTRE-SE</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="gradient-bg text-white py-24 lg:py-40 relative overflow-hidden">
+        <div class="absolute top-0 left-1/4 w-96 h-96 bg-cyan-500/10 rounded-full blur-3xl"></div>
+        <div class="absolute bottom-0 right-1/4 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl"></div>
+
+        <div class="container mx-auto px-6 text-center relative z-10">
+            <div class="max-w-4xl mx-auto">
+                <span class="bg-cyan-500/20 text-cyan-400 px-6 py-2 rounded-full text-xs font-bold uppercase tracking-widest border border-cyan-500/30">Plataforma 24 Horas Disponível</span>
+                <h1 class="text-5xl lg:text-8xl font-extrabold mt-8 leading-tight tracking-tighter">
+                    Vozes que <span class="accent-color italic">vendem</span> seu produto.
+                </h1>
+                <p class="mt-8 text-slate-300 text-lg lg:text-2xl leading-relaxed max-w-2xl mx-auto font-light">
+                    Transforme os seus textos em áudio profissional com mais de 200 locutores reais. Entrega recorde em até 10 minutos com qualidade de estúdio.
+                </p>
+                <div class="mt-12 flex flex-wrap justify-center gap-6">
+                    <a href="https://alocucao.com.br/vozes" class="btn-primary text-slate-900 px-10 py-5 rounded-xl font-black text-xl shadow-2xl hover:scale-105 transition">OUVIR DEMONSTRAÇÕES</a>
+                    <a href="https://paineldegravacao.com.br/comerciaistop/cadastro" target="_blank" class="bg-white/10 backdrop-blur-md border border-white/20 hover:bg-white/20 px-10 py-5 rounded-xl font-bold text-xl transition">COMEÇAR AGORA</a>
+                </div>
+                <div class="mt-12 flex flex-wrap justify-center items-center gap-6 md:gap-8 text-xs md:text-sm text-slate-400 font-medium">
+                    <span class="flex items-center gap-2"><i class="fas fa-check-circle text-cyan-400"></i> SEM VOZES DE IA</span>
+                    <span class="flex items-center gap-2"><i class="fas fa-check-circle text-cyan-400"></i> PLANTÃO FDS E FERIADOS</span>
+                    <span class="flex items-center gap-2"><i class="fas fa-check-circle text-cyan-400"></i> PAGAMENTO IMEDIATO</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Serviços -->
+    <section id="servicos" class="py-24 bg-white">
+        <div class="container mx-auto px-6 text-center">
+            <h2 class="text-4xl font-extrabold mb-4 uppercase tracking-tighter">Nossas Soluções em Áudio</h2>
+            <p class="text-slate-500 max-w-2xl mx-auto mb-16 italic font-medium">Produzimos desde a voz pura até a finalização comercial completa.</p>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Off -->
+                <div class="card-service bg-slate-50 p-8 rounded-3xl border-2 border-transparent shadow-sm flex flex-col transition duration-300">
+                    <div class="w-16 h-16 bg-cyan-100 rounded-2xl flex items-center justify-center mb-6">
+                        <i class="fas fa-microphone text-cyan-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4 uppercase tracking-tighter">Gravação em Off</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed mb-8 flex-grow">
+                        Voz profissional pura, sem edição ou trilha. Audio bruto entregue com fidelidade total para sua edição própria.
+                    </p>
+                    <a href="https://paineldegravacao.com.br/comerciaistop/cadastro" class="text-cyan-600 font-bold border-2 border-cyan-200 py-3 rounded-xl hover:bg-cyan-600 hover:text-white transition uppercase text-xs tracking-widest">Pedir Agora</a>
+                </div>
+
+                <!-- Comercial -->
+                <div class="card-service bg-slate-50 p-8 rounded-3xl border-2 border-transparent shadow-sm flex flex-col transition duration-300">
+                    <div class="w-16 h-16 bg-blue-100 rounded-2xl flex items-center justify-center mb-6">
+                        <i class="fas fa-headset text-blue-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4 uppercase tracking-tighter">Produção Comercial</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed mb-8 flex-grow">
+                        Áudio completo com voz, trilha (BG), efeitos e mixagem. Pronto para veiculação imediata em rádio e redes sociais.
+                    </p>
+                    <a href="https://paineldegravacao.com.br/comerciaistop/cadastro" class="text-blue-600 font-bold border-2 border-blue-200 py-3 rounded-xl hover:bg-blue-600 hover:text-white transition uppercase text-xs tracking-widest">Pedir Agora</a>
+                </div>
+
+                <!-- Edição de Áudio -->
+                <div class="card-service bg-slate-50 p-8 rounded-3xl border-2 border-transparent shadow-sm flex flex-col transition duration-300">
+                    <div class="w-16 h-16 bg-emerald-100 rounded-2xl flex items-center justify-center mb-6">
+                        <i class="fas fa-sliders-h text-emerald-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4 uppercase tracking-tighter">Edição de Áudio</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed mb-8 flex-grow">
+                        Envie-nos a sua voz gravada (off) e faremos a pós-produção profissional com trilhas, efeitos e masterização.
+                    </p>
+                    <a href="https://paineldegravacao.com.br/comerciaistop/cadastro" class="text-emerald-600 font-bold border-2 border-emerald-200 py-3 rounded-xl hover:bg-emerald-600 hover:text-white transition uppercase text-xs tracking-widest">Produzir Agora</a>
+                </div>
+
+                <!-- Vinheta Off -->
+                <div class="card-service bg-slate-50 p-8 rounded-3xl border-2 border-transparent shadow-sm flex flex-col transition duration-300">
+                    <div class="w-16 h-16 bg-purple-100 rounded-2xl flex items-center justify-center mb-6">
+                        <i class="fas fa-bolt text-purple-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4 uppercase tracking-tighter">Vinhetas em Off</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed mb-8 flex-grow">
+                        Identificações breves (5-10s) para programas ou rádio. Apenas a voz limpa e impactante dos nossos locutores.
+                    </p>
+                    <a href="https://paineldegravacao.com.br/comerciaistop/cadastro" class="text-purple-600 font-bold border-2 border-purple-200 py-3 rounded-xl hover:bg-purple-600 hover:text-white transition uppercase text-xs tracking-widest">Comprar Agora</a>
+                </div>
+
+                <!-- Vinheta Produzida -->
+                <div class="card-service bg-slate-50 p-8 rounded-3xl border-2 border-transparent shadow-sm flex flex-col transition duration-300">
+                    <div class="w-16 h-16 bg-orange-100 rounded-2xl flex items-center justify-center mb-6">
+                        <i class="fas fa-certificate text-orange-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4 uppercase tracking-tighter">Vinhetas Produzidas</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed mb-8 flex-grow">
+                        Pílulas sonoras curtas com produção completa. Ideal para passagens de bloco e assinaturas de marca.
+                    </p>
+                    <a href="https://paineldegravacao.com.br/comerciaistop/cadastro" class="text-orange-600 font-bold border-2 border-orange-200 py-3 rounded-xl hover:bg-orange-600 hover:text-white transition uppercase text-xs tracking-widest">Comprar Agora</a>
+                </div>
+
+                <!-- Jingle -->
+                <div class="card-service bg-slate-50 p-8 rounded-3xl border-2 border-transparent shadow-sm flex flex-col transition duration-300">
+                    <div class="w-16 h-16 bg-red-100 rounded-2xl flex items-center justify-center mb-6">
+                        <i class="fas fa-music text-red-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4 uppercase tracking-tighter">Jingle Comercial</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed mb-8 flex-grow">
+                        Mensagem musical exclusiva com refrão marcante. A ferramenta perfeita para fixação de marca e campanhas políticas.
+                    </p>
+                    <a href="https://paineldegravacao.com.br/comerciaistop/cadastro" class="text-red-600 font-bold border-2 border-red-200 py-3 rounded-xl hover:bg-red-600 hover:text-white transition uppercase text-xs tracking-widest">Solicitar Agora</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Chamada para Demonstrações -->
+    <section id="vozes-cta" class="py-24 bg-slate-900 text-white text-center relative overflow-hidden">
+        <div class="container mx-auto px-6 relative z-10">
+            <h2 class="text-5xl font-extrabold mb-6 uppercase italic tracking-tighter">Ouça o nosso Elenco</h2>
+            <p class="text-slate-400 mb-12 max-w-2xl mx-auto text-lg">Banco de vozes composto por mais de 200 locutores reais. Nada de robôs ou IA, apenas talento humano pronto para gravar agora.</p>
+            <a href="https://alocucao.com.br/vozes" class="inline-block bg-cyan-400 text-slate-900 px-12 py-6 rounded-2xl font-black text-2xl hover:scale-105 transition shadow-[0_0_50px_rgba(34,211,238,0.3)]">ACESSE O BANCO DE VOZES</a>
+        </div>
+        <div class="absolute inset-0 opacity-5 pointer-events-none flex items-center justify-center">
+            <i class="fas fa-wave-square text-[40rem]"></i>
+        </div>
+    </section>
+
+    <!-- Tecnologia e Diferenciais -->
+    <section id="tecnologia" class="py-24 bg-slate-50">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-extrabold uppercase tracking-tighter">A Melhor Tecnologia de Produção</h2>
+            </div>
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="p-8 bg-white rounded-3xl shadow-sm border border-slate-100 text-center">
+                    <div class="text-cyan-600 text-3xl mb-4"><i class="fas fa-clock"></i></div>
+                    <h4 class="font-bold mb-2 uppercase text-xs tracking-widest">Plantão Total</h4>
+                    <p class="text-slate-500 text-sm">Disponíveis 24h por dia, inclusive feriados.</p>
+                </div>
+                <div class="p-8 bg-white rounded-3xl shadow-sm border border-slate-100 text-center">
+                    <div class="text-cyan-600 text-3xl mb-4"><i class="fas fa-rocket"></i></div>
+                    <h4 class="font-bold mb-2 uppercase text-xs tracking-widest">Entrega Recorde</h4>
+                    <p class="text-slate-500 text-sm">Seu áudio pronto em até 10 minutos após o pedido.</p>
+                </div>
+                <div class="p-8 bg-white rounded-3xl shadow-sm border border-slate-100 text-center">
+                    <div class="text-cyan-600 text-3xl mb-4"><i class="fas fa-brain"></i></div>
+                    <h4 class="font-bold mb-2 uppercase text-xs tracking-widest">IA Criativa</h4>
+                    <p class="text-slate-500 text-sm">Assistente inteligente para elaboração de textos.</p>
+                </div>
+                <div class="p-8 bg-white rounded-3xl shadow-sm border border-slate-100 text-center">
+                    <div class="text-cyan-600 text-3xl mb-4"><i class="fas fa-mobile-screen"></i></div>
+                    <h4 class="font-bold mb-2 uppercase text-xs tracking-widest">WhatsApp Direct</h4>
+                    <p class="text-slate-500 text-sm">Receba o áudio e status do pedido no seu celular.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Preços -->
+    <section id="precos" class="py-24 bg-slate-900 text-white">
+        <div class="container mx-auto px-6 text-center">
+            <h2 class="text-4xl font-extrabold mb-4 uppercase italic tracking-tighter">Tabela de Investimento</h2>
+            <p class="text-slate-400 mb-16 italic font-light">Contagem de créditos: Cada crédito = 40 segundos de áudio.</p>
+
+            <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+                <!-- Preço Off -->
+                <div class="bg-slate-800/50 p-10 rounded-[2.5rem] border border-slate-700 hover:border-cyan-400 transition group text-center">
+                    <h3 class="text-2xl font-bold mb-6 text-cyan-400 uppercase tracking-tighter">Gravação em OFF</h3>
+                    <div class="mb-8">
+                        <span class="text-5xl font-black tracking-tighter italic">R$ 15,00</span>
+                        <p class="text-slate-400 text-sm mt-2 uppercase">Preço Unitário</p>
+                    </div>
+                    <div class="bg-cyan-400/10 p-6 rounded-2xl mb-8 border border-cyan-400/20">
+                        <p class="text-xs font-bold text-cyan-400 uppercase tracking-widest">Super Pacote 50 Offs</p>
+                        <p class="text-3xl font-black mt-2">R$ 4,50 <span class="text-sm font-normal text-slate-400 uppercase">/ cada</span></p>
+                    </div>
+                    <a href="https://paineldegravacao.com.br/comerciaistop/cadastro" class="block w-full text-center py-5 bg-cyan-400 text-slate-900 font-black rounded-2xl hover:bg-white transition uppercase tracking-tighter">ADQUIRIR CRÉDITOS</a>
+                </div>
+
+                <!-- Preço Produzido -->
+                <div class="bg-slate-800/50 p-10 rounded-[2.5rem] border border-slate-700 hover:border-blue-400 transition text-center">
+                    <h3 class="text-2xl font-bold mb-6 text-blue-400 uppercase tracking-tighter">Produção Comercial</h3>
+                    <div class="mb-8">
+                        <span class="text-5xl font-black tracking-tighter italic">R$ 30,00</span>
+                        <p class="text-slate-400 text-sm mt-2 uppercase">Preço Unitário</p>
+                    </div>
+                    <div class="bg-blue-400/10 p-6 rounded-2xl mb-8 border border-blue-400/20">
+                        <p class="text-xs font-bold text-blue-400 uppercase tracking-widest">Super Pacote 50 Produções</p>
+                        <p class="text-3xl font-black mt-2">R$ 12,00 <span class="text-sm font-normal text-slate-400 uppercase">/ cada</span></p>
+                    </div>
+                    <a href="https://paineldegravacao.com.br/comerciaistop/cadastro" class="block w-full text-center py-5 bg-blue-400 text-slate-900 font-black rounded-2xl hover:bg-white transition uppercase tracking-tighter">ADQUIRIR CRÉDITOS</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-white py-20 border-t border-slate-100">
+        <div class="container mx-auto px-6">
+            <div class="grid md:grid-cols-4 gap-12 mb-16">
+                <div>
+                    <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj_sBFI94b0Jhnsl6DY4UwsTOpsmltn1MNvF5n6zcrkdLUd7oqFJfxF5NAtCEwBchu-b65jEsMXi60X2SlPb04XheC1fuEaG-sRzEbENAbN4eMSX5YHbdk6oGhfGTHQOPR1tZJn_GwXOAjUL6UX4ZvpVITZOL6is83xruSEkk343d-9VEx5osefurjX8aY/s1600/logo.png" alt="A Locução Logo" class="logo-img mb-8">
+                    <p class="text-slate-500 text-sm leading-relaxed">A mais completa e eficiente produtora de áudio 24h. Transformando ideias em resultados sonoros.</p>
+                </div>
+                <div>
+                    <h5 class="font-black uppercase text-xs tracking-widest mb-8 text-slate-400">Atendimento</h5>
+                    <ul class="space-y-4 text-sm font-bold">
+                        <li class="flex items-center gap-3">
+                            <i class="fab fa-whatsapp text-green-500 text-lg"></i>
+                            <a href="https://wa.me/5527996529832" target="_blank">(27) 99652-9832</a>
+                        </li>
+                        <li class="flex items-center gap-3 italic underline text-cyan-600">
+                            <a href="mailto:estudioalocucao@gmail.com">estudioalocucao@gmail.com</a>
+                        </li>
+                    </ul>
+                </div>
+                <div>
+                    <h5 class="font-black uppercase text-xs tracking-widest mb-8 text-slate-400">Links</h5>
+                    <div class="flex flex-col gap-4 text-sm font-bold">
+                        <a href="https://alocucao.com.br" class="hover:text-cyan-500">Início</a>
+                        <a href="https://alocucao.com.br/vozes" class="hover:text-cyan-500">Vozes</a>
+                        <a href="https://alocucao.com.br/precos" class="hover:text-cyan-500">Preços</a>
+                        <a href="https://alocucao.com.br/termos" class="hover:text-cyan-500">Termos</a>
+                    </div>
+                </div>
+                <div>
+                    <h5 class="font-black uppercase text-xs tracking-widest mb-8 text-slate-400">Acesso</h5>
+                    <a href="https://paineldegravacao.com.br/comerciaistop/cadastro" class="inline-block px-6 py-3 bg-slate-900 text-white rounded-xl text-xs font-black uppercase tracking-widest hover:bg-cyan-500 transition">CADASTRE-SE AGORA</a>
+                </div>
+            </div>
+            <div class="pt-8 border-t border-slate-100 text-center text-[10px] text-slate-400 uppercase tracking-widest font-bold">
+                <p>&copy; 2024 ALOCUCAO.COM.BR - Estúdio Profissional 24H</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Botão WhatsApp Flutuante -->
+    <a href="https://wa.me/5527996529832" target="_blank" class="fixed bottom-6 right-6 bg-green-500 text-white w-16 h-16 rounded-full flex items-center justify-center text-3xl shadow-2xl hover:scale-110 transition-transform z-[60]">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- JavaScript para o Menu Mobile -->
+    <script>
+        const menuToggle = document.getElementById('menu-toggle');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const icon = menuToggle.querySelector('i');
+
+        menuToggle.addEventListener('click', () => {
+            mobileMenu.classList.toggle('active');
+            
+            // Alterna o ícone entre barras e "X"
+            if (mobileMenu.classList.contains('active')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+            } else {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
+        });
+
+        // Fecha o menu ao clicar em um link (opcional, mas recomendado)
+        const mobileLinks = mobileMenu.querySelectorAll('a');
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.remove('active');
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            });
+        });
     </script>
+
 </body>
 </html>
