@@ -33,16 +33,31 @@
         #mobile-menu.active {
             max-height: 500px;
         }
+
+        /* Garantir margens em telas ultra-wide */
+        .container-custom {
+            max-width: 1280px;
+            margin-left: auto;
+            margin-right: auto;
+            padding-left: 1.5rem;
+            padding-right: 1.5rem;
+        }
+        @media (min-width: 768px) {
+            .container-custom { padding-left: 3rem; padding-right: 3rem; }
+        }
+        @media (min-width: 1024px) {
+            .container-custom { padding-left: 4rem; padding-right: 4rem; }
+        }
     </style>
 </head>
 <body class="bg-slate-50 text-slate-900">
 
     <!-- Header / Navbar -->
     <header class="sticky top-0 z-50 bg-slate-900 text-white shadow-xl">
-        <nav class="container mx-auto px-6 py-4">
+        <nav class="container-custom py-4">
             <div class="flex justify-between items-center">
                 <div class="flex items-center gap-2">
-                    <a href="/">
+                    <a href="#">
                         <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEilDgkDjPUYKxiTuNxIhvnCj28dMY12o3l3VAR8HcKEkbQT-pUmmEMPh27iqj1wS_3-0yS1jW7nDCLozXNeC0tr0X2UvgtclDv4_wp4KRnyzRgxmPknJXp-sPfBeozQlEbuqAIrCxJvdeEQh69qbIYpsXFFIPXyBBNfpIRdJBurPcyAtfc44z69wd_U06s/s150/logo%20top.png" alt="Estúdio Comerciais Top Logo" class="logo-img">
                     </a>
                 </div>
@@ -86,20 +101,20 @@
         <div class="absolute top-0 left-1/4 w-96 h-96 bg-cyan-500/10 rounded-full blur-3xl"></div>
         <div class="absolute bottom-0 right-1/4 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl"></div>
 
-        <div class="container mx-auto px-6 text-center relative z-10">
+        <div class="container-custom text-center relative z-10">
             <div class="max-w-4xl mx-auto">
                 <span class="bg-cyan-500/20 text-cyan-400 px-6 py-2 rounded-full text-xs font-bold uppercase tracking-widest border border-cyan-500/30">Plataforma 24 Horas Disponível</span>
-                <h1 class="text-5xl lg:text-8xl font-extrabold mt-8 leading-tight tracking-tighter">
+                <h1 class="text-4xl sm:text-5xl lg:text-8xl font-extrabold mt-8 leading-tight tracking-tighter">
                     Vozes que <span class="accent-color italic">vendem</span> seu produto.
                 </h1>
                 <p class="mt-8 text-slate-300 text-lg lg:text-2xl leading-relaxed max-w-2xl mx-auto font-light">
                     Transforme os seus textos em áudio profissional com mais de 200 locutores reais. Entrega recorde em até 10 minutos com qualidade de estúdio.
                 </p>
-                <div class="mt-12 flex flex-wrap justify-center gap-6">
-                    <a href="https://alocucao.com.br/vozes" class="btn-primary text-slate-900 px-10 py-5 rounded-xl font-black text-xl shadow-2xl hover:scale-105 transition">OUVIR DEMONSTRAÇÕES</a>
-                    <a href="https://paineldegravacao.com.br/comerciaistop/cadastro" target="_blank" class="bg-white/10 backdrop-blur-md border border-white/20 hover:bg-white/20 px-10 py-5 rounded-xl font-bold text-xl transition">COMEÇAR AGORA</a>
+                <div class="mt-12 flex flex-wrap justify-center gap-4 sm:gap-6">
+                    <a href="https://alocucao.com.br/vozes" class="btn-primary text-slate-900 px-8 sm:px-10 py-4 sm:py-5 rounded-xl font-black text-lg sm:text-xl shadow-2xl hover:scale-105 transition">OUVIR DEMONSTRAÇÕES</a>
+                    <a href="https://paineldegravacao.com.br/comerciaistop/cadastro" target="_blank" class="bg-white/10 backdrop-blur-md border border-white/20 hover:bg-white/20 px-8 sm:px-10 py-4 sm:py-5 rounded-xl font-bold text-lg sm:text-xl transition">COMEÇAR AGORA</a>
                 </div>
-                <div class="mt-12 flex flex-wrap justify-center items-center gap-6 md:gap-8 text-xs md:text-sm text-slate-400 font-medium">
+                <div class="mt-12 flex flex-wrap justify-center items-center gap-4 md:gap-8 text-xs md:text-sm text-slate-400 font-medium">
                     <span class="flex items-center gap-2"><i class="fas fa-check-circle text-cyan-400"></i> SEM VOZES DE IA</span>
                     <span class="flex items-center gap-2"><i class="fas fa-check-circle text-cyan-400"></i> PLANTÃO FDS E FERIADOS</span>
                     <span class="flex items-center gap-2"><i class="fas fa-check-circle text-cyan-400"></i> PAGAMENTO IMEDIATO</span>
@@ -110,8 +125,8 @@
 
     <!-- Serviços -->
     <section id="servicos" class="py-24 bg-white">
-        <div class="container mx-auto px-6 text-center">
-            <h2 class="text-4xl font-extrabold mb-4 uppercase tracking-tighter">Nossas Soluções em Áudio</h2>
+        <div class="container-custom text-center">
+            <h2 class="text-3xl sm:text-4xl font-extrabold mb-4 uppercase tracking-tighter">Nossas Soluções em Áudio</h2>
             <p class="text-slate-500 max-w-2xl mx-auto mb-16 italic font-medium">Produzimos desde a voz pura até a finalização comercial completa.</p>
             
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -122,7 +137,7 @@
                     </div>
                     <h3 class="text-xl font-bold mb-4 uppercase tracking-tighter">Gravação em Off</h3>
                     <p class="text-slate-600 text-sm leading-relaxed mb-8 flex-grow">
-                        Voz profissional pura, sem edição ou trilha. Audio bruto entregue com fidelidade total para sua edição própria.
+                        Voz profissional pura, sem edição ou trilha. Áudio bruto entregue com fidelidade total para sua edição própria.
                     </p>
                     <a href="https://paineldegravacao.com.br/comerciaistop/cadastro" class="text-cyan-600 font-bold border-2 border-cyan-200 py-3 rounded-xl hover:bg-cyan-600 hover:text-white transition uppercase text-xs tracking-widest">Pedir Agora</a>
                 </div>
@@ -192,10 +207,10 @@
 
     <!-- Chamada para Demonstrações -->
     <section id="vozes-cta" class="py-24 bg-slate-900 text-white text-center relative overflow-hidden">
-        <div class="container mx-auto px-6 relative z-10">
-            <h2 class="text-5xl font-extrabold mb-6 uppercase italic tracking-tighter">Ouça o nosso Elenco</h2>
+        <div class="container-custom relative z-10">
+            <h2 class="text-4xl sm:text-5xl font-extrabold mb-6 uppercase italic tracking-tighter">Ouça o nosso Elenco</h2>
             <p class="text-slate-400 mb-12 max-w-2xl mx-auto text-lg">Banco de vozes composto por mais de 200 locutores reais. Nada de robôs ou IA, apenas talento humano pronto para gravar agora.</p>
-            <a href="https://alocucao.com.br/vozes" class="inline-block bg-cyan-400 text-slate-900 px-12 py-6 rounded-2xl font-black text-2xl hover:scale-105 transition shadow-[0_0_50px_rgba(34,211,238,0.3)]">ACESSE O BANCO DE VOZES</a>
+            <a href="https://alocucao.com.br/vozes" class="inline-block bg-cyan-400 text-slate-900 px-8 sm:px-12 py-5 sm:py-6 rounded-2xl font-black text-xl sm:text-2xl hover:scale-105 transition shadow-[0_0_50px_rgba(34,211,238,0.3)]">ACESSE O BANCO DE VOZES</a>
         </div>
         <div class="absolute inset-0 opacity-5 pointer-events-none flex items-center justify-center">
             <i class="fas fa-wave-square text-[40rem]"></i>
@@ -204,11 +219,11 @@
 
     <!-- Tecnologia e Diferenciais -->
     <section id="tecnologia" class="py-24 bg-slate-50">
-        <div class="container mx-auto px-6">
+        <div class="container-custom">
             <div class="text-center mb-16">
-                <h2 class="text-4xl font-extrabold uppercase tracking-tighter">A Melhor Tecnologia de Produção</h2>
+                <h2 class="text-3xl sm:text-4xl font-extrabold uppercase tracking-tighter">Tecnologia de Produção</h2>
             </div>
-            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
                 <div class="p-8 bg-white rounded-3xl shadow-sm border border-slate-100 text-center">
                     <div class="text-cyan-600 text-3xl mb-4"><i class="fas fa-clock"></i></div>
                     <h4 class="font-bold mb-2 uppercase text-xs tracking-widest">Plantão Total</h4>
@@ -235,35 +250,35 @@
 
     <!-- Preços -->
     <section id="precos" class="py-24 bg-slate-900 text-white">
-        <div class="container mx-auto px-6 text-center">
-            <h2 class="text-4xl font-extrabold mb-4 uppercase italic tracking-tighter">Tabela de Investimento</h2>
+        <div class="container-custom text-center">
+            <h2 class="text-3xl sm:text-4xl font-extrabold mb-4 uppercase italic tracking-tighter">Tabela de Investimento</h2>
             <p class="text-slate-400 mb-16 italic font-light">Contagem de créditos: Cada crédito = 40 segundos de áudio.</p>
 
             <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
                 <!-- Preço Off -->
-                <div class="bg-slate-800/50 p-10 rounded-[2.5rem] border border-slate-700 hover:border-cyan-400 transition group text-center">
+                <div class="bg-slate-800/50 p-8 sm:p-10 rounded-[2.5rem] border border-slate-700 hover:border-cyan-400 transition group text-center">
                     <h3 class="text-2xl font-bold mb-6 text-cyan-400 uppercase tracking-tighter">Gravação em OFF</h3>
                     <div class="mb-8">
-                        <span class="text-5xl font-black tracking-tighter italic">R$ 15,00</span>
+                        <span class="text-4xl sm:text-5xl font-black tracking-tighter italic">R$ 15,00</span>
                         <p class="text-slate-400 text-sm mt-2 uppercase">Preço Unitário</p>
                     </div>
                     <div class="bg-cyan-400/10 p-6 rounded-2xl mb-8 border border-cyan-400/20">
                         <p class="text-xs font-bold text-cyan-400 uppercase tracking-widest">Super Pacote 50 Offs</p>
-                        <p class="text-3xl font-black mt-2">R$ 4,50 <span class="text-sm font-normal text-slate-400 uppercase">/ cada</span></p>
+                        <p class="text-2xl sm:text-3xl font-black mt-2">R$ 4,50 <span class="text-sm font-normal text-slate-400 uppercase">/ cada</span></p>
                     </div>
                     <a href="https://paineldegravacao.com.br/comerciaistop/cadastro" class="block w-full text-center py-5 bg-cyan-400 text-slate-900 font-black rounded-2xl hover:bg-white transition uppercase tracking-tighter">ADQUIRIR CRÉDITOS</a>
                 </div>
 
                 <!-- Preço Produzido -->
-                <div class="bg-slate-800/50 p-10 rounded-[2.5rem] border border-slate-700 hover:border-blue-400 transition text-center">
+                <div class="bg-slate-800/50 p-8 sm:p-10 rounded-[2.5rem] border border-slate-700 hover:border-blue-400 transition text-center">
                     <h3 class="text-2xl font-bold mb-6 text-blue-400 uppercase tracking-tighter">Produção Comercial</h3>
                     <div class="mb-8">
-                        <span class="text-5xl font-black tracking-tighter italic">R$ 30,00</span>
+                        <span class="text-4xl sm:text-5xl font-black tracking-tighter italic">R$ 30,00</span>
                         <p class="text-slate-400 text-sm mt-2 uppercase">Preço Unitário</p>
                     </div>
                     <div class="bg-blue-400/10 p-6 rounded-2xl mb-8 border border-blue-400/20">
                         <p class="text-xs font-bold text-blue-400 uppercase tracking-widest">Super Pacote 50 Produções</p>
-                        <p class="text-3xl font-black mt-2">R$ 12,00 <span class="text-sm font-normal text-slate-400 uppercase">/ cada</span></p>
+                        <p class="text-2xl sm:text-3xl font-black mt-2">R$ 12,00 <span class="text-sm font-normal text-slate-400 uppercase">/ cada</span></p>
                     </div>
                     <a href="https://paineldegravacao.com.br/comerciaistop/cadastro" class="block w-full text-center py-5 bg-blue-400 text-slate-900 font-black rounded-2xl hover:bg-white transition uppercase tracking-tighter">ADQUIRIR CRÉDITOS</a>
                 </div>
@@ -273,8 +288,8 @@
 
     <!-- Footer -->
     <footer class="bg-white py-20 border-t border-slate-100">
-        <div class="container mx-auto px-6">
-            <div class="grid md:grid-cols-4 gap-12 mb-16">
+        <div class="container-custom">
+            <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
                 <div>
                     <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhYPBaiKxjc83IqqOA3ncIpkmot93nIlZyV0cFYcbtuqc3h4k6xO5cFG1eZEaOxJJeqmiiQINc_PuK9jvVONldvBA3K7hhm6k9aiO1DUFSn7A4pRG8wEaUCQY7aHTW44ON6igJ71IUNOxXoF3aBbhCjUWginVmhR4OSNhyphenhyphenjuE7qxMSppQklshvobu8B1SI/s2816/Gemini_Generated_Image_ihi574ihi574ihi5.png" alt="Estúdio Comerciais Top Logo" class="footer-logo mb-8">
                     <p class="text-slate-500 text-sm leading-relaxed">A mais completa e eficiente produtora de áudio 24h. Transformando ideias em resultados sonoros.</p>
@@ -312,7 +327,7 @@
     </footer>
 
     <!-- Botão WhatsApp Flutuante -->
-    <a href="https://wa.me/5527996529832" target="_blank" class="fixed bottom-6 right-6 bg-green-500 text-white w-16 h-16 rounded-full flex items-center justify-center text-3xl shadow-2xl hover:scale-110 transition-transform z-[60]">
+    <a href="https://wa.me/5527996529832" target="_blank" class="fixed bottom-6 right-6 bg-green-500 text-white w-12 h-12 sm:w-16 sm:h-16 rounded-full flex items-center justify-center text-2xl sm:text-3xl shadow-2xl hover:scale-110 transition-transform z-[60]">
         <i class="fab fa-whatsapp"></i>
     </a>
 
@@ -325,7 +340,6 @@
         menuToggle.addEventListener('click', () => {
             mobileMenu.classList.toggle('active');
             
-            // Alterna o ícone entre barras e "X"
             if (mobileMenu.classList.contains('active')) {
                 icon.classList.remove('fa-bars');
                 icon.classList.add('fa-times');
@@ -335,7 +349,6 @@
             }
         });
 
-        // Fecha o menu ao clicar em um link
         const mobileLinks = mobileMenu.querySelectorAll('a');
         mobileLinks.forEach(link => {
             link.addEventListener('click', () => {
