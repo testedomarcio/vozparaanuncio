@@ -24,6 +24,12 @@
         .logo-img { max-height: 50px; width: auto; }
         .footer-logo { max-height: 80px; width: auto; border-radius: 8px; }
         
+        /* Custom Audio Style para o Chrome/Safari */
+        audio {
+            height: 35px;
+            width: 100%;
+        }
+
         /* Mobile menu transitions */
         #mobile-menu {
             max-height: 0;
@@ -34,7 +40,6 @@
             max-height: 500px;
         }
 
-        /* Garantir margens em telas ultra-wide */
         .container-custom {
             max-width: 1280px;
             margin-left: auto;
@@ -45,8 +50,17 @@
         @media (min-width: 768px) {
             .container-custom { padding-left: 3rem; padding-right: 3rem; }
         }
-        @media (min-width: 1024px) {
-            .container-custom { padding-left: 4rem; padding-right: 4rem; }
+
+        /* Efeito de zoom na foto do locutor */
+        .locutor-img-container {
+            overflow: hidden;
+            border-radius: 1rem;
+        }
+        .locutor-img-container img {
+            transition: transform 0.5s ease;
+        }
+        .locutor-card:hover img {
+            transform: scale(1.1);
         }
     </style>
 </head>
@@ -66,7 +80,7 @@
                 <div class="hidden lg:flex space-x-6 font-medium text-sm uppercase tracking-wider">
                     <a href="#" class="hover:text-cyan-400 transition">Início</a>
                     <a href="#servicos" class="hover:text-cyan-400 transition">Serviços</a>
-                    <a href="https://alocucao.com.br/vozes" class="hover:text-cyan-400 transition text-cyan-400 font-bold">Vozes</a>
+                    <a href="#vozes-mais-pedidas" class="hover:text-cyan-400 transition text-cyan-400 font-bold">Locutores</a>
                     <a href="#precos" class="hover:text-cyan-400 transition">Preços</a>
                     <a href="#tecnologia" class="hover:text-cyan-400 transition">Recursos</a>
                 </div>
@@ -75,19 +89,18 @@
                     <a href="https://alocucao.com.br/vozes" class="hidden lg:block text-sm font-bold border border-cyan-400 px-4 py-2 rounded-full hover:bg-cyan-400 hover:text-slate-900 transition uppercase">LOGIN</a>
                     <a href="https://paineldegravacao.com.br/comerciaistop/cadastro" target="_blank" class="hidden sm:block btn-primary text-slate-900 font-bold px-6 py-2 rounded-full shadow-lg text-sm uppercase tracking-tighter">CADASTRE-SE</a>
                     
-                    <!-- Hamburger Button -->
                     <button id="menu-toggle" class="lg:hidden text-2xl text-cyan-400 focus:outline-none">
                         <i class="fas fa-bars"></i>
                     </button>
                 </div>
             </div>
 
-            <!-- Mobile Menu Container -->
+            <!-- Mobile Menu -->
             <div id="mobile-menu" class="lg:hidden">
                 <div class="flex flex-col space-y-4 pt-6 pb-4 border-t border-slate-800 mt-4">
                     <a href="#" class="text-slate-300 hover:text-cyan-400 py-2 transition uppercase text-sm font-bold">Início</a>
                     <a href="#servicos" class="text-slate-300 hover:text-cyan-400 py-2 transition uppercase text-sm font-bold">Serviços</a>
-                    <a href="https://alocucao.com.br/vozes" class="text-cyan-400 py-2 transition uppercase text-sm font-bold border-l-2 border-cyan-400 pl-3">Vozes</a>
+                    <a href="#vozes-mais-pedidas" class="text-cyan-400 py-2 transition uppercase text-sm font-bold">Locutores</a>
                     <a href="#precos" class="text-slate-300 hover:text-cyan-400 py-2 transition uppercase text-sm font-bold">Preços</a>
                     <a href="https://alocucao.com.br/vozes" class="bg-slate-800 text-cyan-400 text-center py-3 rounded-xl font-bold uppercase text-xs">LOGIN</a>
                     <a href="https://paineldegravacao.com.br/comerciaistop/cadastro" target="_blank" class="btn-primary text-slate-900 text-center py-3 rounded-xl font-bold uppercase text-xs">CADASTRE-SE</a>
@@ -105,7 +118,6 @@
             <div class="max-w-4xl mx-auto">
                 <div class="flex flex-wrap justify-center gap-4 mb-8">
                     <span class="bg-cyan-500/20 text-cyan-400 px-6 py-2 rounded-full text-xs font-bold uppercase tracking-widest border border-cyan-500/30">Plataforma 24 Horas Disponível</span>
-                    <!-- NOVO DESTAQUE DE 12 ANOS -->
                     <span class="bg-amber-500/20 text-amber-400 px-6 py-2 rounded-full text-xs font-bold uppercase tracking-widest border border-amber-500/30 shadow-[0_0_15px_rgba(245,158,11,0.2)]">
                         <i class="fas fa-certificate mr-2"></i>Há 12 Anos sendo sua Melhor Opção
                     </span>
@@ -118,14 +130,206 @@
                     Transforme os seus textos em áudio profissional com <strong>quem tem 12 anos de excelência no mercado</strong>. Mais de 200 locutores reais prontos para gravar.
                 </p>
                 <div class="mt-12 flex flex-wrap justify-center gap-4 sm:gap-6">
-                    <a href="https://alocucao.com.br/vozes" class="btn-primary text-slate-900 px-8 sm:px-10 py-4 sm:py-5 rounded-xl font-black text-lg sm:text-xl shadow-2xl hover:scale-105 transition">OUVIR DEMONSTRAÇÕES</a>
+                    <a href="#vozes-mais-pedidas" class="btn-primary text-slate-900 px-8 sm:px-10 py-4 sm:py-5 rounded-xl font-black text-lg sm:text-xl shadow-2xl hover:scale-105 transition">OUVIR VOZES MAIS PEDIDAS</a>
                     <a href="https://paineldegravacao.com.br/comerciaistop/cadastro" target="_blank" class="bg-white/10 backdrop-blur-md border border-white/20 hover:bg-white/20 px-8 sm:px-10 py-4 sm:py-5 rounded-xl font-bold text-lg sm:text-xl transition">COMEÇAR AGORA</a>
                 </div>
-                <div class="mt-12 flex flex-wrap justify-center items-center gap-4 md:gap-8 text-xs md:text-sm text-slate-400 font-medium">
-                    <span class="flex items-center gap-2"><i class="fas fa-check-circle text-cyan-400"></i> SEM VOZES DE IA</span>
-                    <span class="flex items-center gap-2"><i class="fas fa-check-circle text-cyan-400"></i> PLANTÃO FDS E FERIADOS</span>
-                    <span class="flex items-center gap-2"><i class="fas fa-check-circle text-cyan-400"></i> PAGAMENTO IMEDIATO</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Vozes Mais Pedidas (Novo Bloco) -->
+    <section id="vozes-mais-pedidas" class="py-24 bg-slate-900 text-white">
+        <div class="container-custom">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl sm:text-5xl font-extrabold uppercase italic tracking-tighter">Vozes em Destaque</h2>
+                <p class="text-slate-400 mt-4 max-w-2xl mx-auto font-medium">Os locutores mais solicitados do nosso elenco. Qualidade máxima e entrega imediata.</p>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
+                
+                <!-- Locutor: Celso -->
+                <div class="locutor-card bg-slate-800/50 rounded-[2rem] border border-slate-700 p-6 flex flex-col gap-4 hover:border-cyan-400 transition duration-300">
+                    <div class="locutor-img-container aspect-square bg-slate-700">
+                        <img src="https://testedomarcio.github.io/meuadio/celso.jpg" alt="Locutor Celso" class="w-full h-full object-cover" onerror="this.src='https://via.placeholder.com/300?text=Celso'">
+                    </div>
+                    <div>
+                        <div class="flex justify-between items-center mb-1">
+                            <h3 class="font-black text-xl text-white uppercase tracking-tighter">Celso</h3>
+                            <span class="text-[10px] font-bold bg-cyan-500/20 text-cyan-400 px-2 py-1 rounded">MASCULINA</span>
+                        </div>
+                        <p class="text-slate-400 text-xs font-bold uppercase tracking-widest mb-3 italic"><i class="fas fa-location-dot text-cyan-500 mr-1"></i>São Paulo</p>
+                        <div class="flex flex-wrap gap-1 mb-4">
+                            <span class="text-[9px] font-bold border border-slate-600 text-slate-400 px-2 py-0.5 rounded uppercase">Varejo</span>
+                            <span class="text-[9px] font-bold border border-slate-600 text-slate-400 px-2 py-0.5 rounded uppercase">Institucional</span>
+                            <span class="text-[9px] font-bold border border-slate-600 text-slate-400 px-2 py-0.5 rounded uppercase">Impacto</span>
+                        </div>
+                        <audio controls class="rounded-lg shadow-lg">
+                            <source src="https://testedomarcio.github.io/meuadio/Celso.mp3" type="audio/mpeg">
+                        </audio>
+                    </div>
                 </div>
+
+                <!-- Locutor: Charles -->
+                <div class="locutor-card bg-slate-800/50 rounded-[2rem] border border-slate-700 p-6 flex flex-col gap-4 hover:border-cyan-400 transition duration-300">
+                    <div class="locutor-img-container aspect-square bg-slate-700">
+                        <img src="https://testedomarcio.github.io/meuadio/charles.png" alt="Locutor Charles" class="w-full h-full object-cover" onerror="this.src='https://via.placeholder.com/300?text=Charles'">
+                    </div>
+                    <div>
+                        <div class="flex justify-between items-center mb-1">
+                            <h3 class="font-black text-xl text-white uppercase tracking-tighter">Charles</h3>
+                            <span class="text-[10px] font-bold bg-cyan-500/20 text-cyan-400 px-2 py-1 rounded">MASCULINA</span>
+                        </div>
+                        <p class="text-slate-400 text-xs font-bold uppercase tracking-widest mb-3 italic"><i class="fas fa-location-dot text-cyan-500 mr-1"></i>Santa Catarina</p>
+                        <div class="flex flex-wrap gap-1 mb-4">
+                            <span class="text-[9px] font-bold border border-slate-600 text-slate-400 px-2 py-0.5 rounded uppercase">Jovem</span>
+                            <span class="text-[9px] font-bold border border-slate-600 text-slate-400 px-2 py-0.5 rounded uppercase">Alegre</span>
+                            <span class="text-[9px] font-bold border border-slate-600 text-slate-400 px-2 py-0.5 rounded uppercase">Up Festa</span>
+                        </div>
+                        <audio controls class="rounded-lg shadow-lg">
+                            <source src="https://testedomarcio.github.io/meuadio/Charles.mp3" type="audio/mpeg">
+                        </audio>
+                    </div>
+                </div>
+
+                <!-- Locutor: Cristian Jr. -->
+                <div class="locutor-card bg-slate-800/50 rounded-[2rem] border border-slate-700 p-6 flex flex-col gap-4 hover:border-cyan-400 transition duration-300">
+                    <div class="locutor-img-container aspect-square bg-slate-700">
+                        <img src="https://testedomarcio.github.io/meuadio/CristianJr.jpg" alt="Locutor Cristian Jr" class="w-full h-full object-cover" onerror="this.src='https://via.placeholder.com/300?text=Cristian'">
+                    </div>
+                    <div>
+                        <div class="flex justify-between items-center mb-1">
+                            <h3 class="font-black text-xl text-white uppercase tracking-tighter">Cristian Jr.</h3>
+                            <span class="text-[10px] font-bold bg-cyan-500/20 text-cyan-400 px-2 py-1 rounded">MASCULINA</span>
+                        </div>
+                        <p class="text-slate-400 text-xs font-bold uppercase tracking-widest mb-3 italic"><i class="fas fa-location-dot text-cyan-500 mr-1"></i>Santa Catarina</p>
+                        <div class="flex flex-wrap gap-1 mb-4">
+                            <span class="text-[9px] font-bold border border-slate-600 text-slate-400 px-2 py-0.5 rounded uppercase">Padrão</span>
+                            <span class="text-[9px] font-bold border border-slate-600 text-slate-400 px-2 py-0.5 rounded uppercase">Varejo</span>
+                            <span class="text-[9px] font-bold border border-slate-600 text-slate-400 px-2 py-0.5 rounded uppercase">Up-Festas</span>
+                        </div>
+                        <audio controls class="rounded-lg shadow-lg">
+                            <source src="https://testedomarcio.github.io/meuadio/Cristian.mp3" type="audio/mpeg">
+                        </audio>
+                    </div>
+                </div>
+
+                <!-- Locutor: Leandro -->
+                <div class="locutor-card bg-slate-800/50 rounded-[2rem] border border-slate-700 p-6 flex flex-col gap-4 hover:border-cyan-400 transition duration-300">
+                    <div class="locutor-img-container aspect-square bg-slate-700">
+                        <img src="https://testedomarcio.github.io/meuadio/leandro.jpg" alt="Locutor Leandro" class="w-full h-full object-cover" onerror="this.src='https://via.placeholder.com/300?text=Leandro'">
+                    </div>
+                    <div>
+                        <div class="flex justify-between items-center mb-1">
+                            <h3 class="font-black text-xl text-white uppercase tracking-tighter">Leandro</h3>
+                            <span class="text-[10px] font-bold bg-cyan-500/20 text-cyan-400 px-2 py-1 rounded">MASCULINA</span>
+                        </div>
+                        <p class="text-slate-400 text-xs font-bold uppercase tracking-widest mb-3 italic"><i class="fas fa-location-dot text-cyan-500 mr-1"></i>Mato Grosso</p>
+                        <div class="flex flex-wrap gap-1 mb-4">
+                            <span class="text-[9px] font-bold border border-slate-600 text-slate-400 px-2 py-0.5 rounded uppercase">Impacto</span>
+                            <span class="text-[9px] font-bold border border-slate-600 text-slate-400 px-2 py-0.5 rounded uppercase">Animado</span>
+                            <span class="text-[9px] font-bold border border-slate-600 text-slate-400 px-2 py-0.5 rounded uppercase">Varejo</span>
+                        </div>
+                        <audio controls class="rounded-lg shadow-lg">
+                            <source src="https://testedomarcio.github.io/meuadio/Leandro.mp3" type="audio/mpeg">
+                        </audio>
+                    </div>
+                </div>
+
+                <!-- Locutora: Lindy -->
+                <div class="locutor-card bg-slate-800/50 rounded-[2rem] border border-slate-700 p-6 flex flex-col gap-4 hover:border-pink-400 transition duration-300">
+                    <div class="locutor-img-container aspect-square bg-slate-700">
+                        <img src="https://testedomarcio.github.io/meuadio/lindy.jpeg" alt="Locutora Lindy" class="w-full h-full object-cover" onerror="this.src='https://via.placeholder.com/300?text=Lindy'">
+                    </div>
+                    <div>
+                        <div class="flex justify-between items-center mb-1">
+                            <h3 class="font-black text-xl text-white uppercase tracking-tighter">Lindy</h3>
+                            <span class="text-[10px] font-bold bg-pink-500/20 text-pink-400 px-2 py-1 rounded">FEMININA</span>
+                        </div>
+                        <p class="text-slate-400 text-xs font-bold uppercase tracking-widest mb-3 italic"><i class="fas fa-location-dot text-pink-500 mr-1"></i>Bahia</p>
+                        <div class="flex flex-wrap gap-1 mb-4">
+                            <span class="text-[9px] font-bold border border-slate-600 text-slate-400 px-2 py-0.5 rounded uppercase">Jovem</span>
+                            <span class="text-[9px] font-bold border border-slate-600 text-slate-400 px-2 py-0.5 rounded uppercase">Alegre</span>
+                            <span class="text-[9px] font-bold border border-slate-600 text-slate-400 px-2 py-0.5 rounded uppercase">Padrao</span>
+                        </div>
+                        <audio controls class="rounded-lg shadow-lg">
+                            <source src="https://testedomarcio.github.io/meuadio/Lindy.mp3" type="audio/mpeg">
+                        </audio>
+                    </div>
+                </div>
+
+                <!-- Locutora: Elissandra -->
+                <div class="locutor-card bg-slate-800/50 rounded-[2rem] border border-slate-700 p-6 flex flex-col gap-4 hover:border-pink-400 transition duration-300">
+                    <div class="locutor-img-container aspect-square bg-slate-700">
+                        <img src="https://testedomarcio.github.io/meuadio/Elissandra.jpg" alt="Locutora Elissandra" class="w-full h-full object-cover" onerror="this.src='https://via.placeholder.com/300?text=Elissandra'">
+                    </div>
+                    <div>
+                        <div class="flex justify-between items-center mb-1">
+                            <h3 class="font-black text-xl text-white uppercase tracking-tighter">Elissandra</h3>
+                            <span class="text-[10px] font-bold bg-pink-500/20 text-pink-400 px-2 py-1 rounded">FEMININA</span>
+                        </div>
+                        <p class="text-slate-400 text-xs font-bold uppercase tracking-widest mb-3 italic"><i class="fas fa-location-dot text-pink-500 mr-1"></i>Rio Grande do Norte</p>
+                        <div class="flex flex-wrap gap-1 mb-4">
+                            <span class="text-[9px] font-bold border border-slate-600 text-slate-400 px-2 py-0.5 rounded uppercase">Institucional</span>
+                            <span class="text-[9px] font-bold border border-slate-600 text-slate-400 px-2 py-0.5 rounded uppercase">Alegre</span>
+                            <span class="text-[9px] font-bold border border-slate-600 text-slate-400 px-2 py-0.5 rounded uppercase">Varejo</span>
+                        </div>
+                        <audio controls class="rounded-lg shadow-lg">
+                            <source src="https://testedomarcio.github.io/meuadio/elissandra.mp3" type="audio/mpeg">
+                        </audio>
+                    </div>
+                </div>
+
+                <!-- Locutora: Silvia -->
+                <div class="locutor-card bg-slate-800/50 rounded-[2rem] border border-slate-700 p-6 flex flex-col gap-4 hover:border-pink-400 transition duration-300">
+                    <div class="locutor-img-container aspect-square bg-slate-700">
+                        <img src="https://testedomarcio.github.io/meuadio/silvia.jpeg" alt="Locutora Silvia" class="w-full h-full object-cover" onerror="this.src='https://via.placeholder.com/300?text=Silvia'">
+                    </div>
+                    <div>
+                        <div class="flex justify-between items-center mb-1">
+                            <h3 class="font-black text-xl text-white uppercase tracking-tighter">Silvia</h3>
+                            <span class="text-[10px] font-bold bg-pink-500/20 text-pink-400 px-2 py-1 rounded">FEMININA</span>
+                        </div>
+                        <p class="text-slate-400 text-xs font-bold uppercase tracking-widest mb-3 italic"><i class="fas fa-location-dot text-pink-500 mr-1"></i>Paraná</p>
+                        <div class="flex flex-wrap gap-1 mb-4">
+                            <span class="text-[9px] font-bold border border-slate-600 text-slate-400 px-2 py-0.5 rounded uppercase">Jovem</span>
+                            <span class="text-[9px] font-bold border border-slate-600 text-slate-400 px-2 py-0.5 rounded uppercase">Up Festa</span>
+                            <span class="text-[9px] font-bold border border-slate-600 text-slate-400 px-2 py-0.5 rounded uppercase">Jornal</span>
+                        </div>
+                        <audio controls class="rounded-lg shadow-lg">
+                            <source src="https://testedomarcio.github.io/meuadio/Silvia.mp3" type="audio/mpeg">
+                        </audio>
+                    </div>
+                </div>
+
+                <!-- Locutora: Tati -->
+                <div class="locutor-card bg-slate-800/50 rounded-[2rem] border border-slate-700 p-6 flex flex-col gap-4 hover:border-pink-400 transition duration-300">
+                    <div class="locutor-img-container aspect-square bg-slate-700">
+                        <img src="https://testedomarcio.github.io/meuadio/tati.jpg" alt="Locutora Tati" class="w-full h-full object-cover" onerror="this.src='https://via.placeholder.com/300?text=Tati'">
+                    </div>
+                    <div>
+                        <div class="flex justify-between items-center mb-1">
+                            <h3 class="font-black text-xl text-white uppercase tracking-tighter">Tati</h3>
+                            <span class="text-[10px] font-bold bg-pink-500/20 text-pink-400 px-2 py-1 rounded">FEMININA</span>
+                        </div>
+                        <p class="text-slate-400 text-xs font-bold uppercase tracking-widest mb-3 italic"><i class="fas fa-location-dot text-pink-500 mr-1"></i>Paraná</p>
+                        <div class="flex flex-wrap gap-1 mb-4">
+                            <span class="text-[9px] font-bold border border-slate-600 text-slate-400 px-2 py-0.5 rounded uppercase">Alegre</span>
+                            <span class="text-[9px] font-bold border border-slate-600 text-slate-400 px-2 py-0.5 rounded uppercase">Varejo</span>
+                            <span class="text-[9px] font-bold border border-slate-600 text-slate-400 px-2 py-0.5 rounded uppercase">Feminina</span>
+                        </div>
+                        <audio controls class="rounded-lg shadow-lg">
+                            <source src="https://testedomarcio.github.io/meuadio/tati.mp3" type="audio/mpeg">
+                        </audio>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Botão Ver Mais Vozes -->
+            <div class="flex justify-center">
+                <a href="https://alocucao.com.br/vozes" target="_blank" class="inline-block bg-cyan-400 text-slate-900 px-8 sm:px-12 py-5 rounded-2xl font-black text-xl sm:text-2xl hover:scale-110 transition shadow-[0_0_50px_rgba(34,211,238,0.3)]">
+                    VER TODAS AS VOZES <i class="fas fa-arrow-right ml-2"></i>
+                </a>
             </div>
         </div>
     </section>
@@ -146,7 +350,7 @@
                     <p class="text-slate-600 text-sm leading-relaxed mb-8 flex-grow">
                         Voz profissional pura, sem edição ou trilha. Áudio bruto entregue com fidelidade total para sua edição própria.
                     </p>
-                    <a href="https://paineldegravacao.com.br/comerciaistop/cadastro" class="text-cyan-600 font-bold border-2 border-cyan-200 py-3 rounded-xl hover:bg-cyan-600 hover:text-white transition uppercase text-xs tracking-widest">Pedir Agora</a>
+                    <a href="https://paineldegravacao.com.br/comerciaistop/cadastro" class="text-cyan-600 font-bold border-2 border-cyan-200 py-3 rounded-xl hover:bg-cyan-600 hover:text-white transition uppercase text-xs tracking-widest text-center">Pedir Agora</a>
                 </div>
 
                 <!-- Comercial -->
@@ -158,43 +362,7 @@
                     <p class="text-slate-600 text-sm leading-relaxed mb-8 flex-grow">
                         Áudio completo com voz, trilha (BG), efeitos e mixagem. Pronto para veiculação imediata em rádio e redes sociais.
                     </p>
-                    <a href="https://paineldegravacao.com.br/comerciaistop/cadastro" class="text-blue-600 font-bold border-2 border-blue-200 py-3 rounded-xl hover:bg-blue-600 hover:text-white transition uppercase text-xs tracking-widest">Pedir Agora</a>
-                </div>
-
-                <!-- Edição de Áudio -->
-                <div class="card-service bg-slate-50 p-8 rounded-3xl border-2 border-transparent shadow-sm flex flex-col transition duration-300">
-                    <div class="w-16 h-16 bg-emerald-100 rounded-2xl flex items-center justify-center mb-6">
-                        <i class="fas fa-sliders-h text-emerald-600 text-2xl"></i>
-                    </div>
-                    <h3 class="text-xl font-bold mb-4 uppercase tracking-tighter">Edição de Áudio</h3>
-                    <p class="text-slate-600 text-sm leading-relaxed mb-8 flex-grow">
-                        Envie-nos a sua voz gravada (off) e faremos a pós-produção profissional com trilhas, efeitos e masterização.
-                    </p>
-                    <a href="https://paineldegravacao.com.br/comerciaistop/cadastro" class="text-emerald-600 font-bold border-2 border-emerald-200 py-3 rounded-xl hover:bg-emerald-600 hover:text-white transition uppercase text-xs tracking-widest">Produzir Agora</a>
-                </div>
-
-                <!-- Vinheta Off -->
-                <div class="card-service bg-slate-50 p-8 rounded-3xl border-2 border-transparent shadow-sm flex flex-col transition duration-300">
-                    <div class="w-16 h-16 bg-purple-100 rounded-2xl flex items-center justify-center mb-6">
-                        <i class="fas fa-bolt text-purple-600 text-2xl"></i>
-                    </div>
-                    <h3 class="text-xl font-bold mb-4 uppercase tracking-tighter">Vinhetas em Off</h3>
-                    <p class="text-slate-600 text-sm leading-relaxed mb-8 flex-grow">
-                        Identificações breves (5-10s) para programas ou rádio. Apenas a voz limpa e impactante dos nossos locutores.
-                    </p>
-                    <a href="https://paineldegravacao.com.br/comerciaistop/cadastro" class="text-purple-600 font-bold border-2 border-purple-200 py-3 rounded-xl hover:bg-purple-600 hover:text-white transition uppercase text-xs tracking-widest">Comprar Agora</a>
-                </div>
-
-                <!-- Vinheta Produzida -->
-                <div class="card-service bg-slate-50 p-8 rounded-3xl border-2 border-transparent shadow-sm flex flex-col transition duration-300">
-                    <div class="w-16 h-16 bg-orange-100 rounded-2xl flex items-center justify-center mb-6">
-                        <i class="fas fa-certificate text-orange-600 text-2xl"></i>
-                    </div>
-                    <h3 class="text-xl font-bold mb-4 uppercase tracking-tighter">Vinhetas Produzidas</h3>
-                    <p class="text-slate-600 text-sm leading-relaxed mb-8 flex-grow">
-                        Pílulas sonoras curtas com produção completa. Ideal para passagens de bloco e assinaturas de marca.
-                    </p>
-                    <a href="https://paineldegravacao.com.br/comerciaistop/cadastro" class="text-orange-600 font-bold border-2 border-orange-200 py-3 rounded-xl hover:bg-orange-600 hover:text-white transition uppercase text-xs tracking-widest">Comprar Agora</a>
+                    <a href="https://paineldegravacao.com.br/comerciaistop/cadastro" class="text-blue-600 font-bold border-2 border-blue-200 py-3 rounded-xl hover:bg-blue-600 hover:text-white transition uppercase text-xs tracking-widest text-center">Pedir Agora</a>
                 </div>
 
                 <!-- Jingle -->
@@ -206,21 +374,9 @@
                     <p class="text-slate-600 text-sm leading-relaxed mb-8 flex-grow">
                         Mensagem musical exclusiva com refrão marcante. A ferramenta perfeita para fixação de marca e campanhas políticas.
                     </p>
-                    <a href="https://paineldegravacao.com.br/comerciaistop/cadastro" class="text-red-600 font-bold border-2 border-red-200 py-3 rounded-xl hover:bg-red-600 hover:text-white transition uppercase text-xs tracking-widest">Solicitar Agora</a>
+                    <a href="https://paineldegravacao.com.br/comerciaistop/cadastro" class="text-red-600 font-bold border-2 border-red-200 py-3 rounded-xl hover:bg-red-600 hover:text-white transition uppercase text-xs tracking-widest text-center">Solicitar Agora</a>
                 </div>
             </div>
-        </div>
-    </section>
-
-    <!-- Chamada para Demonstrações -->
-    <section id="vozes-cta" class="py-24 bg-slate-900 text-white text-center relative overflow-hidden">
-        <div class="container-custom relative z-10">
-            <h2 class="text-4xl sm:text-5xl font-extrabold mb-6 uppercase italic tracking-tighter">Ouça o nosso Elenco</h2>
-            <p class="text-slate-400 mb-12 max-w-2xl mx-auto text-lg">Banco de vozes composto por mais de 200 locutores reais. Nada de robôs ou IA, apenas talento humano pronto para gravar agora.</p>
-            <a href="https://alocucao.com.br/vozes" class="inline-block bg-cyan-400 text-slate-900 px-8 sm:px-12 py-5 sm:py-6 rounded-2xl font-black text-xl sm:text-2xl hover:scale-110 transition shadow-[0_0_50px_rgba(34,211,238,0.3)]">ACESSE O BANCO DE VOZES</a>
-        </div>
-        <div class="absolute inset-0 opacity-5 pointer-events-none flex items-center justify-center">
-            <i class="fas fa-wave-square text-[40rem]"></i>
         </div>
     </section>
 
@@ -259,7 +415,7 @@
     <section id="precos" class="py-24 bg-slate-900 text-white">
         <div class="container-custom text-center">
             <h2 class="text-3xl sm:text-4xl font-extrabold mb-4 uppercase italic tracking-tighter">Tabela de Investimento</h2>
-            <p class="text-slate-400 mb-16 italic font-light">Contagem de créditos: Cada crédito = 40 segundos de áudio.</p>
+            <p class="text-slate-400 mb-16 italic font-light">Cada crédito = 40 segundos de áudio gravado.</p>
 
             <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
                 <!-- Preço Off -->
@@ -317,7 +473,7 @@
                     <h5 class="font-black uppercase text-xs tracking-widest mb-8 text-slate-400">Links</h5>
                     <div class="flex flex-col gap-4 text-sm font-bold">
                         <a href="#" class="hover:text-cyan-500">Início</a>
-                        <a href="https://alocucao.com.br/vozes" class="hover:text-cyan-500">Vozes</a>
+                        <a href="https://alocucao.com.br/vozes" class="hover:text-cyan-500">Locutores</a>
                         <a href="#precos" class="hover:text-cyan-500">Preços</a>
                         <a href="#" class="hover:text-cyan-500">Termos</a>
                     </div>
@@ -338,7 +494,7 @@
         <i class="fab fa-whatsapp"></i>
     </a>
 
-    <!-- JavaScript para o Menu Mobile -->
+    <!-- JavaScript Mobile Menu -->
     <script>
         const menuToggle = document.getElementById('menu-toggle');
         const mobileMenu = document.getElementById('mobile-menu');
@@ -346,7 +502,6 @@
 
         menuToggle.addEventListener('click', () => {
             mobileMenu.classList.toggle('active');
-            
             if (mobileMenu.classList.contains('active')) {
                 icon.classList.remove('fa-bars');
                 icon.classList.add('fa-times');
@@ -354,15 +509,6 @@
                 icon.classList.remove('fa-times');
                 icon.classList.add('fa-bars');
             }
-        });
-
-        const mobileLinks = mobileMenu.querySelectorAll('a');
-        mobileLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                mobileMenu.classList.remove('active');
-                icon.classList.remove('fa-times');
-                icon.classList.add('fa-bars');
-            });
         });
     </script>
 
